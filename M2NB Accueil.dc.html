@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  body { margin:0; background:#F7F4ED; font-family:'Manrope',system-ui,sans-serif; -webkit-font-smoothing:antialiased; }
+  a { color:#0F2A24; text-decoration:none; }
+  a:hover { color:#B8863A; }
+  ::selection { background:#0F2A24; color:#F7F4ED; }
+  input::placeholder, textarea::placeholder { color:#8A9A94; }
+</style>
+</helmet>
+
+<div style="width:100%;overflow-x:hidden;color:#152C26;background:#F7F4ED">
+
+  <sc-if value="{{ showTopBar }}" hint-placeholder-val="{{ true }}">
+    <div style="background:#0B211C;color:#9FB3AB;font-size:11.5px;letter-spacing:.03em">
+      <div style="max-width:1280px;margin:0 auto;padding:10px 32px;display:flex;align-items:center;justify-content:space-between;gap:14px 24px;flex-wrap:wrap">
+        <div style="display:flex;align-items:center;gap:10px 26px;flex-wrap:wrap;white-space:nowrap">
+          <span>Yaoundé, Cameroun</span>
+          <span style="opacity:.35">/</span>
+          <span>Avocat au Barreau du Cameroun</span>
+        </div>
+        <div style="white-space:nowrap;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#7D948C">Conseil · Assistance · Représentation</div>
+      </div>
+    </div>
+  </sc-if>
+
+  <div style="background:#0F2A24">
+    <div style="max-width:1280px;margin:0 auto;padding:22px 32px;display:flex;align-items:center;justify-content:space-between;gap:18px 32px;flex-wrap:wrap;border-bottom:1px solid rgba(247,244,237,.12)">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div style="width:32px;height:32px;border:1px solid #C1913F;border-radius:50%;display:flex;align-items:center;justify-content:center">
+          <span style="font-family:'Instrument Serif',serif;font-size:14px;color:#D6A75A;line-height:1">M</span>
+        </div>
+        <div style="line-height:1.15">
+          <div style="font-family:'Instrument Serif',serif;font-size:21px;letter-spacing:.04em;color:#F7F4ED">M2NB <span style="color:#D6A75A">&amp; Partners</span></div>
+          <div style="font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:#7D948C;margin-top:2px">Law Firm</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px 26px;flex-wrap:wrap;white-space:nowrap;font-size:12px;letter-spacing:.1em;text-transform:uppercase">
+        <a href="#top" onClick="{{ goHome }}" style="color:{{ cHome }}" style-hover="color:#D6A75A">Accueil</a>
+        <a href="#top" onClick="{{ goCabinet }}" style="color:{{ cCabinet }}" style-hover="color:#D6A75A">Le cabinet</a>
+        <a href="#top" onClick="{{ goServices }}" style="color:{{ cServices }}" style-hover="color:#D6A75A">Nos services</a>
+        <a href="#top" onClick="{{ goEquipe }}" style="color:{{ cEquipe }}" style-hover="color:#D6A75A">Notre équipe</a>
+        <a href="#top" onClick="{{ goRefs }}" style="color:{{ cRefs }}" style-hover="color:#D6A75A">Nos références</a>
+        <a href="#top" onClick="{{ goNews }}" style="color:{{ cNews }}" style-hover="color:#D6A75A">Actualités</a>
+        <a href="#top" onClick="{{ goContact }}" style="color:{{ cContact }}" style-hover="color:#D6A75A">Contact</a>
+      </div>
+      <a href="#top" onClick="{{ goContact }}" style="border:1px solid #C1913F;color:#F0E2C6;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:12px 22px;border-radius:999px;white-space:nowrap;display:flex;align-items:center;gap:10px" style-hover="background:#C1913F;color:#0F2A24">Nous contacter <span>→</span></a>
+    </div>
+  </div>
+
+  <sc-if value="{{ pgHome }}" hint-placeholder-val="{{ true }}">
+  <div id="top" style="position:relative;background:#0F2A24;overflow:hidden">
+    <div style="position:absolute;inset:-24px;filter:blur(9px);transform:scale(1.06)">
+      <image-slot id="m2-hero-bg" shape="rect" fit="cover" placeholder="Image de fond (floutée)"></image-slot>
+    </div>
+    <div style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(15,42,36,.96) 0%,rgba(15,42,36,.92) 45%,rgba(11,33,28,.78) 100%);pointer-events:none"></div>
+    <div style="position:absolute;right:-140px;top:-120px;width:520px;height:520px;border:1px solid rgba(214,167,90,.18);border-radius:50%;pointer-events:none"></div>
+    <div style="max-width:1280px;margin:0 auto;padding:78px 32px 0;display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);gap:64px;align-items:center;position:relative">
+      <div>
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:26px">
+          <span style="width:42px;height:1px;background:#C1913F;display:block"></span>
+          <span style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#D6A75A">M2NB &amp; Partners Law Firm</span>
+        </div>
+        <h1 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:60px;line-height:1.08;color:#F7F4ED;margin:0 0 26px;max-width:15ch;text-wrap:pretty">Votre partenaire juridique pour décider, sécuriser et défendre.</h1>
+        <p style="font-size:14.5px;line-height:1.85;color:#AFC1BA;margin:0 0 36px;max-width:52ch">M2NB &amp; Partners Law Firm accompagne les entreprises, dirigeants, entrepreneurs, institutions et particuliers dans leurs enjeux juridiques, commerciaux et contentieux. Nous associons expertise juridique, compréhension des enjeux et approche stratégique afin d'apporter à chaque client des solutions adaptées à sa situation.</p>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center">
+          <a href="#contact" style="background:#C1913F;color:#0F2A24;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;padding:16px 30px;border-radius:999px;display:flex;align-items:center;gap:10px" style-hover="background:#D6A75A">Nous contacter <span>→</span></a>
+          <a href="#cabinet" style="color:#F7F4ED;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;padding:16px 8px;border-bottom:1px solid rgba(247,244,237,.35)" style-hover="border-bottom:1px solid #D6A75A">Découvrir le cabinet</a>
+        </div>
+      </div>
+
+      <div style="position:relative;padding-top:34px">
+        <div style="position:relative;height:520px;border-radius:260px 260px 14px 14px;overflow:hidden;box-shadow:0 50px 90px rgba(0,0,0,.4)">
+          <image-slot id="m2-hero" shape="rect" fit="cover" placeholder="Photo du cabinet ou de l'avocat"></image-slot>
+        </div>
+        <div style="position:absolute;left:-36px;bottom:74px;width:112px;height:112px;border-radius:50%;background:#0F2A24;border:1px solid rgba(214,167,90,.5);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center">
+          <span style="font-family:'Instrument Serif',serif;font-size:26px;color:#D6A75A;line-height:1">2001</span>
+          <span style="font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:#8FA49C">Serment</span>
+        </div>
+      </div>
+    </div>
+
+    <sc-if value="{{ showStats }}" hint-placeholder-val="{{ true }}">
+      <div style="position:relative;max-width:1280px;margin:0 auto;padding:70px 32px 62px">
+        <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid rgba(247,244,237,.14);padding-top:30px">
+          <div style="padding-right:24px">
+            <div style="font-family:'Instrument Serif',serif;font-size:36px;color:#F7F4ED;line-height:1.1">20+</div>
+            <div style="font-size:11.5px;line-height:1.6;color:#8FA49C;margin-top:10px">Années de pratique professionnelle</div>
+          </div>
+          <div style="padding:0 24px;border-left:1px solid rgba(247,244,237,.14)">
+            <div style="font-family:'Instrument Serif',serif;font-size:36px;color:#F7F4ED;line-height:1.1">Yaoundé</div>
+            <div style="font-size:11.5px;line-height:1.6;color:#8FA49C;margin-top:10px">Cabinet établi au Cameroun</div>
+          </div>
+          <div style="padding:0 24px;border-left:1px solid rgba(247,244,237,.14)">
+            <div style="font-family:'Instrument Serif',serif;font-size:30px;color:#F7F4ED;line-height:1.15">Conseil &amp; Défense</div>
+            <div style="font-size:11.5px;line-height:1.6;color:#8FA49C;margin-top:10px">Une approche juridique intégrée</div>
+          </div>
+          <div style="padding-left:24px;border-left:1px solid rgba(247,244,237,.14)">
+            <div style="font-family:'Instrument Serif',serif;font-size:30px;color:#F7F4ED;line-height:1.15">Confidentialité</div>
+            <div style="font-size:11.5px;line-height:1.6;color:#8FA49C;margin-top:10px">Une relation fondée sur la confiance</div>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+  </div>
+
+  <div id="cabinet" style="background:#F7F4ED;padding:104px 0">
+    <div style="max-width:1280px;margin:0 auto;padding:0 32px">
+
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.12fr);gap:72px;align-items:end;margin-bottom:56px">
+        <div>
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px">
+            <span style="width:42px;height:1px;background:#C1913F;display:block"></span>
+            <span style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#9A7530">Le cabinet</span>
+          </div>
+          <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:46px;line-height:1.12;color:#152C26;margin:0;max-width:15ch">Une expertise juridique au service de vos intérêts</h2>
+        </div>
+        <div>
+          <p style="font-size:16px;line-height:1.8;color:#2E413B;margin:0 0 18px">M2NB &amp; Partners Law Firm est un cabinet d'avocats établi à Yaoundé, au Cameroun. Le Cabinet accompagne ses clients dans leurs besoins de conseil, d'assistance et de représentation juridique.</p>
+          <p style="font-size:14px;line-height:1.85;color:#546760;margin:0">Notre clientèle comprend notamment des entreprises, dirigeants, entrepreneurs, institutions et particuliers confrontés à des problématiques juridiques nécessitant une analyse rigoureuse et une réponse adaptée.</p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr) minmax(0,1fr);gap:16px;margin-bottom:26px">
+        <div style="position:relative;height:360px;border-radius:10px;overflow:hidden;background:#EFE9DC">
+          <image-slot id="m2-ab1" shape="rect" fit="cover" placeholder="Intérieur du cabinet"></image-slot>
+        </div>
+        <div style="position:relative;height:360px;border-radius:10px;overflow:hidden;background:#EFE9DC">
+          <image-slot id="m2-ab2" shape="rect" fit="cover" placeholder="Dossiers / bibliothèque"></image-slot>
+        </div>
+        <div style="position:relative;height:360px;border-radius:180px 180px 10px 10px;overflow:hidden;background:#EFE9DC">
+          <image-slot id="m2-ab3" shape="rect" fit="cover" placeholder="Réunion client"></image-slot>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.12fr);gap:72px;align-items:start;padding-top:34px;border-top:1px solid #DCD5C6">
+        <div>
+          <p style="font-family:'Instrument Serif',serif;font-size:26px;line-height:1.4;color:#152C26;margin:0 0 22px;max-width:24ch">Un bon conseil juridique ne consiste pas uniquement à expliquer la règle de droit.</p>
+          <p style="font-size:14px;line-height:1.85;color:#546760;margin:0 0 32px;max-width:44ch">Il doit permettre au client de comprendre sa situation, identifier ses risques, évaluer ses options et prendre une décision éclairée.</p>
+          <a href="#top" onClick="{{ goCabinet }}" style="display:inline-flex;align-items:center;gap:10px;background:#0F2A24;color:#F7F4ED;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:15px 28px;border-radius:999px" style-hover="background:#C1913F;color:#0F2A24">Découvrir le cabinet <span>→</span></a>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px">
+        <div style="border-top:1px solid #C1913F;padding-top:20px">
+          <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:12px">
+            <span style="font-family:'Instrument Serif',serif;font-size:26px;color:#B08F4D;line-height:1">01</span>
+            <span style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#152C26">Comprendre</span>
+          </div>
+          <p style="font-size:13.5px;line-height:1.8;color:#546760;margin:0">Nous commençons par comprendre votre situation, vos objectifs et vos contraintes.</p>
+        </div>
+        <div style="border-top:1px solid #C1913F;padding-top:20px">
+          <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:12px">
+            <span style="font-family:'Instrument Serif',serif;font-size:26px;color:#B08F4D;line-height:1">02</span>
+            <span style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#152C26">Conseiller</span>
+          </div>
+          <p style="font-size:13.5px;line-height:1.8;color:#546760;margin:0">Nous transformons la complexité juridique en recommandations claires et adaptées.</p>
+        </div>
+        <div style="border-top:1px solid #C1913F;padding-top:20px">
+          <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:12px">
+            <span style="font-family:'Instrument Serif',serif;font-size:26px;color:#B08F4D;line-height:1">03</span>
+            <span style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#152C26">Défendre</span>
+          </div>
+          <p style="font-size:13.5px;line-height:1.8;color:#546760;margin:0">Lorsque vos intérêts sont en jeu, nous mettons notre expertise au service de votre défense.</p>
+        </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="domaines" style="background:#EFE9DC;padding:104px 0">
+    <div style="max-width:1280px;margin:0 auto;padding:0 32px">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-bottom:52px;flex-wrap:wrap">
+        <div>
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px">
+            <span style="width:42px;height:1px;background:#C1913F;display:block"></span>
+            <span style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#9A7530">Nos domaines d'intervention</span>
+          </div>
+          <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:44px;line-height:1.12;color:#152C26;margin:0;max-width:18ch">Sept domaines, une même exigence</h2>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:#DCD5C6;border:1px solid #DCD5C6">
+        <div style="background:#F7F4ED;padding:38px 32px 32px;display:flex;flex-direction:column;min-height:250px">
+          <div style="width:46px;height:46px;border:1px solid #DCD5C6;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:30px"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B08F4D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 12h18"></path></svg></div>
+          <div style="font-family:'Instrument Serif',serif;font-size:24px;line-height:1.25;color:#152C26;margin-bottom:12px">Droit des affaires</div>
+          <p style="font-size:13px;line-height:1.75;color:#546760;margin:0 0 24px">Nous accompagnons les entreprises, dirigeants et entrepreneurs dans leurs problématiques juridiques et leurs opérations d'affaires.</p>
+          <a href="#top" onClick="{{ goSvcaffaires }}" style="margin-top:auto;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#0F2A24;display:inline-flex;align-items:center;gap:9px" style-hover="color:#C1913F">En savoir plus <span>→</span></a>
+        </div>
+        <div style="background:#F7F4ED;padding:38px 32px 32px;display:flex;flex-direction:column;min-height:250px">
+          <div style="width:46px;height:46px;border:1px solid #DCD5C6;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:30px"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B08F4D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V5a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v16M15 10h3a2 2 0 0 1 2 2v9M3 21h18M8 7h3M8 11h3M8 15h3"></path></svg></div>
+          <div style="font-family:'Instrument Serif',serif;font-size:24px;line-height:1.25;color:#152C26;margin-bottom:12px">Droit des sociétés</div>
+          <p style="font-size:13px;line-height:1.75;color:#546760;margin:0 0 24px">De la constitution à la gouvernance, nous accompagnons les sociétés dans les différentes étapes de leur vie juridique.</p>
+          <a href="#top" onClick="{{ goSvcsocietes }}" style="margin-top:auto;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#0F2A24;display:inline-flex;align-items:center;gap:9px" style-hover="color:#C1913F">En savoir plus <span>→</span></a>
+        </div>
+        <div style="background:#F7F4ED;padding:38px 32px 32px;display:flex;flex-direction:column;min-height:250px">
+          <div style="width:46px;height:46px;border:1px solid #DCD5C6;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:30px"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B08F4D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5M9 13h6M9 17h3"></path></svg></div>
+          <div style="font-family:'Instrument Serif',serif;font-size:24px;line-height:1.25;color:#152C26;margin-bottom:12px">Droit commercial &amp; contrats</div>
+          <p style="font-size:13px;line-height:1.75;color:#546760;margin:0 0 24px">Nous intervenons dans la rédaction, l'analyse, la négociation et la sécurisation des contrats et relations commerciales.</p>
+          <a href="#top" onClick="{{ goSvccontrats }}" style="margin-top:auto;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#0F2A24;display:inline-flex;align-items:center;gap:9px" style-hover="color:#C1913F">En savoir plus <span>→</span></a>
+        </div>
+        <div style="background:#F7F4ED;padding:38px 32px 32px;display:flex;flex-direction:column;min-height:250px">
+          <div style="width:46px;height:46px;border:1px solid #DCD5C6;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:30px"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B08F4D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v17M7 21h10M4 8h16M7 8l-3 6h6zM17 8l-3 6h6z"></path></svg></div>
+          <div style="font-family:'Instrument Serif',serif;font-size:24px;line-height:1.25;color:#152C26;margin-bottom:12px">Contentieux &amp; règlement des différends</div>
+          <p style="font-size:13px;line-height:1.75;color:#546760;margin:0 0 24px">Lorsque le conflit survient, nous analysons la situation et développons une stratégie adaptée à la défense des intérêts du client.</p>
+          <a href="#top" onClick="{{ goSvccontentieux }}" style="margin-top:auto;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#0F2A24;display:inline-flex;align-items:center;gap:9px" style-hover="color:#C1913F">En savoir plus <span>→</span></a>
+        </div>
+        <div style="background:#F7F4ED;padding:38px 32px 32px;display:flex;flex-direction:column;min-height:250px">
+          <div style="width:46px;height:46px;border:1px solid #DCD5C6;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:30px"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B08F4D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h10a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H8l-4 3v-3H3a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1z"></path><path d="M17 9h3a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1v3l-3-3h-4"></path></svg></div>
+          <div style="font-family:'Instrument Serif',serif;font-size:24px;line-height:1.25;color:#152C26;margin-bottom:12px">Arbitrage &amp; médiation</div>
+          <p style="font-size:13px;line-height:1.75;color:#546760;margin:0 0 24px">Nous accompagnons nos clients dans la recherche de solutions alternatives et adaptées au règlement de leurs différends.</p>
+          <a href="#top" onClick="{{ goSvcarbitrage }}" style="margin-top:auto;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#0F2A24;display:inline-flex;align-items:center;gap:9px" style-hover="color:#C1913F">En savoir plus <span>→</span></a>
+        </div>
+        <div style="background:#F7F4ED;padding:38px 32px 32px;display:flex;flex-direction:column;min-height:250px">
+          <div style="width:46px;height:46px;border:1px solid #DCD5C6;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:30px"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B08F4D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.5" cy="8" r="3"></circle><path d="M3 20v-1a4 4 0 0 1 4-4h5a4 4 0 0 1 4 4v1M17 6.2a3 3 0 0 1 0 5.6M21 20v-1a4 4 0 0 0-3-3.8"></path></svg></div>
+          <div style="font-family:'Instrument Serif',serif;font-size:24px;line-height:1.25;color:#152C26;margin-bottom:12px">Droit du travail &amp; droit social</div>
+          <p style="font-size:13px;line-height:1.75;color:#546760;margin:0 0 24px">Nous conseillons les employeurs et salariés sur leurs droits, obligations et problématiques liées aux relations professionnelles.</p>
+          <a href="#top" onClick="{{ goSvctravail }}" style="margin-top:auto;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#0F2A24;display:inline-flex;align-items:center;gap:9px" style-hover="color:#C1913F">En savoir plus <span>→</span></a>
+        </div>
+        <div style="grid-column:span 3;background:#0F2A24;padding:40px 36px;display:flex;gap:40px;align-items:center;flex-wrap:wrap">
+          <div style="flex:1;min-width:260px">
+            <div style="width:46px;height:46px;border:1px solid rgba(214,167,90,.4);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:20px"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#D6A75A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.2-7 8.5-4.1-1.3-7-4.3-7-8.5V6z"></path><path d="M9.5 11.8l1.8 1.8 3.4-3.6"></path></svg></div>
+            <div style="font-family:'Instrument Serif',serif;font-size:26px;line-height:1.25;color:#F7F4ED;margin-bottom:12px">Conseil juridique</div>
+            <p style="font-size:13px;line-height:1.75;color:#AFC1BA;margin:0;max-width:62ch">Nous intervenons en amont afin d'identifier les risques, sécuriser les décisions et permettre à nos clients d'agir avec davantage de visibilité.</p>
+          </div>
+          <a href="#top" onClick="{{ goSvcconseil }}" style="font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#F7F4ED;border:1px solid rgba(247,244,237,.35);padding:14px 26px;border-radius:999px;white-space:nowrap;display:inline-flex;align-items:center;gap:10px" style-hover="background:#C1913F;color:#0F2A24">En savoir plus <span>→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="equipe" style="background:#F7F4ED;padding:104px 0">
+    <div style="max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1fr);gap:72px;align-items:center">
+      <div style="position:relative">
+        <div style="position:relative;height:520px;border-radius:240px 240px 10px 10px;overflow:hidden;background:#EFE9DC">
+          <image-slot id="m2-avocat" shape="rect" fit="cover" placeholder="Portrait — Me Clovis METANG NJIKE"></image-slot>
+        </div>
+        <div style="position:absolute;right:-30px;bottom:56px;width:104px;height:104px;border-radius:50%;background:#0F2A24;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:3px">
+          <span style="font-family:'Instrument Serif',serif;font-size:22px;color:#D6A75A;line-height:1">20+</span>
+          <span style="font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:#8FA49C">Années</span>
+        </div>
+      </div>
+      <div>
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px">
+          <span style="width:42px;height:1px;background:#C1913F;display:block"></span>
+          <span style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#9A7530">Notre équipe</span>
+        </div>
+        <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:44px;line-height:1.14;color:#152C26;margin:0 0 26px;max-width:16ch">L'expérience au service de la confiance</h2>
+        <p style="font-size:14px;line-height:1.85;color:#546760;margin:0 0 16px;max-width:54ch"><span style="color:#152C26">Me Clovis METANG NJIKE</span>, avocat au Barreau du Cameroun, exerce à Yaoundé depuis plus de deux décennies.</p>
+        <p style="font-size:14px;line-height:1.85;color:#546760;margin:0 0 16px;max-width:54ch">Ayant prêté serment en 2001, il a développé une pratique professionnelle dans le conseil, l'assistance et la défense des intérêts de ses clients. Son parcours comprend notamment des interventions dans différents dossiers devant les juridictions camerounaises.</p>
+        <p style="font-size:14px;line-height:1.85;color:#546760;margin:0 0 34px;max-width:54ch">Cette expérience nourrit une approche fondée sur la rigueur, la stratégie et la compréhension concrète des enjeux auxquels sont confrontés les clients du Cabinet.</p>
+        <a href="#top" onClick="{{ goEquipe }}" style="display:inline-flex;align-items:center;gap:10px;background:#0F2A24;color:#F7F4ED;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:15px 28px;border-radius:999px" style-hover="background:#C1913F;color:#0F2A24">Découvrir notre équipe <span>→</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#0F2A24;padding:92px 0;position:relative;overflow:hidden">
+    <div style="position:absolute;left:-180px;bottom:-200px;width:480px;height:480px;border:1px solid rgba(214,167,90,.14);border-radius:50%;pointer-events:none"></div>
+    <div style="max-width:1280px;margin:0 auto;padding:0 32px;position:relative">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px">
+        <span style="width:42px;height:1px;background:#C1913F;display:block"></span>
+        <span style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#D6A75A">Nos engagements</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid rgba(247,244,237,.14);margin-top:30px">
+        <div style="padding:30px 24px 4px 0">
+          <div style="font-family:'Instrument Serif',serif;font-size:26px;color:#F7F4ED;margin-bottom:12px">Écouter</div>
+          <div style="font-size:12.5px;line-height:1.7;color:#AFC1BA">Comprendre avant d'agir.</div>
+        </div>
+        <div style="padding:30px 24px 4px;border-left:1px solid rgba(247,244,237,.14)">
+          <div style="font-family:'Instrument Serif',serif;font-size:26px;color:#F7F4ED;margin-bottom:12px">Analyser</div>
+          <div style="font-size:12.5px;line-height:1.7;color:#AFC1BA">Examiner chaque situation avec rigueur.</div>
+        </div>
+        <div style="padding:30px 24px 4px;border-left:1px solid rgba(247,244,237,.14)">
+          <div style="font-family:'Instrument Serif',serif;font-size:26px;color:#F7F4ED;margin-bottom:12px">Conseiller</div>
+          <div style="font-size:12.5px;line-height:1.7;color:#AFC1BA">Proposer des solutions claires et adaptées.</div>
+        </div>
+        <div style="padding:30px 24px 4px;border-left:1px solid rgba(247,244,237,.14)">
+          <div style="font-family:'Instrument Serif',serif;font-size:26px;color:#F7F4ED;margin-bottom:12px">Agir</div>
+          <div style="font-size:12.5px;line-height:1.7;color:#AFC1BA">Mettre en œuvre une stratégie cohérente.</div>
+        </div>
+        <div style="padding:30px 0 4px 24px;border-left:1px solid rgba(247,244,237,.14)">
+          <div style="font-family:'Instrument Serif',serif;font-size:26px;color:#F7F4ED;margin-bottom:12px">Défendre</div>
+          <div style="font-size:12.5px;line-height:1.7;color:#AFC1BA">Protéger les intérêts de nos clients.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#EFE9DC;padding:100px 0">
+    <div style="max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:72px;align-items:center">
+      <div>
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px">
+          <span style="width:42px;height:1px;background:#C1913F;display:block"></span>
+          <span style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#9A7530">Notre relation client</span>
+        </div>
+        <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:44px;line-height:1.14;color:#152C26;margin:0;max-width:14ch">Une relation fondée sur la confiance</h2>
+      </div>
+      <div>
+        <p style="font-size:15px;line-height:1.85;color:#3C4F49;margin:0 0 26px">La relation entre un avocat et son client repose avant tout sur la confiance.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:26px">
+          <span style="border:1px solid #CDC3AE;color:#152C26;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;padding:9px 18px;border-radius:999px">Écoute</span>
+          <span style="border:1px solid #CDC3AE;color:#152C26;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;padding:9px 18px;border-radius:999px">Rigueur</span>
+          <span style="border:1px solid #CDC3AE;color:#152C26;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;padding:9px 18px;border-radius:999px">Confidentialité</span>
+          <span style="border:1px solid #CDC3AE;color:#152C26;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;padding:9px 18px;border-radius:999px">Indépendance</span>
+          <span style="border:1px solid #CDC3AE;color:#152C26;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;padding:9px 18px;border-radius:999px">Engagement</span>
+        </div>
+        <p style="font-size:14px;line-height:1.85;color:#546760;margin:0;max-width:54ch">Ces principes guident notre manière de travailler et constituent le socle de notre relation avec chaque client.</p>
+      </div>
+    </div>
+  </div>
+
+  </sc-if>
+
+  <sc-if value="{{ pgCabinet }}" hint-placeholder-val="{{ false }}">
+
+    <div style="background:#0F2A24;padding:76px 0 68px;position:relative;overflow:hidden">
+      <div style="position:absolute;right:-150px;top:-140px;width:520px;height:520px;border:1px solid rgba(214,167,90,.18);border-radius:50%;pointer-events:none"></div>
+      <div style="position:relative;max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:64px;align-items:end">
+        <div>
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px"><span style="width:42px;height:1px;background:#C1913F;display:block"></span><span style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#D6A75A">Le cabinet</span></div>
+          <h1 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:50px;line-height:1.1;color:#F7F4ED;margin:0;max-width:18ch">Une pratique juridique fondée sur l’expérience et la confiance</h1>
+        </div>
+        <div><p style="font-size:15px;line-height:1.85;color:#AFC1BA;margin:0 0 14px">M2NB &amp; Partners Law Firm est un cabinet d’avocats établi à Yaoundé, au Cameroun. Le Cabinet accompagne ses clients dans leurs besoins de conseil, d’assistance et de représentation juridique.</p><p style="font-size:13.5px;line-height:1.85;color:#8FA49C;margin:0 0 14px">Nous intervenons auprès de particuliers, d’entreprises, d’entrepreneurs et, selon la nature des missions, d’organisations et d’institutions.</p></div>
+      </div>
+    </div>
+
+    <div style="background:#F7F4ED;padding:96px 0">
+      <div style="max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:72px;align-items:center">
+        <div style="position:relative;height:460px;border-radius:230px 230px 10px 10px;overflow:hidden;background:#EFE9DC">
+          <image-slot id="m2-cab-1" shape="rect" fit="cover" placeholder="Intérieur du cabinet"></image-slot>
+        </div>
+        <div>
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px"><span style="width:42px;height:1px;background:#C1913F;display:block"></span><span style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#9A7530">Notre approche</span></div>
+          <p style="font-size:13.5px;line-height:1.85;color:#546760;margin:0 0 22px;max-width:52ch">Notre approche repose sur une conviction simple :</p>
+          <p style="font-family:'Instrument Serif',serif;font-size:30px;line-height:1.35;color:#152C26;margin:0 0 40px;max-width:26ch">Le droit doit permettre à nos clients de mieux comprendre leur situation, de maîtriser leurs risques et de prendre de meilleures décisions.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;padding-top:34px;border-top:1px solid #DCD5C6">
+            <div>
+              <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#9A7530;margin-bottom:16px">Notre mission</div>
+              <p style="font-size:13.5px;line-height:1.8;color:#546760;margin:0 0 12px">Notre mission est d’apporter à nos clients un accompagnement juridique rigoureux, professionnel et orienté vers les solutions.</p>
+              <p style="font-size:13.5px;line-height:1.8;color:#546760;margin:0 0 12px">Nous intervenons aussi bien dans une logique de prévention et de conseil que dans la gestion et la résolution des différends.</p>
+              <p style="font-size:13.5px;line-height:1.8;color:#546760;margin:0">Notre ambition est de construire avec chaque client une relation fondée sur la confiance, la disponibilité et la qualité du conseil.</p>
+            </div>
+            <div>
+              <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#9A7530;margin-bottom:16px">Notre vision</div>
+              <p style="font-family:'Instrument Serif',serif;font-size:21px;line-height:1.4;color:#152C26;margin:0 0 14px">Construire une relation durable fondée sur la confiance.</p>
+              <p style="font-size:13.5px;line-height:1.8;color:#546760;margin:0 0 12px">M2NB &amp; Partners Law Firm ambitionne de développer une pratique juridique reconnue pour la qualité de son conseil, son intégrité professionnelle et son engagement auprès de ses clients.</p>
+              <p style="font-size:13.5px;line-height:1.8;color:#546760;margin:0">Nous souhaitons inscrire notre intervention dans une relation durable : être présents non seulement lorsque le problème survient, mais également lorsque le client souhaite anticiper, structurer et sécuriser ses décisions.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:#EFE9DC;padding:92px 0">
+      <div style="max-width:1280px;margin:0 auto;padding:0 32px">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px"><span style="width:42px;height:1px;background:#C1913F;display:block"></span><span style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#9A7530">Nos valeurs</span></div>
+        <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:40px;line-height:1.14;color:#152C26;margin:0 0 44px;max-width:20ch">Cinq principes qui guident notre pratique</h2>
+        <div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:#DCD5C6;border:1px solid #DCD5C6">
+          <div style="background:#F7F4ED;padding:32px 24px 28px">
+            <div style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#152C26;margin-bottom:14px">Intégrité</div>
+            <div style="width:26px;height:1px;background:#C1913F;margin-bottom:16px"></div>
+            <p style="font-size:13px;line-height:1.75;color:#546760;margin:0">Agir avec honnêteté et responsabilité.</p>
+          </div>
+          <div style="background:#F7F4ED;padding:32px 24px 28px">
+            <div style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#152C26;margin-bottom:14px">Excellence</div>
+            <div style="width:26px;height:1px;background:#C1913F;margin-bottom:16px"></div>
+            <p style="font-size:13px;line-height:1.75;color:#546760;margin:0">Rechercher constamment la qualité dans notre pratique.</p>
+          </div>
+          <div style="background:#F7F4ED;padding:32px 24px 28px">
+            <div style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#152C26;margin-bottom:14px">Confidentialité</div>
+            <div style="width:26px;height:1px;background:#C1913F;margin-bottom:16px"></div>
+            <p style="font-size:13px;line-height:1.75;color:#546760;margin:0">Protéger les informations qui nous sont confiées.</p>
+          </div>
+          <div style="background:#F7F4ED;padding:32px 24px 28px">
+            <div style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#152C26;margin-bottom:14px">Indépendance</div>
+            <div style="width:26px;height:1px;background:#C1913F;margin-bottom:16px"></div>
+            <p style="font-size:13px;line-height:1.75;color:#546760;margin:0">Exercer notre profession avec liberté de jugement.</p>
+          </div>
+          <div style="background:#F7F4ED;padding:32px 24px 28px">
+            <div style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#152C26;margin-bottom:14px">Engagement</div>
+            <div style="width:26px;height:1px;background:#C1913F;margin-bottom:16px"></div>
+            <p style="font-size:13px;line-height:1.75;color:#546760;margin:0">Être pleinement impliqués dans la défense des intérêts de nos clients.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:#0F2A24;padding:92px 0">
+      <div style="max-width:1280px;margin:0 auto;padding:0 32px">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px"><span style="width:42px;height:1px;background:#C1913F;display:block"></span><span style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#D6A75A">Notre méthode</span></div>
+        <div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid rgba(247,244,237,.16);margin-top:30px">
+          <div style="padding:30px 24px 4px 0;">
+            <div style="width:46px;height:46px;border:1px solid rgba(214,167,90,.4);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:18px"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#D6A75A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H8l-4 3z"></path><path d="M9 9h6M9 12.5h3.5"></path></svg></div>
+            <div style="font-family:'Instrument Serif',serif;font-size:26px;color:#F7F4ED">Comprendre</div>
+          </div>
+          <div style="padding:30px 24px 4px 24px;border-left:1px solid rgba(247,244,237,.16);">
+            <div style="width:46px;height:46px;border:1px solid rgba(214,167,90,.4);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:18px"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#D6A75A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6"></circle><path d="M15 15l4.5 4.5"></path></svg></div>
+            <div style="font-family:'Instrument Serif',serif;font-size:26px;color:#F7F4ED">Analyser</div>
+          </div>
+          <div style="padding:30px 24px 4px 24px;border-left:1px solid rgba(247,244,237,.16);">
+            <div style="width:46px;height:46px;border:1px solid rgba(214,167,90,.4);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:18px"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#D6A75A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0-3.5 10.9V17h7v-3.1A6 6 0 0 0 12 3z"></path><path d="M10 20h4"></path></svg></div>
+            <div style="font-family:'Instrument Serif',serif;font-size:26px;color:#F7F4ED">Conseiller</div>
+          </div>
+          <div style="padding:30px 24px 4px 24px;border-left:1px solid rgba(247,244,237,.16);">
+            <div style="width:46px;height:46px;border:1px solid rgba(214,167,90,.4);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:18px"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#D6A75A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3 5 14h5l-1 7 8-11h-5z"></path></svg></div>
+            <div style="font-family:'Instrument Serif',serif;font-size:26px;color:#F7F4ED">Agir</div>
+          </div>
+          <div style="padding:30px 0 4px 24px;border-left:1px solid rgba(247,244,237,.16);">
+            <div style="width:46px;height:46px;border:1px solid rgba(214,167,90,.4);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:18px"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#D6A75A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.2-7 8.5-4.1-1.3-7-4.3-7-8.5V6z"></path><path d="M9.5 11.8l1.8 1.8 3.4-3.6"></path></svg></div>
+            <div style="font-family:'Instrument Serif',serif;font-size:26px;color:#F7F4ED">Défendre</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ pgServices }}" hint-placeholder-val="{{ false }}">
+
+    <div style="background:#0F2A24;padding:76px 0 68px;position:relative;overflow:hidden">
+      <div style="position:absolute;right:-150px;top:-140px;width:520px;height:520px;border:1px solid rgba(214,167,90,.18);border-radius:50%;pointer-events:none"></div>
+      <div style="position:relative;max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:64px;align-items:end">
+        <div>
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px"><span style="width:42px;height:1px;background:#C1913F;display:block"></span><span style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#D6A75A">Nos services</span></div>
+          <h1 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:50px;line-height:1.1;color:#F7F4ED;margin:0;max-width:18ch">Des solutions juridiques adaptées à vos enjeux</h1>
+        </div>
+        <div><p style="font-size:15px;line-height:1.85;color:#AFC1BA;margin:0 0 14px">Le droit accompagne chaque étape de la vie d’une entreprise, d’une organisation ou d’un particulier.</p><p style="font-size:13.5px;line-height:1.85;color:#8FA49C;margin:0 0 14px">Notre rôle est de transformer la complexité juridique en solutions compréhensibles, structurées et adaptées à vos objectifs.</p></div>
+      </div>
+    </div>
+    <div style="background:#EFE9DC;padding:92px 0">
+      <div style="max-width:1280px;margin:0 auto;padding:0 32px">
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:#DCD5C6;border:1px solid #DCD5C6">
+          <div style="background:#F7F4ED;padding:38px 32px 32px;display:flex;flex-direction:column;min-height:258px">
+            <div style="">
+              <div style="width:46px;height:46px;border:1px solid #DCD5C6;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B08F4D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 12h18"></path></svg></div>
+              <div style="font-family:'Instrument Serif',serif;font-size:24px;line-height:1.25;color:#152C26;margin:26px 0 10px">Droit des affaires</div>
+              <p style="font-size:13px;line-height:1.75;color:#546760;margin:0 0 24px;max-width:52ch">Accompagner l’entreprise dans ses décisions. Nous accompagnons les entreprises, dirigeants et entrepreneurs dans leurs problématiques juridiques liées à leur activité.</p>
+            </div>
+            <a href="#top" onClick="{{ goSvcaffaires }}" style="margin-top:auto;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#0F2A24;display:inline-flex;align-items:center;gap:9px;white-space:nowrap" style-hover="color:#C1913F">En savoir plus <span>→</span></a>
+          </div>
+          <div style="background:#F7F4ED;padding:38px 32px 32px;display:flex;flex-direction:column;min-height:258px">
+            <div style="">
+              <div style="width:46px;height:46px;border:1px solid #DCD5C6;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B08F4D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V5a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v16M15 10h3a2 2 0 0 1 2 2v9M3 21h18M8 7h3M8 11h3M8 15h3"></path></svg></div>
+              <div style="font-family:'Instrument Serif',serif;font-size:24px;line-height:1.25;color:#152C26;margin:26px 0 10px">Droit des sociétés</div>
+              <p style="font-size:13px;line-height:1.75;color:#546760;margin:0 0 24px;max-width:52ch">Sécuriser la vie juridique de l’entreprise. Nous accompagnons les sociétés et leurs dirigeants dans les différentes étapes de leur vie juridique.</p>
+            </div>
+            <a href="#top" onClick="{{ goSvcsocietes }}" style="margin-top:auto;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#0F2A24;display:inline-flex;align-items:center;gap:9px;white-space:nowrap" style-hover="color:#C1913F">En savoir plus <span>→</span></a>
+          </div>
+          <div style="background:#F7F4ED;padding:38px 32px 32px;display:flex;flex-direction:column;min-height:258px">
+            <div style="">
+              <div style="width:46px;height:46px;border:1px solid #DCD5C6;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B08F4D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5M9 13h6M9 17h3"></path></svg></div>
+              <div style="font-family:'Instrument Serif',serif;font-size:24px;line-height:1.25;color:#152C26;margin:26px 0 10px">Droit commercial &amp; contrats</div>
+              <p style="font-size:13px;line-height:1.75;color:#546760;margin:0 0 24px;max-width:52ch">Sécuriser vos relations d’affaires. Un contrat bien conçu permet de clarifier les obligations de chacun, d’anticiper les risques et de réduire les possibilités de conflit.</p>
+            </div>
+            <a href="#top" onClick="{{ goSvccontrats }}" style="margin-top:auto;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#0F2A24;display:inline-flex;align-items:center;gap:9px;white-space:nowrap" style-hover="color:#C1913F">En savoir plus <span>→</span></a>
+          </div>
+          <div style="background:#F7F4ED;padding:38px 32px 32px;display:flex;flex-direction:column;min-height:258px">
+            <div style="">
+              <div style="width:46px;height:46px;border:1px solid #DCD5C6;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B08F4D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v17M7 21h10M4 8h16M7 8l-3 6h6zM17 8l-3 6h6z"></path></svg></div>
+              <div style="font-family:'Instrument Serif',serif;font-size:24px;line-height:1.25;color:#152C26;margin:26px 0 10px">Contentieux &amp; règlement des différends</div>
+              <p style="font-size:13px;line-height:1.75;color:#546760;margin:0 0 24px;max-width:52ch">Défendre vos intérêts lorsque le différend survient. Nous analysons la situation, évaluons les risques et définissons avec le client une stratégie adaptée.</p>
+            </div>
+            <a href="#top" onClick="{{ goSvccontentieux }}" style="margin-top:auto;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#0F2A24;display:inline-flex;align-items:center;gap:9px;white-space:nowrap" style-hover="color:#C1913F">En savoir plus <span>→</span></a>
+          </div>
+          <div style="background:#F7F4ED;padding:38px 32px 32px;display:flex;flex-direction:column;min-height:258px">
+            <div style="">
+              <div style="width:46px;height:46px;border:1px solid #DCD5C6;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B08F4D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h10a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H8l-4 3v-3H3a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1z"></path><path d="M17 9h3a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1v3l-3-3h-4"></path></svg></div>
+              <div style="font-family:'Instrument Serif',serif;font-size:24px;line-height:1.25;color:#152C26;margin:26px 0 10px">Arbitrage &amp; médiation</div>
+              <p style="font-size:13px;line-height:1.75;color:#546760;margin:0 0 24px;max-width:52ch">Rechercher la solution la plus adaptée. Selon la nature du différend et les intérêts en présence, la négociation, la médiation ou l’arbitrage peuvent constituer des solutions pertinentes.</p>
+            </div>
+            <a href="#top" onClick="{{ goSvcarbitrage }}" style="margin-top:auto;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#0F2A24;display:inline-flex;align-items:center;gap:9px;white-space:nowrap" style-hover="color:#C1913F">En savoir plus <span>→</span></a>
+          </div>
+          <div style="background:#F7F4ED;padding:38px 32px 32px;display:flex;flex-direction:column;min-height:258px">
+            <div style="">
+              <div style="width:46px;height:46px;border:1px solid #DCD5C6;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B08F4D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.5" cy="8" r="3"></circle><path d="M3 20v-1a4 4 0 0 1 4-4h5a4 4 0 0 1 4 4v1M17 6.2a3 3 0 0 1 0 5.6M21 20v-1a4 4 0 0 0-3-3.8"></path></svg></div>
+              <div style="font-family:'Instrument Serif',serif;font-size:24px;line-height:1.25;color:#152C26;margin:26px 0 10px">Droit du travail &amp; droit social</div>
+              <p style="font-size:13px;line-height:1.75;color:#546760;margin:0 0 24px;max-width:52ch">Sécuriser les relations professionnelles. Nous accompagnons les acteurs de la relation professionnelle dans leurs problématiques juridiques.</p>
+            </div>
+            <a href="#top" onClick="{{ goSvctravail }}" style="margin-top:auto;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#0F2A24;display:inline-flex;align-items:center;gap:9px;white-space:nowrap" style-hover="color:#C1913F">En savoir plus <span>→</span></a>
+          </div>
+          <div style="background:#F7F4ED;padding:38px 32px 32px;display:flex;flex-direction:column;min-height:258px;grid-column:span 3;flex-direction:row;align-items:center;gap:40px;flex-wrap:wrap;min-height:0">
+            <div style="flex:1;min-width:280px">
+              <div style="width:46px;height:46px;border:1px solid #DCD5C6;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B08F4D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.2-7 8.5-4.1-1.3-7-4.3-7-8.5V6z"></path><path d="M9.5 11.8l1.8 1.8 3.4-3.6"></path></svg></div>
+              <div style="font-family:'Instrument Serif',serif;font-size:24px;line-height:1.25;color:#152C26;margin:26px 0 10px">Conseil juridique</div>
+              <p style="font-size:13px;line-height:1.75;color:#546760;margin:0 0 24px;max-width:52ch">Anticiper plutôt que subir. Nous accompagnons nos clients dans l’analyse de leurs situations et documents afin de leur permettre de prendre des décisions mieux informées.</p>
+            </div>
+            <a href="#top" onClick="{{ goSvcconseil }}" style="font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#0F2A24;display:inline-flex;align-items:center;gap:9px;white-space:nowrap" style-hover="color:#C1913F">En savoir plus <span>→</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ pgSvcaffaires }}" hint-placeholder-val="{{ false }}">
+
+    <div style="background:#0F2A24;padding:76px 0 68px;position:relative;overflow:hidden">
+      <div style="position:absolute;right:-150px;top:-140px;width:520px;height:520px;border:1px solid rgba(214,167,90,.18);border-radius:50%;pointer-events:none"></div>
+      <div style="position:relative;max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:64px;align-items:end">
+        <div>
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px"><span style="width:42px;height:1px;background:#C1913F;display:block"></span><span style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#D6A75A">Nos services</span></div>
+          <h1 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:50px;line-height:1.1;color:#F7F4ED;margin:0;max-width:18ch">Droit des affaires</h1>
+        </div>
+        <div><p style="font-size:15px;line-height:1.85;color:#AFC1BA;margin:0 0 14px">Accompagner l’entreprise dans ses décisions</p><p style="font-size:13.5px;line-height:1.85;color:#8FA49C;margin:0 0 14px">Les entreprises évoluent dans un environnement où chaque décision peut comporter des implications juridiques.</p></div>
+      </div>
+    </div>
+    <div style="background:#F7F4ED;padding:88px 0">
+      <div style="max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:72px;align-items:start">
+        <div>
+          <div style="width:46px;height:46px;border:1px solid #DCD5C6;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B08F4D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 12h18"></path></svg></div>
+          <p style="font-size:15px;line-height:1.85;color:#2E413B;margin:26px 0 16px;max-width:50ch">Les entreprises évoluent dans un environnement où chaque décision peut comporter des implications juridiques.</p>
+          <p style="font-size:14px;line-height:1.85;color:#546760;margin:0 0 32px;max-width:50ch">Nous accompagnons les entreprises, dirigeants et entrepreneurs dans leurs problématiques juridiques liées à leur activité.</p>
+          <p style="font-family:'Instrument Serif',serif;font-size:24px;line-height:1.42;color:#152C26;margin:0 0 34px;padding-top:28px;border-top:1px solid #DCD5C6;max-width:32ch">Notre objectif : permettre à nos clients de prendre leurs décisions avec une meilleure compréhension des enjeux juridiques.</p>
+          <a href="#top" onClick="{{ goContact }}" style="display:inline-flex;align-items:center;gap:10px;background:#0F2A24;color:#F7F4ED;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:15px 28px;border-radius:999px" style-hover="background:#C1913F;color:#0F2A24">Prendre rendez-vous <span>→</span></a>
+        </div>
+        <div style="background:#EFE9DC;padding:0 34px 38px;overflow:hidden">
+          <div style="position:relative;height:250px;margin:0 -34px 32px;background:#E3DBC9">
+            <image-slot id="m2-svc-affaires" shape="rect" fit="cover" placeholder="Photo — conseil aux entreprises"></image-slot>
+          </div>
+          <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#9A7530;margin-bottom:24px">Nos interventions</div>
+          <div style="display:flex;flex-direction:column;border-top:1px solid #DCD5C6">
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Conseil juridique aux entreprises</span>
+            </div>
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Opérations commerciales</span>
+            </div>
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Relations d’affaires</span>
+            </div>
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Analyse des risques juridiques</span>
+            </div>
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Négociation</span>
+            </div>
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Accompagnement juridique des dirigeants</span>
+            </div>
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Prévention des différends</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="background:#EFE9DC;padding:52px 0 60px;border-top:1px solid #DCD5C6">
+      <div style="max-width:1280px;margin:0 auto;padding:0 32px">
+        <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#9A7530;margin-bottom:22px">Autres domaines</div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
+        <a href="#top" onClick="{{ goSvcaffaires }}" style="background:{{ cSvcaffaires }};color:{{ tSvcaffaires }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Droit des affaires</a>
+        <a href="#top" onClick="{{ goSvcsocietes }}" style="background:{{ cSvcsocietes }};color:{{ tSvcsocietes }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Droit des sociétés</a>
+        <a href="#top" onClick="{{ goSvccontrats }}" style="background:{{ cSvccontrats }};color:{{ tSvccontrats }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Droit commercial &amp; contrats</a>
+        <a href="#top" onClick="{{ goSvccontentieux }}" style="background:{{ cSvccontentieux }};color:{{ tSvccontentieux }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Contentieux &amp; règlement des différends</a>
+        <a href="#top" onClick="{{ goSvcarbitrage }}" style="background:{{ cSvcarbitrage }};color:{{ tSvcarbitrage }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Arbitrage &amp; médiation</a>
+        <a href="#top" onClick="{{ goSvctravail }}" style="background:{{ cSvctravail }};color:{{ tSvctravail }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Droit du travail &amp; droit social</a>
+        <a href="#top" onClick="{{ goSvcconseil }}" style="background:{{ cSvcconseil }};color:{{ tSvcconseil }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Conseil juridique</a>
+      </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ pgSvcsocietes }}" hint-placeholder-val="{{ false }}">
+
+    <div style="background:#0F2A24;padding:76px 0 68px;position:relative;overflow:hidden">
+      <div style="position:absolute;right:-150px;top:-140px;width:520px;height:520px;border:1px solid rgba(214,167,90,.18);border-radius:50%;pointer-events:none"></div>
+      <div style="position:relative;max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:64px;align-items:end">
+        <div>
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px"><span style="width:42px;height:1px;background:#C1913F;display:block"></span><span style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#D6A75A">Nos services</span></div>
+          <h1 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:50px;line-height:1.1;color:#F7F4ED;margin:0;max-width:18ch">Droit des sociétés</h1>
+        </div>
+        <div><p style="font-size:15px;line-height:1.85;color:#AFC1BA;margin:0 0 14px">Sécuriser la vie juridique de l’entreprise</p><p style="font-size:13.5px;line-height:1.85;color:#8FA49C;margin:0 0 14px">La bonne organisation juridique d’une société constitue un élément essentiel de sa stabilité et de son développement.</p></div>
+      </div>
+    </div>
+    <div style="background:#F7F4ED;padding:88px 0">
+      <div style="max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:72px;align-items:start">
+        <div>
+          <div style="width:46px;height:46px;border:1px solid #DCD5C6;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B08F4D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V5a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v16M15 10h3a2 2 0 0 1 2 2v9M3 21h18M8 7h3M8 11h3M8 15h3"></path></svg></div>
+          <p style="font-size:15px;line-height:1.85;color:#2E413B;margin:26px 0 16px;max-width:50ch">La bonne organisation juridique d’une société constitue un élément essentiel de sa stabilité et de son développement.</p>
+          <p style="font-size:14px;line-height:1.85;color:#546760;margin:0 0 32px;max-width:50ch">Nous accompagnons les sociétés et leurs dirigeants dans les différentes étapes de leur vie juridique.</p>
+          <p style="font-family:'Instrument Serif',serif;font-size:24px;line-height:1.42;color:#152C26;margin:0 0 34px;padding-top:28px;border-top:1px solid #DCD5C6;max-width:32ch">Une entreprise solide repose également sur une organisation juridique claire et sécurisée.</p>
+          <a href="#top" onClick="{{ goContact }}" style="display:inline-flex;align-items:center;gap:10px;background:#0F2A24;color:#F7F4ED;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:15px 28px;border-radius:999px" style-hover="background:#C1913F;color:#0F2A24">Prendre rendez-vous <span>→</span></a>
+        </div>
+        <div style="background:#EFE9DC;padding:0 34px 38px;overflow:hidden">
+          <div style="position:relative;height:250px;margin:0 -34px 32px;background:#E3DBC9">
+            <image-slot id="m2-svc-societes" shape="rect" fit="cover" placeholder="Photo — gouvernance / assemblée"></image-slot>
+          </div>
+          <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#9A7530;margin-bottom:24px">Nos interventions</div>
+          <div style="display:flex;flex-direction:column;border-top:1px solid #DCD5C6">
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Constitution et organisation des sociétés</span>
+            </div>
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Fonctionnement des organes sociaux</span>
+            </div>
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Gouvernance</span>
+            </div>
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Relations entre associés</span>
+            </div>
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Opérations sur le capital</span>
+            </div>
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Restructuration</span>
+            </div>
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Difficultés entre associés</span>
+            </div>
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Conseil aux dirigeants</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="background:#EFE9DC;padding:52px 0 60px;border-top:1px solid #DCD5C6">
+      <div style="max-width:1280px;margin:0 auto;padding:0 32px">
+        <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#9A7530;margin-bottom:22px">Autres domaines</div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
+        <a href="#top" onClick="{{ goSvcaffaires }}" style="background:{{ cSvcaffaires }};color:{{ tSvcaffaires }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Droit des affaires</a>
+        <a href="#top" onClick="{{ goSvcsocietes }}" style="background:{{ cSvcsocietes }};color:{{ tSvcsocietes }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Droit des sociétés</a>
+        <a href="#top" onClick="{{ goSvccontrats }}" style="background:{{ cSvccontrats }};color:{{ tSvccontrats }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Droit commercial &amp; contrats</a>
+        <a href="#top" onClick="{{ goSvccontentieux }}" style="background:{{ cSvccontentieux }};color:{{ tSvccontentieux }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Contentieux &amp; règlement des différends</a>
+        <a href="#top" onClick="{{ goSvcarbitrage }}" style="background:{{ cSvcarbitrage }};color:{{ tSvcarbitrage }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Arbitrage &amp; médiation</a>
+        <a href="#top" onClick="{{ goSvctravail }}" style="background:{{ cSvctravail }};color:{{ tSvctravail }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Droit du travail &amp; droit social</a>
+        <a href="#top" onClick="{{ goSvcconseil }}" style="background:{{ cSvcconseil }};color:{{ tSvcconseil }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Conseil juridique</a>
+      </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ pgSvccontrats }}" hint-placeholder-val="{{ false }}">
+
+    <div style="background:#0F2A24;padding:76px 0 68px;position:relative;overflow:hidden">
+      <div style="position:absolute;right:-150px;top:-140px;width:520px;height:520px;border:1px solid rgba(214,167,90,.18);border-radius:50%;pointer-events:none"></div>
+      <div style="position:relative;max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:64px;align-items:end">
+        <div>
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px"><span style="width:42px;height:1px;background:#C1913F;display:block"></span><span style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#D6A75A">Nos services</span></div>
+          <h1 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:50px;line-height:1.1;color:#F7F4ED;margin:0;max-width:18ch">Droit commercial &amp; contrats</h1>
+        </div>
+        <div><p style="font-size:15px;line-height:1.85;color:#AFC1BA;margin:0 0 14px">Sécuriser vos relations d’affaires</p><p style="font-size:13.5px;line-height:1.85;color:#8FA49C;margin:0 0 14px">Le contrat est au cœur de nombreuses relations commerciales.</p></div>
+      </div>
+    </div>
+    <div style="background:#F7F4ED;padding:88px 0">
+      <div style="max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:72px;align-items:start">
+        <div>
+          <div style="width:46px;height:46px;border:1px solid #DCD5C6;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B08F4D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5M9 13h6M9 17h3"></path></svg></div>
+          <p style="font-size:15px;line-height:1.85;color:#2E413B;margin:26px 0 16px;max-width:50ch">Le contrat est au cœur de nombreuses relations commerciales.</p>
+          <p style="font-size:14px;line-height:1.85;color:#546760;margin:0 0 32px;max-width:50ch">Un contrat bien conçu permet de clarifier les obligations de chacun, d’anticiper les risques et de réduire les possibilités de conflit.</p>
+          <p style="font-family:'Instrument Serif',serif;font-size:24px;line-height:1.42;color:#152C26;margin:0 0 34px;padding-top:28px;border-top:1px solid #DCD5C6;max-width:32ch">Un contrat ne doit pas seulement formaliser une relation. Il doit aussi contribuer à protéger les intérêts de ceux qui s’engagent.</p>
+          <a href="#top" onClick="{{ goContact }}" style="display:inline-flex;align-items:center;gap:10px;background:#0F2A24;color:#F7F4ED;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:15px 28px;border-radius:999px" style-hover="background:#C1913F;color:#0F2A24">Prendre rendez-vous <span>→</span></a>
+        </div>
+        <div style="background:#EFE9DC;padding:0 34px 38px;overflow:hidden">
+          <div style="position:relative;height:250px;margin:0 -34px 32px;background:#E3DBC9">
+            <image-slot id="m2-svc-contrats" shape="rect" fit="cover" placeholder="Photo — signature de contrat"></image-slot>
+          </div>
+          <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#9A7530;margin-bottom:24px">Nos interventions</div>
+          <div style="display:flex;flex-direction:column;border-top:1px solid #DCD5C6">
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Rédaction de contrats</span>
+            </div>
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Analyse et revue contractuelle</span>
+            </div>
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Négociation</span>
+            </div>
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Sécurisation des engagements</span>
+            </div>
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Identification des risques</span>
+            </div>
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Accompagnement en cas d’inexécution</span>
+            </div>
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Gestion des différends contractuels</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="background:#EFE9DC;padding:52px 0 60px;border-top:1px solid #DCD5C6">
+      <div style="max-width:1280px;margin:0 auto;padding:0 32px">
+        <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#9A7530;margin-bottom:22px">Autres domaines</div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
+        <a href="#top" onClick="{{ goSvcaffaires }}" style="background:{{ cSvcaffaires }};color:{{ tSvcaffaires }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Droit des affaires</a>
+        <a href="#top" onClick="{{ goSvcsocietes }}" style="background:{{ cSvcsocietes }};color:{{ tSvcsocietes }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Droit des sociétés</a>
+        <a href="#top" onClick="{{ goSvccontrats }}" style="background:{{ cSvccontrats }};color:{{ tSvccontrats }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Droit commercial &amp; contrats</a>
+        <a href="#top" onClick="{{ goSvccontentieux }}" style="background:{{ cSvccontentieux }};color:{{ tSvccontentieux }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Contentieux &amp; règlement des différends</a>
+        <a href="#top" onClick="{{ goSvcarbitrage }}" style="background:{{ cSvcarbitrage }};color:{{ tSvcarbitrage }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Arbitrage &amp; médiation</a>
+        <a href="#top" onClick="{{ goSvctravail }}" style="background:{{ cSvctravail }};color:{{ tSvctravail }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Droit du travail &amp; droit social</a>
+        <a href="#top" onClick="{{ goSvcconseil }}" style="background:{{ cSvcconseil }};color:{{ tSvcconseil }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Conseil juridique</a>
+      </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ pgSvccontentieux }}" hint-placeholder-val="{{ false }}">
+
+    <div style="background:#0F2A24;padding:76px 0 68px;position:relative;overflow:hidden">
+      <div style="position:absolute;right:-150px;top:-140px;width:520px;height:520px;border:1px solid rgba(214,167,90,.18);border-radius:50%;pointer-events:none"></div>
+      <div style="position:relative;max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:64px;align-items:end">
+        <div>
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px"><span style="width:42px;height:1px;background:#C1913F;display:block"></span><span style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#D6A75A">Nos services</span></div>
+          <h1 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:50px;line-height:1.1;color:#F7F4ED;margin:0;max-width:18ch">Contentieux &amp; règlement des différends</h1>
+        </div>
+        <div><p style="font-size:15px;line-height:1.85;color:#AFC1BA;margin:0 0 14px">Défendre vos intérêts lorsque le différend survient</p><p style="font-size:13.5px;line-height:1.85;color:#8FA49C;margin:0 0 14px">Lorsqu’un différend apparaît, la première étape consiste à comprendre précisément les enjeux.</p></div>
+      </div>
+    </div>
+    <div style="background:#F7F4ED;padding:88px 0">
+      <div style="max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:72px;align-items:start">
+        <div>
+          <div style="width:46px;height:46px;border:1px solid #DCD5C6;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B08F4D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v17M7 21h10M4 8h16M7 8l-3 6h6zM17 8l-3 6h6z"></path></svg></div>
+          <p style="font-size:15px;line-height:1.85;color:#2E413B;margin:26px 0 16px;max-width:50ch">Lorsqu’un différend apparaît, la première étape consiste à comprendre précisément les enjeux.</p>
+          <p style="font-size:14px;line-height:1.85;color:#546760;margin:0 0 32px;max-width:50ch">Nous analysons la situation, évaluons les risques et définissons avec le client une stratégie adaptée.</p>
+          <p style="font-family:'Instrument Serif',serif;font-size:24px;line-height:1.42;color:#152C26;margin:0 0 34px;padding-top:28px;border-top:1px solid #DCD5C6;max-width:32ch">Chaque contentieux mérite une stratégie construite autour des faits, du droit, des preuves et des objectifs du client.</p>
+          <a href="#top" onClick="{{ goContact }}" style="display:inline-flex;align-items:center;gap:10px;background:#0F2A24;color:#F7F4ED;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:15px 28px;border-radius:999px" style-hover="background:#C1913F;color:#0F2A24">Prendre rendez-vous <span>→</span></a>
+        </div>
+        <div style="background:#EFE9DC;padding:0 34px 38px;overflow:hidden">
+          <div style="position:relative;height:250px;margin:0 -34px 32px;background:#E3DBC9">
+            <image-slot id="m2-svc-contentieux" shape="rect" fit="cover" placeholder="Photo — palais de justice"></image-slot>
+          </div>
+          <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#9A7530;margin-bottom:24px">Nos interventions</div>
+          <div style="display:flex;flex-direction:column;border-top:1px solid #DCD5C6">
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Analyse du litige</span>
+            </div>
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Évaluation des risques</span>
+            </div>
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Définition de la stratégie</span>
+            </div>
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Préparation du dossier</span>
+            </div>
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Représentation devant les juridictions compétentes</span>
+            </div>
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Suivi de la procédure</span>
+            </div>
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Accompagnement dans l’exécution des décisions</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="background:#EFE9DC;padding:52px 0 60px;border-top:1px solid #DCD5C6">
+      <div style="max-width:1280px;margin:0 auto;padding:0 32px">
+        <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#9A7530;margin-bottom:22px">Autres domaines</div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
+        <a href="#top" onClick="{{ goSvcaffaires }}" style="background:{{ cSvcaffaires }};color:{{ tSvcaffaires }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Droit des affaires</a>
+        <a href="#top" onClick="{{ goSvcsocietes }}" style="background:{{ cSvcsocietes }};color:{{ tSvcsocietes }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Droit des sociétés</a>
+        <a href="#top" onClick="{{ goSvccontrats }}" style="background:{{ cSvccontrats }};color:{{ tSvccontrats }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Droit commercial &amp; contrats</a>
+        <a href="#top" onClick="{{ goSvccontentieux }}" style="background:{{ cSvccontentieux }};color:{{ tSvccontentieux }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Contentieux &amp; règlement des différends</a>
+        <a href="#top" onClick="{{ goSvcarbitrage }}" style="background:{{ cSvcarbitrage }};color:{{ tSvcarbitrage }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Arbitrage &amp; médiation</a>
+        <a href="#top" onClick="{{ goSvctravail }}" style="background:{{ cSvctravail }};color:{{ tSvctravail }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Droit du travail &amp; droit social</a>
+        <a href="#top" onClick="{{ goSvcconseil }}" style="background:{{ cSvcconseil }};color:{{ tSvcconseil }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Conseil juridique</a>
+      </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ pgSvcarbitrage }}" hint-placeholder-val="{{ false }}">
+
+    <div style="background:#0F2A24;padding:76px 0 68px;position:relative;overflow:hidden">
+      <div style="position:absolute;right:-150px;top:-140px;width:520px;height:520px;border:1px solid rgba(214,167,90,.18);border-radius:50%;pointer-events:none"></div>
+      <div style="position:relative;max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:64px;align-items:end">
+        <div>
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px"><span style="width:42px;height:1px;background:#C1913F;display:block"></span><span style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#D6A75A">Nos services</span></div>
+          <h1 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:50px;line-height:1.1;color:#F7F4ED;margin:0;max-width:18ch">Arbitrage &amp; médiation</h1>
+        </div>
+        <div><p style="font-size:15px;line-height:1.85;color:#AFC1BA;margin:0 0 14px">Rechercher la solution la plus adaptée</p><p style="font-size:13.5px;line-height:1.85;color:#8FA49C;margin:0 0 14px">Le contentieux judiciaire n’est pas toujours la seule voie possible.</p></div>
+      </div>
+    </div>
+    <div style="background:#F7F4ED;padding:88px 0">
+      <div style="max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:72px;align-items:start">
+        <div>
+          <div style="width:46px;height:46px;border:1px solid #DCD5C6;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B08F4D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h10a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H8l-4 3v-3H3a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1z"></path><path d="M17 9h3a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1v3l-3-3h-4"></path></svg></div>
+          <p style="font-size:15px;line-height:1.85;color:#2E413B;margin:26px 0 16px;max-width:50ch">Le contentieux judiciaire n’est pas toujours la seule voie possible.</p>
+          <p style="font-size:14px;line-height:1.85;color:#546760;margin:0 0 32px;max-width:50ch">Selon la nature du différend et les intérêts en présence, la négociation, la médiation ou l’arbitrage peuvent constituer des solutions pertinentes.</p>
+          <p style="font-family:'Instrument Serif',serif;font-size:24px;line-height:1.42;color:#152C26;margin:0 0 34px;padding-top:28px;border-top:1px solid #DCD5C6;max-width:32ch">Lorsque cela est possible, rechercher une solution efficace peut être aussi important que préparer une défense contentieuse.</p>
+          <a href="#top" onClick="{{ goContact }}" style="display:inline-flex;align-items:center;gap:10px;background:#0F2A24;color:#F7F4ED;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:15px 28px;border-radius:999px" style-hover="background:#C1913F;color:#0F2A24">Prendre rendez-vous <span>→</span></a>
+        </div>
+        <div style="background:#EFE9DC;padding:0 34px 38px;overflow:hidden">
+          <div style="position:relative;height:250px;margin:0 -34px 32px;background:#E3DBC9">
+            <image-slot id="m2-svc-arbitrage" shape="rect" fit="cover" placeholder="Photo — séance de médiation"></image-slot>
+          </div>
+          <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#9A7530;margin-bottom:24px">Nos interventions</div>
+          <div style="display:flex;flex-direction:column;border-top:1px solid #DCD5C6">
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Analyse des possibilités de règlement amiable</span>
+            </div>
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Négociation</span>
+            </div>
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Médiation</span>
+            </div>
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Arbitrage</span>
+            </div>
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Stratégie de règlement des différends</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="background:#EFE9DC;padding:52px 0 60px;border-top:1px solid #DCD5C6">
+      <div style="max-width:1280px;margin:0 auto;padding:0 32px">
+        <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#9A7530;margin-bottom:22px">Autres domaines</div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
+        <a href="#top" onClick="{{ goSvcaffaires }}" style="background:{{ cSvcaffaires }};color:{{ tSvcaffaires }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Droit des affaires</a>
+        <a href="#top" onClick="{{ goSvcsocietes }}" style="background:{{ cSvcsocietes }};color:{{ tSvcsocietes }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Droit des sociétés</a>
+        <a href="#top" onClick="{{ goSvccontrats }}" style="background:{{ cSvccontrats }};color:{{ tSvccontrats }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Droit commercial &amp; contrats</a>
+        <a href="#top" onClick="{{ goSvccontentieux }}" style="background:{{ cSvccontentieux }};color:{{ tSvccontentieux }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Contentieux &amp; règlement des différends</a>
+        <a href="#top" onClick="{{ goSvcarbitrage }}" style="background:{{ cSvcarbitrage }};color:{{ tSvcarbitrage }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Arbitrage &amp; médiation</a>
+        <a href="#top" onClick="{{ goSvctravail }}" style="background:{{ cSvctravail }};color:{{ tSvctravail }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Droit du travail &amp; droit social</a>
+        <a href="#top" onClick="{{ goSvcconseil }}" style="background:{{ cSvcconseil }};color:{{ tSvcconseil }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Conseil juridique</a>
+      </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ pgSvctravail }}" hint-placeholder-val="{{ false }}">
+
+    <div style="background:#0F2A24;padding:76px 0 68px;position:relative;overflow:hidden">
+      <div style="position:absolute;right:-150px;top:-140px;width:520px;height:520px;border:1px solid rgba(214,167,90,.18);border-radius:50%;pointer-events:none"></div>
+      <div style="position:relative;max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:64px;align-items:end">
+        <div>
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px"><span style="width:42px;height:1px;background:#C1913F;display:block"></span><span style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#D6A75A">Nos services</span></div>
+          <h1 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:50px;line-height:1.1;color:#F7F4ED;margin:0;max-width:18ch">Droit du travail &amp; droit social</h1>
+        </div>
+        <div><p style="font-size:15px;line-height:1.85;color:#AFC1BA;margin:0 0 14px">Sécuriser les relations professionnelles</p><p style="font-size:13.5px;line-height:1.85;color:#8FA49C;margin:0 0 14px">Les relations de travail sont encadrées par des droits et obligations qui doivent être compris et respectés par chacune des parties.</p></div>
+      </div>
+    </div>
+    <div style="background:#F7F4ED;padding:88px 0">
+      <div style="max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:72px;align-items:start">
+        <div>
+          <div style="width:46px;height:46px;border:1px solid #DCD5C6;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B08F4D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.5" cy="8" r="3"></circle><path d="M3 20v-1a4 4 0 0 1 4-4h5a4 4 0 0 1 4 4v1M17 6.2a3 3 0 0 1 0 5.6M21 20v-1a4 4 0 0 0-3-3.8"></path></svg></div>
+          <p style="font-size:15px;line-height:1.85;color:#2E413B;margin:26px 0 16px;max-width:50ch">Les relations de travail sont encadrées par des droits et obligations qui doivent être compris et respectés par chacune des parties.</p>
+          <p style="font-size:14px;line-height:1.85;color:#546760;margin:0 0 32px;max-width:50ch">Nous accompagnons les acteurs de la relation professionnelle dans leurs problématiques juridiques.</p>
+          
+          <a href="#top" onClick="{{ goContact }}" style="display:inline-flex;align-items:center;gap:10px;background:#0F2A24;color:#F7F4ED;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:15px 28px;border-radius:999px" style-hover="background:#C1913F;color:#0F2A24">Prendre rendez-vous <span>→</span></a>
+        </div>
+        <div style="background:#EFE9DC;padding:0 34px 38px;overflow:hidden">
+          <div style="position:relative;height:250px;margin:0 -34px 32px;background:#E3DBC9">
+            <image-slot id="m2-svc-travail" shape="rect" fit="cover" placeholder="Photo — relations de travail"></image-slot>
+          </div>
+          <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#9A7530;margin-bottom:24px">Nos interventions</div>
+          <div style="display:flex;flex-direction:column;border-top:1px solid #DCD5C6">
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Contrats de travail</span>
+            </div>
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Relations employeur-salarié</span>
+            </div>
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Obligations des parties</span>
+            </div>
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Différends individuels</span>
+            </div>
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Différends collectifs</span>
+            </div>
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Procédures disciplinaires</span>
+            </div>
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Contentieux sociaux</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="background:#EFE9DC;padding:52px 0 60px;border-top:1px solid #DCD5C6">
+      <div style="max-width:1280px;margin:0 auto;padding:0 32px">
+        <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#9A7530;margin-bottom:22px">Autres domaines</div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
+        <a href="#top" onClick="{{ goSvcaffaires }}" style="background:{{ cSvcaffaires }};color:{{ tSvcaffaires }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Droit des affaires</a>
+        <a href="#top" onClick="{{ goSvcsocietes }}" style="background:{{ cSvcsocietes }};color:{{ tSvcsocietes }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Droit des sociétés</a>
+        <a href="#top" onClick="{{ goSvccontrats }}" style="background:{{ cSvccontrats }};color:{{ tSvccontrats }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Droit commercial &amp; contrats</a>
+        <a href="#top" onClick="{{ goSvccontentieux }}" style="background:{{ cSvccontentieux }};color:{{ tSvccontentieux }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Contentieux &amp; règlement des différends</a>
+        <a href="#top" onClick="{{ goSvcarbitrage }}" style="background:{{ cSvcarbitrage }};color:{{ tSvcarbitrage }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Arbitrage &amp; médiation</a>
+        <a href="#top" onClick="{{ goSvctravail }}" style="background:{{ cSvctravail }};color:{{ tSvctravail }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Droit du travail &amp; droit social</a>
+        <a href="#top" onClick="{{ goSvcconseil }}" style="background:{{ cSvcconseil }};color:{{ tSvcconseil }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Conseil juridique</a>
+      </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ pgSvcconseil }}" hint-placeholder-val="{{ false }}">
+
+    <div style="background:#0F2A24;padding:76px 0 68px;position:relative;overflow:hidden">
+      <div style="position:absolute;right:-150px;top:-140px;width:520px;height:520px;border:1px solid rgba(214,167,90,.18);border-radius:50%;pointer-events:none"></div>
+      <div style="position:relative;max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:64px;align-items:end">
+        <div>
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px"><span style="width:42px;height:1px;background:#C1913F;display:block"></span><span style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#D6A75A">Nos services</span></div>
+          <h1 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:50px;line-height:1.1;color:#F7F4ED;margin:0;max-width:18ch">Conseil juridique</h1>
+        </div>
+        <div><p style="font-size:15px;line-height:1.85;color:#AFC1BA;margin:0 0 14px">Anticiper plutôt que subir</p><p style="font-size:13.5px;line-height:1.85;color:#8FA49C;margin:0 0 14px">Le meilleur moment pour identifier un risque juridique est souvent avant qu’il ne devienne un problème.</p></div>
+      </div>
+    </div>
+    <div style="background:#F7F4ED;padding:88px 0">
+      <div style="max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:72px;align-items:start">
+        <div>
+          <div style="width:46px;height:46px;border:1px solid #DCD5C6;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B08F4D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.2-7 8.5-4.1-1.3-7-4.3-7-8.5V6z"></path><path d="M9.5 11.8l1.8 1.8 3.4-3.6"></path></svg></div>
+          <p style="font-size:15px;line-height:1.85;color:#2E413B;margin:26px 0 16px;max-width:50ch">Le meilleur moment pour identifier un risque juridique est souvent avant qu’il ne devienne un problème.</p>
+          <p style="font-size:14px;line-height:1.85;color:#546760;margin:0 0 32px;max-width:50ch">Nous accompagnons nos clients dans l’analyse de leurs situations et documents afin de leur permettre de prendre des décisions mieux informées.</p>
+          <p style="font-family:'Instrument Serif',serif;font-size:24px;line-height:1.42;color:#152C26;margin:0 0 34px;padding-top:28px;border-top:1px solid #DCD5C6;max-width:32ch">Anticiper les risques, c’est déjà protéger ses intérêts.</p>
+          <a href="#top" onClick="{{ goContact }}" style="display:inline-flex;align-items:center;gap:10px;background:#0F2A24;color:#F7F4ED;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:15px 28px;border-radius:999px" style-hover="background:#C1913F;color:#0F2A24">Prendre rendez-vous <span>→</span></a>
+        </div>
+        <div style="background:#EFE9DC;padding:0 34px 38px;overflow:hidden">
+          <div style="position:relative;height:250px;margin:0 -34px 32px;background:#E3DBC9">
+            <image-slot id="m2-svc-conseil" shape="rect" fit="cover" placeholder="Photo — consultation juridique"></image-slot>
+          </div>
+          <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#9A7530;margin-bottom:24px">Nos interventions</div>
+          <div style="display:flex;flex-direction:column;border-top:1px solid #DCD5C6">
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Consultations juridiques</span>
+            </div>
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Avis juridiques</span>
+            </div>
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Analyse des risques</span>
+            </div>
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Revue de documents</span>
+            </div>
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Due diligence juridique</span>
+            </div>
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Accompagnement des dirigeants</span>
+            </div>
+            <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #DCD5C6">
+              <span style="width:5px;height:5px;border-radius:50%;background:#C1913F;flex:none"></span>
+              <span style="font-size:13.5px;line-height:1.65;color:#243B34">Problématiques réglementaires</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="background:#EFE9DC;padding:52px 0 60px;border-top:1px solid #DCD5C6">
+      <div style="max-width:1280px;margin:0 auto;padding:0 32px">
+        <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#9A7530;margin-bottom:22px">Autres domaines</div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
+        <a href="#top" onClick="{{ goSvcaffaires }}" style="background:{{ cSvcaffaires }};color:{{ tSvcaffaires }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Droit des affaires</a>
+        <a href="#top" onClick="{{ goSvcsocietes }}" style="background:{{ cSvcsocietes }};color:{{ tSvcsocietes }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Droit des sociétés</a>
+        <a href="#top" onClick="{{ goSvccontrats }}" style="background:{{ cSvccontrats }};color:{{ tSvccontrats }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Droit commercial &amp; contrats</a>
+        <a href="#top" onClick="{{ goSvccontentieux }}" style="background:{{ cSvccontentieux }};color:{{ tSvccontentieux }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Contentieux &amp; règlement des différends</a>
+        <a href="#top" onClick="{{ goSvcarbitrage }}" style="background:{{ cSvcarbitrage }};color:{{ tSvcarbitrage }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Arbitrage &amp; médiation</a>
+        <a href="#top" onClick="{{ goSvctravail }}" style="background:{{ cSvctravail }};color:{{ tSvctravail }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Droit du travail &amp; droit social</a>
+        <a href="#top" onClick="{{ goSvcconseil }}" style="background:{{ cSvcconseil }};color:{{ tSvcconseil }};border:1px solid #CDC3AE;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px">Conseil juridique</a>
+      </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ pgEquipe }}" hint-placeholder-val="{{ false }}">
+
+    <div style="background:#0F2A24;padding:76px 0 68px;position:relative;overflow:hidden">
+      <div style="position:absolute;right:-150px;top:-140px;width:520px;height:520px;border:1px solid rgba(214,167,90,.18);border-radius:50%;pointer-events:none"></div>
+      <div style="position:relative;max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:64px;align-items:end">
+        <div>
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px"><span style="width:42px;height:1px;background:#C1913F;display:block"></span><span style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#D6A75A">Notre équipe</span></div>
+          <h1 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:50px;line-height:1.1;color:#F7F4ED;margin:0;max-width:18ch">Des professionnels engagés à vos côtés</h1>
+        </div>
+        <div><p style="font-size:15px;line-height:1.85;color:#AFC1BA;margin:0 0 14px">La qualité d’un cabinet repose avant tout sur les professionnels qui le composent.</p><p style="font-size:13.5px;line-height:1.85;color:#8FA49C;margin:0 0 14px">M2NB &amp; Partners Law Firm réunit des professionnels partageant une même exigence : rigueur, engagement, confidentialité et qualité du conseil.</p></div>
+      </div>
+    </div>
+    <div style="background:#F7F4ED;padding:92px 0">
+      <div style="max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px 26px">
+        <div>
+          <div style="position:relative;height:360px;border-radius:180px 180px 8px 8px;overflow:hidden;background:#EFE9DC;margin-bottom:20px">
+            <image-slot id="m2-eq-1" shape="rect" fit="cover" placeholder="Portrait — Me Clovis METANG NJIKE"></image-slot>
+          </div>
+          <div style="font-family:'Instrument Serif',serif;font-size:23px;color:#152C26">Me Clovis METANG NJIKE</div>
+          <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A9A94;margin:8px 0 16px">Avocat — Managing Partner</div>
+          <a href="#top" onClick="{{ goClovis }}" style="font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#0F2A24;border-bottom:1px solid #C1913F;padding-bottom:6px;display:inline-block" style-hover="color:#C1913F">Voir le profil</a>
+        </div>
+        <div>
+          <div style="position:relative;height:360px;border-radius:180px 180px 8px 8px;overflow:hidden;background:#EFE9DC;margin-bottom:20px">
+            <image-slot id="m2-eq-2" shape="rect" fit="cover" placeholder="Portrait — membre 2"></image-slot>
+          </div>
+          <div style="font-family:'Instrument Serif',serif;font-size:23px;color:#152C26">[Nom et prénom]</div>
+          <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A9A94;margin:8px 0 16px">[Fonction]</div>
+          <span style="font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#8A9A94;border-bottom:1px solid #DCD5C6;padding-bottom:6px;display:inline-block">Profil à venir</span>
+        </div>
+        <div>
+          <div style="position:relative;height:360px;border-radius:180px 180px 8px 8px;overflow:hidden;background:#EFE9DC;margin-bottom:20px">
+            <image-slot id="m2-eq-3" shape="rect" fit="cover" placeholder="Portrait — membre 3"></image-slot>
+          </div>
+          <div style="font-family:'Instrument Serif',serif;font-size:23px;color:#152C26">[Nom et prénom]</div>
+          <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A9A94;margin:8px 0 16px">[Fonction]</div>
+          <span style="font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#8A9A94;border-bottom:1px solid #DCD5C6;padding-bottom:6px;display:inline-block">Profil à venir</span>
+        </div>
+        <div>
+          <div style="position:relative;height:360px;border-radius:180px 180px 8px 8px;overflow:hidden;background:#EFE9DC;margin-bottom:20px">
+            <image-slot id="m2-eq-4" shape="rect" fit="cover" placeholder="Portrait — membre 4"></image-slot>
+          </div>
+          <div style="font-family:'Instrument Serif',serif;font-size:23px;color:#152C26">[Nom et prénom]</div>
+          <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A9A94;margin:8px 0 16px">[Fonction]</div>
+          <span style="font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#8A9A94;border-bottom:1px solid #DCD5C6;padding-bottom:6px;display:inline-block">Profil à venir</span>
+        </div>
+        <div>
+          <div style="position:relative;height:360px;border-radius:180px 180px 8px 8px;overflow:hidden;background:#EFE9DC;margin-bottom:20px">
+            <image-slot id="m2-eq-5" shape="rect" fit="cover" placeholder="Portrait — membre 5"></image-slot>
+          </div>
+          <div style="font-family:'Instrument Serif',serif;font-size:23px;color:#152C26">[Nom et prénom]</div>
+          <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A9A94;margin:8px 0 16px">[Fonction]</div>
+          <span style="font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#8A9A94;border-bottom:1px solid #DCD5C6;padding-bottom:6px;display:inline-block">Profil à venir</span>
+        </div>
+        <div style="background:#0F2A24;border-radius:8px;padding:36px;display:flex;flex-direction:column;justify-content:space-between">
+          <p style="font-family:'Instrument Serif',serif;font-size:26px;line-height:1.35;color:#F7F4ED;margin:0 0 28px">Une même exigence : rigueur, engagement, confidentialité et qualité du conseil.</p>
+          <a href="#top" onClick="{{ goContact }}" style="font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#D6A75A;display:inline-flex;align-items:center;gap:9px">Nous contacter <span>→</span></a>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ pgClovis }}" hint-placeholder-val="{{ false }}">
+
+    <div style="background:#0F2A24;padding:76px 0 68px;position:relative;overflow:hidden">
+      <div style="position:absolute;right:-150px;top:-140px;width:520px;height:520px;border:1px solid rgba(214,167,90,.18);border-radius:50%;pointer-events:none"></div>
+      <div style="position:relative;max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:64px;align-items:end">
+        <div>
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px"><span style="width:42px;height:1px;background:#C1913F;display:block"></span><span style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#D6A75A">Notre équipe</span></div>
+          <h1 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:50px;line-height:1.1;color:#F7F4ED;margin:0;max-width:18ch">Me Clovis METANG NJIKE</h1>
+        </div>
+        <div><p style="font-size:15px;line-height:1.85;color:#AFC1BA;margin:0 0 14px">Avocat — Managing Partner</p><p style="font-size:13.5px;line-height:1.85;color:#8FA49C;margin:0 0 14px">Avocat au Barreau du Cameroun, il exerce à Yaoundé. Il a prêté serment le 16 novembre 2001.</p></div>
+      </div>
+    </div>
+    <div style="background:#F7F4ED;padding:92px 0">
+      <div style="max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1fr);gap:72px;align-items:start">
+        <div>
+          <div style="position:relative;height:520px;border-radius:240px 240px 10px 10px;overflow:hidden;background:#EFE9DC;margin-bottom:26px">
+            <image-slot id="m2-clovis" shape="rect" fit="cover" placeholder="Portrait — Me Clovis METANG NJIKE"></image-slot>
+          </div>
+          <div style="border:1px dashed #CDC3AE;border-radius:8px;padding:24px">
+            <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#9A7530;margin-bottom:14px">À compléter avant mise en ligne</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;font-size:11.5px;color:#546760">
+              <span style="border:1px solid #DCD5C6;border-radius:999px;padding:7px 14px">Formation</span>
+              <span style="border:1px solid #DCD5C6;border-radius:999px;padding:7px 14px">Diplômes</span>
+              <span style="border:1px solid #DCD5C6;border-radius:999px;padding:7px 14px">Affiliations professionnelles</span>
+              <span style="border:1px solid #DCD5C6;border-radius:999px;padding:7px 14px">Langues</span>
+              <span style="border:1px solid #DCD5C6;border-radius:999px;padding:7px 14px">Autres membres de l’équipe</span>
+              <span style="border:1px solid #DCD5C6;border-radius:999px;padding:7px 14px">Photographies professionnelles</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:15px;line-height:1.85;color:#2E413B;margin:0 0 16px;max-width:52ch">Me Clovis METANG NJIKE est avocat au Barreau du Cameroun et exerce à Yaoundé. Il a prêté serment le 16 novembre 2001.</p>
+          <p style="font-size:14px;line-height:1.85;color:#546760;margin:0 0 16px;max-width:52ch">Au cours de sa pratique professionnelle, il a développé une expérience dans le conseil juridique, l’assistance, la représentation et la défense des intérêts de ses clients.</p>
+          <p style="font-size:14px;line-height:1.85;color:#546760;margin:0 0 38px;max-width:52ch">Son nom apparaît notamment dans plusieurs publications officielles de la Cour suprême du Cameroun en qualité de conseil dans différents dossiers.</p>
+          <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#9A7530;margin-bottom:20px">Domaines d’intervention</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 40px;border-top:1px solid #DCD5C6">
+            <div style="font-size:13.5px;color:#243B34;padding:14px 0;border-bottom:1px solid #DCD5C6">Droit des affaires</div>
+            <div style="font-size:13.5px;color:#243B34;padding:14px 0;border-bottom:1px solid #DCD5C6">Droit commercial</div>
+            <div style="font-size:13.5px;color:#243B34;padding:14px 0;border-bottom:1px solid #DCD5C6">Contentieux</div>
+            <div style="font-size:13.5px;color:#243B34;padding:14px 0;border-bottom:1px solid #DCD5C6">Droit social</div>
+            <div style="font-size:13.5px;color:#243B34;padding:14px 0;border-bottom:1px solid #DCD5C6">Arbitrage &amp; médiation</div>
+            <div style="font-size:13.5px;color:#243B34;padding:14px 0;border-bottom:1px solid #DCD5C6">Conseil juridique</div>
+          </div>
+          <a href="#top" onClick="{{ goContact }}" style="display:inline-flex;align-items:center;gap:10px;background:#0F2A24;color:#F7F4ED;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:15px 28px;border-radius:999px;margin-top:38px" style-hover="background:#C1913F;color:#0F2A24">Prendre rendez-vous <span>→</span></a>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ pgRefs }}" hint-placeholder-val="{{ false }}">
+
+    <div style="background:#0F2A24;padding:76px 0 68px;position:relative;overflow:hidden">
+      <div style="position:absolute;right:-150px;top:-140px;width:520px;height:520px;border:1px solid rgba(214,167,90,.18);border-radius:50%;pointer-events:none"></div>
+      <div style="position:relative;max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:64px;align-items:end">
+        <div>
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px"><span style="width:42px;height:1px;background:#C1913F;display:block"></span><span style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#D6A75A">Nos références</span></div>
+          <h1 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:50px;line-height:1.1;color:#F7F4ED;margin:0;max-width:18ch">Une expérience construite dans la pratique</h1>
+        </div>
+        <div><p style="font-size:15px;line-height:1.85;color:#AFC1BA;margin:0 0 14px">L’expérience d’un cabinet ne se mesure pas uniquement au nombre de dossiers traités.</p><p style="font-size:13.5px;line-height:1.85;color:#8FA49C;margin:0 0 14px">Elle se construit au fil des années, des situations rencontrées, des stratégies développées et de la confiance accordée par les clients.</p></div>
+      </div>
+    </div>
+    <div style="background:#F7F4ED;padding:92px 0">
+      <div style="max-width:1280px;margin:0 auto;padding:0 32px">
+        <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:72px;align-items:start;margin-bottom:64px">
+          <p style="font-family:'Instrument Serif',serif;font-size:26px;line-height:1.4;color:#152C26;margin:0;max-width:26ch">Me Clovis METANG NJIKE a prêté serment en 2001 et exerce depuis lors la profession d’avocat au Cameroun.</p>
+          <div>
+            <p style="font-size:14px;line-height:1.85;color:#546760;margin:0 0 14px">Au cours de sa pratique, il est intervenu dans différents dossiers devant les juridictions camerounaises.</p>
+            <p style="font-size:14px;line-height:1.85;color:#546760;margin:0">Cette section pourra présenter certaines expériences publiques sous une forme permettant de mettre en évidence :</p>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;margin-bottom:72px">
+          <div style="background:#EFE9DC;padding:26px 22px">
+            <div style="font-size:11px;letter-spacing:.18em;color:#B08F4D;margin-bottom:14px">01</div>
+            <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#152C26;line-height:1.5">Le contexte</div>
+          </div>
+          <div style="background:#EFE9DC;padding:26px 22px">
+            <div style="font-size:11px;letter-spacing:.18em;color:#B08F4D;margin-bottom:14px">02</div>
+            <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#152C26;line-height:1.5">L’enjeu juridique</div>
+          </div>
+          <div style="background:#EFE9DC;padding:26px 22px">
+            <div style="font-size:11px;letter-spacing:.18em;color:#B08F4D;margin-bottom:14px">03</div>
+            <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#152C26;line-height:1.5">Notre intervention</div>
+          </div>
+          <div style="background:#EFE9DC;padding:26px 22px">
+            <div style="font-size:11px;letter-spacing:.18em;color:#B08F4D;margin-bottom:14px">04</div>
+            <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#152C26;line-height:1.5">L’approche</div>
+          </div>
+          <div style="background:#EFE9DC;padding:26px 22px">
+            <div style="font-size:11px;letter-spacing:.18em;color:#B08F4D;margin-bottom:14px">05</div>
+            <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#152C26;line-height:1.5">Le résultat</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:34px">
+          <div style="border:1px solid #DCD5C6;padding:38px 34px">
+            <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#9A7530;margin-bottom:18px">Modèle de case study</div>
+            <div style="font-family:'Instrument Serif',serif;font-size:27px;color:#152C26;margin-bottom:8px">Cas 01 — [Titre du dossier]</div>
+            <div style="font-size:12px;color:#8A9A94;margin-bottom:26px">Secteur : [À compléter]</div>
+            <div style="display:flex;flex-direction:column;border-top:1px solid #DCD5C6">
+              <div style="padding:16px 0;border-bottom:1px solid #DCD5C6">
+                <div style="font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#152C26;margin-bottom:8px">Problématique</div>
+                <div style="font-size:13.5px;line-height:1.7;color:#546760">[Description synthétique de la situation.]</div>
+              </div>
+              <div style="padding:16px 0;border-bottom:1px solid #DCD5C6">
+                <div style="font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#152C26;margin-bottom:8px">Notre intervention</div>
+                <div style="font-size:13.5px;line-height:1.7;color:#546760">[Description de l’intervention du Cabinet.]</div>
+              </div>
+              <div style="padding:16px 0;border-bottom:1px solid #DCD5C6">
+                <div style="font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#152C26;margin-bottom:8px">Approche adoptée</div>
+                <div style="font-size:13.5px;line-height:1.7;color:#546760">[Description de la stratégie.]</div>
+              </div>
+              <div style="padding:16px 0;border-bottom:1px solid #DCD5C6">
+                <div style="font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#152C26;margin-bottom:8px">Résultat / situation</div>
+                <div style="font-size:13.5px;line-height:1.7;color:#546760">[À publier uniquement si autorisé.]</div>
+              </div>
+            </div>
+          </div>
+          <div style="background:#0F2A24;padding:38px 34px">
+            <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#D6A75A;margin-bottom:20px">Confidentialité</div>
+            <p style="font-size:13.5px;line-height:1.85;color:#AFC1BA;margin:0 0 14px">La relation entre l’avocat et son client repose sur la confiance et la confidentialité.</p>
+            <p style="font-size:13.5px;line-height:1.85;color:#AFC1BA;margin:0 0 14px">M2NB &amp; Partners Law Firm ne publie pas systématiquement l’identité de ses clients, le contenu des dossiers ou les stratégies développées dans le cadre des missions qui lui sont confiées.</p>
+            <p style="font-size:13.5px;line-height:1.85;color:#8FA49C;margin:0">Les références éventuellement présentées sur ce site sont publiées uniquement lorsqu’elles peuvent l’être de manière appropriée et après validation du Cabinet.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ pgNews }}" hint-placeholder-val="{{ false }}">
+
+    <div style="background:#0F2A24;padding:76px 0 68px;position:relative;overflow:hidden">
+      <div style="position:absolute;right:-150px;top:-140px;width:520px;height:520px;border:1px solid rgba(214,167,90,.18);border-radius:50%;pointer-events:none"></div>
+      <div style="position:relative;max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:64px;align-items:end">
+        <div>
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px"><span style="width:42px;height:1px;background:#C1913F;display:block"></span><span style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#D6A75A">Actualités</span></div>
+          <h1 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:50px;line-height:1.1;color:#F7F4ED;margin:0;max-width:18ch">Analyses et actualités juridiques</h1>
+        </div>
+        <div><p style="font-size:15px;line-height:1.85;color:#AFC1BA;margin:0 0 14px">Cette section accueillera les analyses, notes juridiques et actualités publiées par le Cabinet.</p><p style="font-size:13.5px;line-height:1.85;color:#8FA49C;margin:0 0 14px">Contenu à fournir : titres, dates et textes des publications.</p></div>
+      </div>
+    </div>
+    <div style="background:#F7F4ED;padding:92px 0">
+      <div style="max-width:1280px;margin:0 auto;padding:0 32px">
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:34px;margin-bottom:64px">
+          <div>
+            <div style="position:relative;height:200px;border-radius:8px;overflow:hidden;background:#EFE9DC;margin-bottom:20px">
+              <image-slot id="m2-news-1" shape="rect" fit="cover" placeholder="Illustration article 1"></image-slot>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#8A9A94;margin-bottom:14px">
+              <span style="color:#9A7530">[Catégorie]</span><span style="width:16px;height:1px;background:#C9C0AD"></span><span>[Date]</span>
+            </div>
+            <div style="font-family:'Instrument Serif',serif;font-size:22px;line-height:1.3;color:#152C26;margin-bottom:12px">[Titre de la publication 1]</div>
+            <p style="font-size:12.5px;line-height:1.75;color:#546760;margin:0 0 16px">[Chapeau de l’article — deux à trois lignes présentant l’analyse.]</p>
+            <span style="font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#0F2A24;border-bottom:1px solid #C1913F;padding-bottom:5px">Lire l’article</span>
+          </div>
+          <div>
+            <div style="position:relative;height:200px;border-radius:8px;overflow:hidden;background:#EFE9DC;margin-bottom:20px">
+              <image-slot id="m2-news-2" shape="rect" fit="cover" placeholder="Illustration article 2"></image-slot>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#8A9A94;margin-bottom:14px">
+              <span style="color:#9A7530">[Catégorie]</span><span style="width:16px;height:1px;background:#C9C0AD"></span><span>[Date]</span>
+            </div>
+            <div style="font-family:'Instrument Serif',serif;font-size:22px;line-height:1.3;color:#152C26;margin-bottom:12px">[Titre de la publication 2]</div>
+            <p style="font-size:12.5px;line-height:1.75;color:#546760;margin:0 0 16px">[Chapeau de l’article — deux à trois lignes présentant l’analyse.]</p>
+            <span style="font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#0F2A24;border-bottom:1px solid #C1913F;padding-bottom:5px">Lire l’article</span>
+          </div>
+          <div>
+            <div style="position:relative;height:200px;border-radius:8px;overflow:hidden;background:#EFE9DC;margin-bottom:20px">
+              <image-slot id="m2-news-3" shape="rect" fit="cover" placeholder="Illustration article 3"></image-slot>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#8A9A94;margin-bottom:14px">
+              <span style="color:#9A7530">[Catégorie]</span><span style="width:16px;height:1px;background:#C9C0AD"></span><span>[Date]</span>
+            </div>
+            <div style="font-family:'Instrument Serif',serif;font-size:22px;line-height:1.3;color:#152C26;margin-bottom:12px">[Titre de la publication 3]</div>
+            <p style="font-size:12.5px;line-height:1.75;color:#546760;margin:0 0 16px">[Chapeau de l’article — deux à trois lignes présentant l’analyse.]</p>
+            <span style="font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#0F2A24;border-bottom:1px solid #C1913F;padding-bottom:5px">Lire l’article</span>
+          </div>
+        </div>
+        <div style="background:#EFE9DC;padding:44px 40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center">
+          <div>
+            <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#9A7530;margin-bottom:14px">Newsletter</div>
+            <div style="font-family:'Instrument Serif',serif;font-size:28px;line-height:1.3;color:#152C26">Recevez nos analyses et actualités juridiques.</div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:center">
+            <input type="email" placeholder="Votre adresse e-mail" style="flex:1;min-width:0;background:transparent;border:none;border-bottom:1px solid #C9C0AD;padding:13px 2px;color:#152C26;font-family:'Manrope',sans-serif;font-size:13px;outline:none">
+            <button style="border:none;background:#0F2A24;color:#F7F4ED;font-family:'Manrope',sans-serif;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;padding:15px 26px;border-radius:999px;cursor:pointer">S’inscrire</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ pgContact }}" hint-placeholder-val="{{ false }}">
+
+    <div style="background:#0F2A24;padding:76px 0 68px;position:relative;overflow:hidden">
+      <div style="position:absolute;right:-150px;top:-140px;width:520px;height:520px;border:1px solid rgba(214,167,90,.18);border-radius:50%;pointer-events:none"></div>
+      <div style="position:relative;max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:64px;align-items:end">
+        <div>
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px"><span style="width:42px;height:1px;background:#C1913F;display:block"></span><span style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#D6A75A">Contact</span></div>
+          <h1 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:50px;line-height:1.1;color:#F7F4ED;margin:0;max-width:18ch">Parlons de votre situation</h1>
+        </div>
+        <div><p style="font-size:15px;line-height:1.85;color:#AFC1BA;margin:0 0 14px">Vous êtes confronté à une question juridique, un différend, une opération commerciale ou une décision nécessitant un accompagnement professionnel ?</p><p style="font-size:13.5px;line-height:1.85;color:#8FA49C;margin:0 0 14px">Notre équipe est à votre écoute.</p></div>
+      </div>
+    </div>
+    <div style="background:#F7F4ED;padding:92px 0">
+      <div style="max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:72px;align-items:start">
+        <div>
+          <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#9A7530;margin-bottom:20px">M2NB &amp; Partners Law Firm</div>
+          <div style="display:flex;flex-direction:column;border-top:1px solid #DCD5C6;margin-bottom:34px">
+            <div style="display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid #DCD5C6">
+              <span style="font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#8A9A94">Ville</span>
+              <span style="font-size:13.5px;color:#243B34;text-align:right">Yaoundé, Cameroun</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid #DCD5C6">
+              <span style="font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#8A9A94">Adresse</span>
+              <span style="font-size:13.5px;color:#243B34;text-align:right">[À CONFIRMER]</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid #DCD5C6">
+              <span style="font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#8A9A94">Téléphone</span>
+              <span style="font-size:13.5px;color:#243B34;text-align:right">[À CONFIRMER]</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid #DCD5C6">
+              <span style="font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#8A9A94">E-mail</span>
+              <span style="font-size:13.5px;color:#243B34;text-align:right">[À CONFIRMER]</span>
+            </div>
+          </div>
+          <div style="position:relative;height:260px;border-radius:8px;overflow:hidden;background:#EFE9DC">
+            <image-slot id="m2-contact-map" shape="rect" fit="cover" placeholder="Plan ou photo du cabinet"></image-slot>
+          </div>
+        </div>
+        <div style="background:#EFE9DC;padding:44px 40px">
+          <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#9A7530;margin-bottom:28px">Formulaire de contact</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:26px 34px;margin-bottom:26px">
+            <div style="">
+              <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A9A94;margin-bottom:10px">Nom et prénom</div>
+              <input type="text" style="width:100%;box-sizing:border-box;background:transparent;border:none;border-bottom:1px solid #C9C0AD;padding:11px 2px;color:#152C26;font-family:'Manrope',sans-serif;font-size:13.5px;outline:none">
+            </div>
+            <div style="">
+              <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A9A94;margin-bottom:10px">Entreprise / Organisation</div>
+              <input type="text" style="width:100%;box-sizing:border-box;background:transparent;border:none;border-bottom:1px solid #C9C0AD;padding:11px 2px;color:#152C26;font-family:'Manrope',sans-serif;font-size:13.5px;outline:none">
+            </div>
+            <div style="">
+              <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A9A94;margin-bottom:10px">Téléphone</div>
+              <input type="text" style="width:100%;box-sizing:border-box;background:transparent;border:none;border-bottom:1px solid #C9C0AD;padding:11px 2px;color:#152C26;font-family:'Manrope',sans-serif;font-size:13.5px;outline:none">
+            </div>
+            <div style="">
+              <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A9A94;margin-bottom:10px">E-mail</div>
+              <input type="text" style="width:100%;box-sizing:border-box;background:transparent;border:none;border-bottom:1px solid #C9C0AD;padding:11px 2px;color:#152C26;font-family:'Manrope',sans-serif;font-size:13.5px;outline:none">
+            </div>
+            <div style="grid-column:span 2;">
+              <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A9A94;margin-bottom:10px">Objet</div>
+              <input type="text" style="width:100%;box-sizing:border-box;background:transparent;border:none;border-bottom:1px solid #C9C0AD;padding:11px 2px;color:#152C26;font-family:'Manrope',sans-serif;font-size:13.5px;outline:none">
+            </div>
+          </div>
+          <div style="margin-bottom:32px">
+            <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A9A94;margin-bottom:10px">Votre message</div>
+            <textarea rows="5" style="width:100%;box-sizing:border-box;background:transparent;border:1px solid #C9C0AD;border-radius:6px;padding:14px;color:#152C26;font-family:'Manrope',sans-serif;font-size:13.5px;outline:none;resize:vertical"></textarea>
+          </div>
+          <button style="border:none;background:#0F2A24;color:#F7F4ED;font-family:'Manrope',sans-serif;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:17px 32px;border-radius:999px;cursor:pointer">Envoyer ma demande</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <div id="contact" style="background:#0B211C;color:#AFC1BA">
+    <div style="max-width:1280px;margin:0 auto;padding:92px 32px 0">
+      <div style="display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:64px;align-items:end;padding-bottom:60px;border-bottom:1px solid rgba(247,244,237,.14)">
+        <div>
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px">
+            <span style="width:42px;height:1px;background:#C1913F;display:block"></span>
+            <span style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#D6A75A">Contact</span>
+          </div>
+          <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:46px;line-height:1.14;color:#F7F4ED;margin:0 0 20px;max-width:15ch">Votre situation mérite une analyse juridique</h2>
+          <p style="font-size:14px;line-height:1.85;color:#AFC1BA;margin:0;max-width:52ch">Vous êtes confronté à une question juridique, une opération commerciale, un contrat, un différend ou une décision importante ? Parlons de votre situation.</p>
+        </div>
+        <div style="display:flex;justify-content:flex-start">
+          <a href="#top" onClick="{{ goContact }}" style="background:#C1913F;color:#0F2A24;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;padding:17px 32px;border-radius:999px;display:inline-flex;align-items:center;gap:10px" style-hover="background:#D6A75A">Prendre rendez-vous <span>→</span></a>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.9fr) minmax(0,1fr);gap:48px;padding:56px 0 52px">
+        <div>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
+            <div style="width:32px;height:32px;border:1px solid #C1913F;border-radius:50%;display:flex;align-items:center;justify-content:center">
+              <span style="font-family:'Instrument Serif',serif;font-size:14px;color:#D6A75A;line-height:1">M</span>
+            </div>
+            <div style="line-height:1.15">
+              <div style="font-family:'Instrument Serif',serif;font-size:21px;letter-spacing:.04em;color:#F7F4ED">M2NB <span style="color:#D6A75A">&amp; Partners</span></div>
+              <div style="font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:#7D948C;margin-top:2px">Law Firm</div>
+            </div>
+          </div>
+          <p style="font-size:12.5px;line-height:1.8;color:#8FA49C;margin:0;max-width:38ch">Cabinet d'avocats établi à Yaoundé, au Cameroun. Conseil, assistance et représentation juridique.</p>
+        </div>
+        <div>
+          <div style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#7D948C;margin-bottom:20px">Navigation</div>
+          <div style="display:flex;flex-direction:column;gap:12px;font-size:12.5px">
+            <a href="#top" onClick="{{ goCabinet }}" style="color:#AFC1BA" style-hover="color:#D6A75A">Le cabinet</a>
+            <a href="#top" onClick="{{ goServices }}" style="color:#AFC1BA" style-hover="color:#D6A75A">Domaines d'intervention</a>
+            <a href="#top" onClick="{{ goEquipe }}" style="color:#AFC1BA" style-hover="color:#D6A75A">Équipe</a>
+            <a href="#top" onClick="{{ goContact }}" style="color:#AFC1BA" style-hover="color:#D6A75A">Contact</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#7D948C;margin-bottom:20px">Domaines</div>
+          <div style="display:flex;flex-direction:column;gap:12px;font-size:12.5px">
+            <a href="#top" onClick="{{ goSvcaffaires }}" style="color:#AFC1BA" style-hover="color:#D6A75A">Droit des affaires</a>
+            <a href="#top" onClick="{{ goSvcsocietes }}" style="color:#AFC1BA" style-hover="color:#D6A75A">Droit des sociétés</a>
+            <a href="#top" onClick="{{ goSvccontrats }}" style="color:#AFC1BA" style-hover="color:#D6A75A">Droit commercial &amp; contrats</a>
+            <a href="#top" onClick="{{ goSvccontentieux }}" style="color:#AFC1BA" style-hover="color:#D6A75A">Contentieux &amp; règlement des différends</a>
+            <a href="#top" onClick="{{ goSvcarbitrage }}" style="color:#AFC1BA" style-hover="color:#D6A75A">Arbitrage &amp; médiation</a>
+            <a href="#top" onClick="{{ goSvctravail }}" style="color:#AFC1BA" style-hover="color:#D6A75A">Droit du travail &amp; droit social</a>
+            <a href="#top" onClick="{{ goSvcconseil }}" style="color:#AFC1BA" style-hover="color:#D6A75A">Conseil juridique</a>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 0 30px;border-top:1px solid rgba(247,244,237,.14);font-size:11.5px;color:#7D948C;flex-wrap:wrap">
+        <span>© M2NB &amp; Partners Law Firm. Tous droits réservés.</span>
+        <div style="display:flex;gap:24px">
+          <a href="#" style="color:#7D948C" style-hover="color:#D6A75A">Mentions légales</a>
+          <a href="#" style="color:#7D948C" style-hover="color:#D6A75A">Confidentialité</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showTopBar&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showStats&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;}}">
+class Component extends DCLogic {
+  state = { page: 'home' };
+  go(p) {
+    return (e) => {
+      if (e && e.preventDefault) e.preventDefault();
+      this.setState({ page: p });
+      try { window.scrollTo(0, 0); } catch (_) {}
+    };
+  }
+  renderVals() {
+    const p = this.state.page;
+    const svc = p.indexOf('svc-') === 0 ? p.slice(4) : null;
+    const on = '#F7F4ED', off = '#C6D3CE';
+    const keys = ['affaires','societes','contrats','contentieux','arbitrage','travail','conseil'];
+    const out = {
+      showTopBar: this.props.showTopBar ?? true,
+      showStats: this.props.showStats ?? true,
+      pgHome: p === 'home',
+      pgCabinet: p === 'cabinet',
+      pgServices: p === 'services',
+      pgEquipe: p === 'equipe',
+      pgClovis: p === 'clovis',
+      pgRefs: p === 'refs',
+      pgNews: p === 'news',
+      pgContact: p === 'contact',
+      cHome: p === 'home' ? on : off,
+      cCabinet: p === 'cabinet' ? on : off,
+      cServices: (p === 'services' || svc) ? on : off,
+      cEquipe: (p === 'equipe' || p === 'clovis') ? on : off,
+      cRefs: p === 'refs' ? on : off,
+      cNews: p === 'news' ? on : off,
+      cContact: p === 'contact' ? on : off,
+      goHome: this.go('home'),
+      goCabinet: this.go('cabinet'),
+      goServices: this.go('services'),
+      goEquipe: this.go('equipe'),
+      goClovis: this.go('clovis'),
+      goRefs: this.go('refs'),
+      goNews: this.go('news'),
+      goContact: this.go('contact')
+    };
+    keys.forEach(k => {
+      out['pgSvc' + k] = svc === k;
+      out['goSvc' + k] = this.go('svc-' + k);
+      out['cSvc' + k] = svc === k ? '#0F2A24' : '#F7F4ED';
+      out['tSvc' + k] = svc === k ? '#F7F4ED' : '#0F2A24';
+    });
+    return out;
+  }
+}
+</script>
+</body>
+</html>
