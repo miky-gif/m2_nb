@@ -7,6 +7,27 @@
   var reduit = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var pointeurFin = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   var premiereVisite = doc.classList.contains('premiere-visite');
+  /* Messages produits par le JavaScript, dans la langue de la page */
+  var EN = doc.lang === 'en';
+  var T = {
+    ouvrirMenu: EN ? 'Open the menu' : 'Ouvrir le menu',
+    fermerMenu: EN ? 'Close the menu' : 'Fermer le menu',
+    position: EN ? 'Go to position ' : 'Aller à la position ',
+    membres: EN ? function (a, b, n) { return 'Members ' + a + ' to ' + b + ' of ' + n; }
+                : function (a, b, n) { return 'Membres ' + a + ' à ' + b + ' sur ' + n; },
+    sansDestinataire: EN
+      ? 'The form is not yet connected to a recipient address. Set DESTINATAIRE in tools/site.js, or connect the form to your host’s mail service.'
+      : 'Le formulaire n’est pas encore relié à une adresse de réception. Renseignez DESTINATAIRE dans tools/site.js, ou branchez le formulaire sur le service d’envoi de votre hébergeur.',
+    messagerie: EN
+      ? 'Your mail application opens with the request pre-filled. All that is left is to send it.'
+      : 'Votre messagerie s’ouvre avec la demande pré-remplie. Il ne reste qu’à l’envoyer.',
+    lettre: EN
+      ? 'Newsletter sign-up is not active yet. Connect this form to your emailing tool to enable it.'
+      : 'L’inscription à la lettre d’information n’est pas encore active. Reliez ce formulaire à votre outil d’emailing pour l’activer.',
+    objet: EN ? 'Contact request' : 'Demande de contact',
+    champs: EN ? ['Name: ', 'Company / Organization: ', 'Phone: ', 'Email: '] : ['Nom : ', 'Entreprise / Organisation : ', 'Téléphone : ', 'E-mail : ']
+  };
+
   var $ = function (s, c) { return (c || document).querySelector(s); };
   var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
 
@@ -102,7 +123,7 @@
   function basculeMenu(ouvrir) {
     menuOuvert = ouvrir;
     burger.setAttribute('aria-expanded', String(ouvrir));
-    burger.setAttribute('aria-label', ouvrir ? 'Fermer le menu' : 'Ouvrir le menu');
+    burger.setAttribute('aria-label', ouvrir ? T.fermerMenu : T.ouvrirMenu);
     menu.classList.toggle('est-ouvert', ouvrir);
     document.body.classList.toggle('menu-ouvert', ouvrir);
     $$('.menu-mobile__lien', menu).forEach(function (l, i) { l.style.transitionDelay = ouvrir ? (0.15 + i * 0.05) + 's' : '0s'; });
@@ -385,6 +406,8 @@
     var prec = $('[data-prec]', carrousel), suiv = $('[data-suiv]', carrousel);
     var zonePoints = $('[data-points]', carrousel), annonce = $('[data-annonce]', carrousel);
     var index = 0;
+    var intervalle = parseInt(carrousel.dataset.intervalle, 10) || 0;
+    var minuteur = null, enPause = false;
 
     function ecart() { return parseFloat(getComputedStyle(piste).columnGap) || 22; }
     function parVue() {
@@ -405,15 +428,30 @@
         p.classList.toggle('is-active', i === index);
         p.setAttribute('aria-current', i === index ? 'true' : 'false');
       });
-      if (annonce) annonce.textContent = 'Membres ' + (index + 1) + ' à ' + Math.min(cartes.length, index + vue) + ' sur ' + cartes.length;
+      if (annonce) annonce.textContent = T.membres(index + 1, Math.min(cartes.length, index + vue), cartes.length);
     }
-    function va(n) { var max = maxIndex(); index = n > max ? 0 : (n < 0 ? max : n); place(); }
+    function va(n) { var max = maxIndex(); index = n > max ? 0 : (n < 0 ? max : n); place(); relance(); }
+
+    /* Défilement automatique : suspendu au survol, au focus clavier, pendant un
+       glissement et lorsque l'onglet passe en arrière-plan. Jamais actif si
+       l'utilisateur a demandé à réduire les animations. */
+    function relance() {
+      clearInterval(minuteur);
+      if (!intervalle || reduit || enPause || maxIndex() === 0) return;
+      minuteur = setInterval(function () { index = index >= maxIndex() ? 0 : index + 1; place(); }, intervalle);
+    }
+    function pause(oui) { enPause = oui; relance(); }
+    carrousel.addEventListener('mouseenter', function () { pause(true); });
+    carrousel.addEventListener('mouseleave', function () { pause(false); });
+    carrousel.addEventListener('focusin', function () { pause(true); });
+    carrousel.addEventListener('focusout', function () { if (!carrousel.contains(document.activeElement)) pause(false); });
+    document.addEventListener('visibilitychange', function () { pause(document.hidden); });
     function points() {
       zonePoints.innerHTML = '';
       for (var i = 0; i <= maxIndex(); i++) {
         var b = document.createElement('button');
         b.type = 'button'; b.className = 'carrousel-point';
-        b.setAttribute('aria-label', 'Aller à la position ' + (i + 1));
+        b.setAttribute('aria-label', T.position + (i + 1));
         b.addEventListener('click', (function (n) { return function () { va(n); }; })(i));
         zonePoints.appendChild(b);
       }
@@ -434,7 +472,7 @@
       if (piste.clientWidth === largeur) return;
       largeur = piste.clientWidth; points(); va(Math.min(index, maxIndex()));
     });
-    points(); place();
+    points(); place(); relance();
   });
 
   /* ------------------------------------- défileur « autres domaines » ---- */
@@ -462,12 +500,12 @@
       if (!contact.reportValidity()) return;
       var v = function (n) { var el = contact.querySelector('[name="' + n + '"]'); return el ? el.value.trim() : ''; };
       if (!DESTINATAIRE) {
-        statut(contact, 'Le formulaire n’est pas encore relié à une adresse de réception. Renseignez DESTINATAIRE dans tools/site.js, ou branchez le formulaire sur le service d’envoi de votre hébergeur.');
+        statut(contact, T.sansDestinataire);
         return;
       }
-      var corps = ['Nom : ' + v('nom'), 'Entreprise / Organisation : ' + v('organisation'), 'Téléphone : ' + v('telephone'), 'E-mail : ' + v('email'), '', v('message')].join('\n');
-      window.location.href = 'mailto:' + DESTINATAIRE + '?subject=' + encodeURIComponent('[Site] ' + (v('objet') || 'Demande de contact')) + '&body=' + encodeURIComponent(corps);
-      statut(contact, 'Votre messagerie s’ouvre avec la demande pré-remplie. Il ne reste qu’à l’envoyer.');
+      var corps = [T.champs[0] + v('nom'), T.champs[1] + v('organisation'), T.champs[2] + v('telephone'), T.champs[3] + v('email'), '', v('message')].join('\n');
+      window.location.href = 'mailto:' + DESTINATAIRE + '?subject=' + encodeURIComponent('[Site] ' + (v('objet') || T.objet)) + '&body=' + encodeURIComponent(corps);
+      statut(contact, T.messagerie);
     });
   }
   var lettre = $('.form-newsletter');
@@ -475,7 +513,7 @@
     lettre.addEventListener('submit', function (e) {
       e.preventDefault();
       if (!lettre.reportValidity()) return;
-      statut(lettre, 'L’inscription à la lettre d’information n’est pas encore active. Reliez ce formulaire à votre outil d’emailing pour l’activer.');
+      statut(lettre, T.lettre);
     });
   }
 

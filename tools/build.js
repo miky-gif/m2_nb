@@ -29,6 +29,12 @@ function photo(src, alt, { prioritaire = false, classe = '' } = {}) {
     : img;
 }
 
+/* Renvoie la version WebP d'une image lorsqu'elle existe, sinon l'original. */
+function versionWeb(src) {
+  const webp = src.replace(/.jpe?g$/i, '.webp');
+  return fs.existsSync(path.join(RACINE, webp)) ? webp : src;
+}
+
 const visuelAVenir = alt =>
   `<div class="visuel-a-venir" role="img" aria-label="${attr(alt)}"><img src="img/logo-cream.png" alt="" width="900" height="407" loading="lazy"><span>Photographie à venir</span></div>`;
 
@@ -62,26 +68,38 @@ const NAV = [
 
 /* Drapeaux en SVG (les émojis de drapeaux ne s'affichent pas sous Windows). */
 const DRAPEAU_FR = '<span class="drapeau" aria-hidden="true"><svg viewBox="0 0 3 2" preserveAspectRatio="none"><rect width="1" height="2" fill="#002654"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#CE1126"/></svg></span>';
-let idDrapeau = 0;
-function drapeauGB() {
-  const id = 'gb-' + (++idDrapeau);
+function drapeauGB(cle = 'nav') {
+  const id = 'drapeau-gb-' + cle;
   return `<span class="drapeau" aria-hidden="true"><svg viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice"><clipPath id="${id}"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#${id})" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></svg></span>`;
 }
 
-/* Sélecteur de langue. Le site n'existe qu'en français : l'anglais est
-   annoncé mais désactivé tant que la version traduite n'est pas produite. */
+/* Sélecteur de langue : le site existe en français (racine) et en anglais (/en/). */
 const COCHE = '<svg class="langue__coche" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m3.5 8.5 3 3 6-7"/></svg>';
-function selecteurLangue(page, variante = '') {
+function selecteurLangue(page, variante = '', langue = 'fr') {
   const id = 'langue-' + (variante || 'nav');
+  const enFrancais = langue === 'fr';
+  const versFr = enFrancais ? page.fichier : '../' + page.fichier;
+  const versEn = enFrancais ? 'en/' + page.fichier : page.fichier;
+  const option = (href, drapeau, nom, code, actif) =>
+    `<li><a class="langue__option${actif ? ' est-actuelle' : ''}" href="${href}" hreflang="${code}" lang="${code}"${actif ? ' aria-current="true"' : ''}>${drapeau}<span class="langue__nom">${nom}</span>${actif ? COCHE : ''}</a></li>`;
   return `<div class="langue${variante ? ' langue--' + variante : ''}" data-langue>
           <button class="langue__bouton" type="button" aria-expanded="false" aria-controls="${id}" aria-label="Choisir la langue — langue actuelle : français">
-            ${DRAPEAU_FR}<span class="langue__code">FR</span>${CHEVRON.replace('nav__chevron', 'nav__chevron langue__chevron')}
+            ${enFrancais ? DRAPEAU_FR : drapeauGB(variante || 'nav')}<span class="langue__code">${enFrancais ? 'FR' : 'EN'}</span>${CHEVRON.replace('nav__chevron', 'nav__chevron langue__chevron')}
           </button>
           <ul class="langue__menu" id="${id}">
-            <li><a class="langue__option" href="${page.fichier}" hreflang="fr" lang="fr" aria-current="true">${DRAPEAU_FR}<span class="langue__nom">Français</span>${COCHE}</a></li>
-            <li><span class="langue__option est-inactive" lang="en" aria-disabled="true">${drapeauGB()}<span class="langue__nom">English</span><small class="langue__bientot">Bientôt</small></span></li>
+            ${option(versFr, DRAPEAU_FR, 'Français', 'fr', enFrancais)}
+            ${option(versEn, drapeauGB((variante || 'nav') + '-menu'), 'English', 'en', !enFrancais)}
           </ul>
         </div>`;
+}
+
+/* Liens entre les deux versions, pour les moteurs de recherche */
+function alternatives(page, langue = 'fr') {
+  const versFr = langue === 'fr' ? page.fichier : '../' + page.fichier;
+  const versEn = langue === 'fr' ? 'en/' + page.fichier : page.fichier;
+  return `<link rel="alternate" hreflang="fr" href="${versFr}">
+<link rel="alternate" hreflang="en" href="${versEn}">
+<link rel="alternate" hreflang="x-default" href="${versFr}">`;
 }
 
 function entete(page) {
@@ -203,7 +221,7 @@ const JSONLD = JSON.stringify({
   '@context': 'https://schema.org', '@type': 'LegalService', name: 'M2NB & Partners Law Firm',
   description: "Cabinet d'avocats établi à Yaoundé, au Cameroun : conseil, assistance et représentation juridique.",
   areaServed: 'CM', address: { '@type': 'PostalAddress', addressLocality: 'Yaoundé', addressCountry: 'CM' },
-  knowsLanguage: ['fr'], founder: { '@type': 'Person', name: 'Me Clovis METANG NJIKE', jobTitle: 'Avocat — Managing Partner' }
+  knowsLanguage: ['fr'], founder: { '@type': 'Person', name: 'Me Clovis METANG NJIKE', jobTitle: 'Fondateur et Avocat Associé' }
 });
 
 function documentHtml(page, contenu) {
@@ -221,6 +239,7 @@ function documentHtml(page, contenu) {
 <meta property="og:title" content="${attr(page.titre)}">
 <meta property="og:description" content="${attr(page.description)}">
 <link rel="icon" href="img/logo.jpg">
+${alternatives(page)}
 <script>
   document.documentElement.classList.add('js');
   try {
@@ -293,7 +312,7 @@ const carteDomaine = (d, i, { titreBalise = 'h3' } = {}) => `<a class="carte-dom
 /* ================================================================ PAGES === */
 
 function accueil() {
-  const lignes = DOMAINES.map((d, i) => `        <li><a class="ligne" href="${d.fichier}" data-apercu="${i}" data-image="${enc(d.image.replace(/\.jpg$/, '.webp'))}">
+  const lignes = DOMAINES.map((d, i) => `        <li><a class="ligne" href="${d.fichier}" data-apercu="${i}" data-image="${enc(versionWeb(d.image))}">
           <span class="ligne__num">${num(i)}</span>
           <span class="ligne__titre">${t(d.titre)}</span>
           <span class="ligne__resume">${t(d.resume)}</span>
@@ -426,7 +445,7 @@ ${lignes}
       <div class="conteneur associe">
         <div class="associe__visuel">
           <div class="arche" data-apparition="image">
-            <img src="${enc(P + 'art-dirigeant.webp')}" alt="Avocat en costume — illustration" loading="lazy" data-parallaxe="-0.06">
+            <img src="${enc(versionWeb(EQUIPE[0].photo))}" alt="Portrait de ${attr(EQUIPE[0].nom)}" loading="lazy" data-parallaxe="-0.06">
           </div>
           ${sceau('PLUS DE DEUX DÉCENNIES DE PRATIQUE • YAOUNDÉ •', '20+', 'Années')}
         </div>
@@ -440,7 +459,7 @@ ${lignes}
             ${bouton('Découvrir notre équipe', 'equipe.html')}
             <div class="avatars">
               <span class="avatars__item avatars__item--logo"><img src="img/logo-cream.png" alt="" loading="lazy"></span>
-${EQUIPE.filter(m => m.photo).map(m => `              <span class="avatars__item"><img src="${enc(m.photo)}" alt="" loading="lazy"></span>`).join('\n')}
+${EQUIPE.slice(0, 5).map(m => `              <span class="avatars__item"><img src="${enc(versionWeb(m.photo))}" alt="" loading="lazy"></span>`).join('\n')}
               <span class="avatars__texte">${EQUIPE.length} professionnels<br>engagés à vos côtés</span>
             </div>
           </div>
@@ -617,7 +636,7 @@ ${autres.map(([x, j]) => `          ${carteDomaine(x, j)}`).join('\n')}
 
 function pageEquipe() {
   const cartes = EQUIPE.map((m, i) => `            <li class="membre">
-              <div class="membre__photo">${m.photo ? photo(m.photo, `Portrait de ${m.nom}`) : visuelAVenir(`Portrait de ${m.nom} — photographie à venir`)}<span class="membre__index">${num(i)}</span></div>
+              <div class="membre__photo">${photo(m.photo, `Portrait de ${m.nom}`, { prioritaire: i < 3 })}<span class="membre__groupe">${m.groupe}</span></div>
               <div class="membre__corps">
                 <h2 class="membre__nom">${t(m.nom)}</h2>
                 <p class="membre__role">${t(m.role)}</p>
@@ -635,9 +654,9 @@ function pageEquipe() {
       <div class="conteneur">
         <div class="entete-section">
           <div>${surtitre('01', 'Les membres')}<h2 class="titre-xl" data-lignes>Une équipe, <em>un même cap</em></h2></div>
-          <p class="texte" data-apparition>Parcourez les membres du Cabinet à l’aide des flèches ou en faisant glisser les portraits.</p>
+          <p class="texte" data-apparition>Les portraits défilent automatiquement&nbsp;; le défilement se met en pause au survol. Vous pouvez aussi naviguer avec les flèches ou en faisant glisser.</p>
         </div>
-        <div class="carrousel" data-carrousel data-apparition>
+        <div class="carrousel" data-carrousel data-intervalle="5500" data-apparition>
           <div class="carrousel-fenetre">
             <ul class="carrousel-piste">
 ${cartes}
@@ -666,19 +685,19 @@ function pageProfil() {
   const domaines = ['Droit des affaires', 'Droit commercial', 'Contentieux', 'Droit social', 'Arbitrage & médiation', 'Conseil juridique'];
   return `${heroPage({
     index: '', image: P + 'bureau-avocat.jpg', fil: [['Accueil', 'index.html'], ['Notre équipe', 'equipe.html'], ['Me Clovis METANG NJIKE']],
-    surtitre: 'Notre équipe · Managing Partner', titre: 'Me Clovis <em>METANG NJIKE</em>',
-    accroche: 'Avocat — Managing Partner', textes: ['Avocat au Barreau du Cameroun, il exerce à Yaoundé. Il a prêté serment le 16 novembre 2001.']
+    surtitre: 'Notre équipe · Fondateur', titre: 'Me Clovis <em>METANG NJIKE</em>',
+    accroche: EQUIPE[0].role, textes: ['Avocat au Barreau du Cameroun, il exerce à Yaoundé. Il a prêté serment le 16 novembre 2001.']
   })}
 
     <section class="section">
       <div class="conteneur profil">
         <aside class="profil__aside">
-          <div class="profil__portrait" data-apparition="image">${visuelAVenir('Portrait de Me Clovis METANG NJIKE — photographie à venir')}</div>
+          <div class="profil__portrait photo" data-apparition="image">${photo(EQUIPE[0].photo, 'Portrait de ' + EQUIPE[0].nom, { prioritaire: true })}</div>
           <ul class="faits" data-apparition>
             <li><span>Barreau</span><span>Cameroun</span></li>
             <li><span>Exercice</span><span>Yaoundé</span></li>
             <li><span>Serment</span><span>16 novembre 2001</span></li>
-            <li><span>Fonction</span><span>Managing Partner</span></li>
+            <li><span>Fonction</span><span>${EQUIPE[0].role}</span></li>
           </ul>
         </aside>
         <div>
@@ -895,7 +914,7 @@ const pages = [
   { fichier: 'equipe.html', rubrique: 'equipe', titre: 'Notre équipe — M2NB & Partners Law Firm',
     description: 'Des professionnels engagés à vos côtés : rigueur, engagement, confidentialité et qualité du conseil.', rendu: pageEquipe },
   { fichier: 'me-clovis-metang-njike.html', rubrique: 'equipe', titre: 'Me Clovis METANG NJIKE — M2NB & Partners Law Firm',
-    description: 'Avocat au Barreau du Cameroun, Managing Partner. Serment prêté le 16 novembre 2001.', rendu: pageProfil },
+    description: 'Avocat au Barreau du Cameroun, fondateur et avocat associé de M2NB & Partners. Serment prêté le 16 novembre 2001.', rendu: pageProfil },
   { fichier: 'references.html', rubrique: 'references', titre: 'Nos références — M2NB & Partners Law Firm',
     description: 'Une expérience construite dans la pratique, dans le respect de la confidentialité due à chaque client.', rendu: pageReferences },
   { fichier: 'actualites.html', rubrique: 'actualites', titre: 'Actualités — M2NB & Partners Law Firm',
@@ -906,6 +925,22 @@ const pages = [
 ];
 
 fs.mkdirSync(path.join(RACINE, 'assets/js'), { recursive: true });
-for (const p of pages) fs.writeFileSync(path.join(RACINE, p.fichier), documentHtml(p, p.rendu()));
+fs.mkdirSync(path.join(RACINE, 'en'), { recursive: true });
+
+const TRAD = require('./traduction.js');
+const paires = TRAD.dictionnaire();
+
+for (const p of pages) {
+  const fr = documentHtml(p, p.rendu());
+  fs.writeFileSync(path.join(RACINE, p.fichier), fr);
+
+  /* Version anglaise : mêmes gabarits, textes traduits, sélecteur et liens inversés */
+  let en = fr
+    .split(selecteurLangue(p, '', 'fr')).join(selecteurLangue(p, '', 'en'))
+    .split(selecteurLangue(p, 'mobile', 'fr')).join(selecteurLangue(p, 'mobile', 'en'))
+    .split(alternatives(p, 'fr')).join(alternatives(p, 'en'));
+  en = TRAD.traduitPage(en, paires);
+  fs.writeFileSync(path.join(RACINE, 'en', p.fichier), en);
+}
 fs.copyFileSync(path.join(__dirname, 'site.js'), path.join(RACINE, 'assets/js/site.js'));
 console.log('Pages générées :', pages.length);

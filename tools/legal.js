@@ -16,7 +16,7 @@ const mentions = {
         '<li>Adresse électronique&nbsp;: <span class="apc">[À COMPLÉTER]</span></li>' +
         '<li>Numéro d’identifiant unique / registre&nbsp;: <span class="apc">[À COMPLÉTER]</span></li></ul>'],
       ['Directeur de la publication',
-        '<p>Me Clovis METANG NJIKE, avocat au Barreau du Cameroun, Managing Partner.</p>'],
+        '<p>Me Clovis METANG NJIKE, avocat au Barreau du Cameroun, fondateur et avocat associé.</p>'],
       ['Profession réglementée',
         '<p>Les avocats du Cabinet sont inscrits au Barreau du Cameroun et exercent dans le respect des règles ' +
         'professionnelles applicables à la profession d’avocat, notamment en matière de déontologie, ' +

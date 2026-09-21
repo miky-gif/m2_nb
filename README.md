@@ -26,6 +26,7 @@ artistique a ensuite été entièrement refondue (système de design écrit sur 
   - citation dont les mots s'allument au fil de la lecture ;
   - engagements en liste épinglée avec compteur de progression ;
   - bento de cartes photo sur la page Services ;
+  - carrousel de l'équipe à défilement automatique (5,5 s), en pause au survol et au focus ;
   - méga-menu « Nos services » avec visuel qui change au survol ;
   - curseur personnalisé et boutons magnétiques (ordinateur uniquement) ;
   - bandeau bordeaux à bouton rotatif « Prendre rendez-vous ».
@@ -33,10 +34,10 @@ artistique a ensuite été entièrement refondue (système de design écrit sur 
   réapparaît en remontant, avec une jauge de lecture dorée. Onglets : Accueil, Le cabinet, Nos
   services (méga-menu), Notre équipe, Nos références, Actualités, Contact ; menu plein écran sous
   1320 px.
-- **Sélecteur de langue** en menu déroulant (drapeaux en SVG, lisibles aussi sous Windows) :
-  Français actif ; **English affiché « Bientôt » et désactivé**, le site n'existant pas encore en
-  anglais. Pour l'activer, produire les pages anglaises puis remplacer l'entrée désactivée par un
-  lien dans `selecteurLangue()` (`tools/build.js`). Également présent dans le menu mobile.
+- **Site bilingue** : version française à la racine, version anglaise dans `/en/`. Sélecteur de
+  langue en menu déroulant (drapeaux en SVG, lisibles aussi sous Windows), présent aussi dans le
+  menu mobile, qui pointe toujours vers la même page dans l'autre langue. Balises `hreflang`
+  déclarées dans chaque page.
 - **Héros** : photographies floutées sous voile noir sur toutes les pages.
 
 ## Pages
@@ -47,8 +48,8 @@ artistique a ensuite été entièrement refondue (système de design écrit sur 
 | `cabinet.html` | Le cabinet — approche, mission, vision, valeurs, méthode |
 | `services.html` | Nos services — bento des 7 domaines |
 | `droit-des-affaires.html`, `droit-des-societes.html`, `droit-commercial-contrats.html`, `contentieux.html`, `arbitrage-mediation.html`, `droit-du-travail.html`, `conseil-juridique.html` | Fiches domaines |
-| `equipe.html` | Notre équipe — carrousel manuel |
-| `me-clovis-metang-njike.html` | Profil du Managing Partner |
+| `equipe.html` | Notre équipe — carrousel manuel des 11 membres |
+| `me-clovis-metang-njike.html` | Profil du fondateur |
 | `references.html` | Nos références |
 | `actualites.html` | Actualités et lettre d'information |
 | `contact.html` | Contact et formulaire |
@@ -66,15 +67,50 @@ node tools/build.js      # régénère les 17 pages et copie tools/site.js vers 
 | --- | --- |
 | `tools/contenu.js` | Textes : domaines (accroches, interventions, images), engagements, valeurs, équipe |
 | `tools/legal.js` | Contenu des pages légales |
+| `tools/contenu-en.js` | Traduction anglaise des contenus métier (domaines, engagements, valeurs, fonctions) |
+| `tools/traduction.js` | Dictionnaire français → anglais des textes d'interface et fabrication des pages `/en/` |
+| `tools/verifie-traduction.js` | Contrôle : signale toute chaîne restée en français dans `/en/` |
 | `tools/build.js` | Gabarits de toutes les pages, en-tête, méga-menu, pied de page |
 | `tools/site.js` | Interactions (copié dans `assets/js/site.js` à la génération) |
 | `assets/css/site.css` | Système de design complet (modifiable directement) |
-| `img/`, `img/photos/` | Logos, portraits, photographies (+ `CREDITS.json`) |
+| `img/` | Logos et fichiers sources fournis par le Cabinet |
+| `img/equipe/` | Portraits de l'équipe optimisés pour le web (WebP + repli JPEG) |
+| `img/photos/` | Photographies d'illustration (+ `CREDITS.json`) |
+
+### Portraits de l'équipe
+
+Les 11 portraits fournis (PNG d'environ 2 Mo chacun, 22 Mo au total) ont été redimensionnés à
+900 px de large et convertis : **846 ko en WebP pour les 11**, avec un repli JPEG. Le site
+n'utilise que `img/equipe/` ; les PNG d'origine et `Doc1.pdf` restent dans `img/` comme archive et
+**peuvent être retirés du serveur** lors de la mise en ligne.
+
+Pour ajouter ou modifier un membre : déposer le portrait dans `img/equipe/`, compléter la table
+`EQUIPE` de `tools/contenu.js` (nom, fonction, groupe, photo, et `lien` si une fiche existe), puis
+relancer la génération.
+
+### Version anglaise
+
+Les pages anglaises sont **générées à partir des pages françaises** : mêmes gabarits, mêmes
+images, textes traduits. Deux sources de traduction :
+
+1. `tools/contenu-en.js` — contenus métier, appariés automatiquement entrée par entrée avec
+   `tools/contenu.js` (si vous ajoutez un domaine en français, ajoutez-le au même rang en anglais) ;
+2. `tools/traduction.js` — textes d'interface, sous forme de paires « français → anglais ».
+
+Après chaque génération, lancer le contrôle :
+
+```bash
+node tools/verifie-traduction.js   # doit afficher : aucune chaîne française détectée
+```
+
+Il signale les chaînes non traduites et celles qui « sentent » encore le français. Les messages
+produits par le JavaScript (formulaires, carrousel) suivent la langue de la page via l'attribut
+`lang` du document.
 
 ## Qualité
 
-- Responsive vérifié à 390, 768, 1024 et 1440 px, sans défilement horizontal ; menu plein écran
-  sous 1180 px.
+- Responsive vérifié à 390, 768, 1024 et 1440 px sur les 24 pages principales (français et
+  anglais), sans défilement horizontal ; menu plein écran sous 1320 px.
 - Accessibilité : lien d'évitement, fil d'Ariane, `aria-current`, menus clavier (`Échap`),
   étiquettes de formulaire, textes alternatifs, contrastes AA.
 - **Animations entièrement désactivées** si l'utilisateur a activé « réduire les animations »
@@ -101,10 +137,15 @@ node tools/build.js      # régénère les 17 pages et copie tools/site.js vers 
 2. **Coordonnées** — adresse, téléphone et e-mail `[À confirmer]` (page Contact, pages légales).
 3. **Formulaires** — non reliés à un service d'envoi : renseigner `DESTINATAIRE` dans
    `tools/site.js` ou brancher l'attribut `action`, puis régénérer.
-4. **Portrait de Me Clovis METANG NJIKE** — la section équipe de l'accueil utilise une photo
-   d'illustration provisoire (visage hors cadre) ; la carte équipe et la fiche profil affichent
-   un visuel « Photographie à venir ».
-5. **Équipe** — fonctions des quatre collaborateurs à préciser (`tools/contenu.js`).
-6. **Références et actualités** — gabarits `[Titre…]`, conformes à la maquette.
-7. **Pages légales** — forme juridique, hébergeur, durées de conservation.
-8. **Photographies** — images Unsplash d'illustration, à remplacer par des visuels du cabinet.
+4. **Fiches individuelles** — seul Me Clovis METANG NJIKE dispose d'une page de profil (sa
+   biographie figurait dans la maquette). Les dix autres membres affichent « Profil à venir » :
+   fournir un texte de présentation par membre pour créer leurs fiches.
+5. **Références et actualités** — gabarits `[Titre…]`, conformes à la maquette.
+6. **Pages légales** — forme juridique, hébergeur, durées de conservation.
+7. **Traduction anglaise** — relire les textes d'interface et surtout les **pages légales
+   anglaises**, traduites à titre indicatif : la version française fait foi.
+8. **Actualités (version anglaise)** — votre traduction prévoyait aussi une liste de catégories et
+   six titres d'articles « à préparer ». Ils ne sont pas publiés : dites-moi si vous voulez les
+   ajouter (dans les deux langues).
+9. **Photographies d'illustration** — images Unsplash (hors portraits de l'équipe, qui sont ceux
+   du Cabinet), à remplacer par des visuels du cabinet si disponibles.
