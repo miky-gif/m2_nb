@@ -681,46 +681,55 @@ ${cartes}
     </section>`;
 }
 
-function pageProfil() {
-  const domaines = ['Droit des affaires', 'Droit commercial', 'Contentieux', 'Droit social', 'Arbitrage & médiation', 'Conseil juridique'];
+function pageProfil(m, i) {
+  const autres = EQUIPE.filter(x => x !== m).slice(0, 3);
   return `${heroPage({
-    index: '', image: P + 'bureau-avocat.jpg', fil: [['Accueil', 'index.html'], ['Notre équipe', 'equipe.html'], ['Me Clovis METANG NJIKE']],
-    surtitre: 'Notre équipe · Fondateur', titre: 'Me Clovis <em>METANG NJIKE</em>',
-    accroche: EQUIPE[0].role, textes: ['Avocat au Barreau du Cameroun, il exerce à Yaoundé. Il a prêté serment le 16 novembre 2001.']
+    index: '', image: P + 'bureau-avocat.jpg',
+    fil: [['Accueil', 'index.html'], ['Notre équipe', 'equipe.html'], [t(m.nom)]],
+    surtitre: 'Notre équipe · ' + t(m.role), titre: m.titreHtml,
+    accroche: t(m.accroche), textes: [t(m.bio[0])]
   })}
 
     <section class="section">
       <div class="conteneur profil">
         <aside class="profil__aside">
-          <div class="profil__portrait photo" data-apparition="image">${photo(EQUIPE[0].photo, 'Portrait de ' + EQUIPE[0].nom, { prioritaire: true })}</div>
+          <div class="profil__portrait photo" data-apparition="image">${photo(m.photo, 'Portrait de ' + m.nom, { prioritaire: true })}</div>
           <ul class="faits" data-apparition>
-            <li><span>Barreau</span><span>Cameroun</span></li>
-            <li><span>Exercice</span><span>Yaoundé</span></li>
-            <li><span>Serment</span><span>16 novembre 2001</span></li>
-            <li><span>Fonction</span><span>${EQUIPE[0].role}</span></li>
+${m.faits.map(([cle, valeur]) => `            <li><span>${t(cle)}</span><span>${t(valeur)}</span></li>`).join('\n')}
           </ul>
         </aside>
         <div>
           ${surtitre('01', 'Parcours')}
-          <p class="titre-m" data-lignes>Plus de <em>deux décennies</em> de conseil, d’assistance et de défense.</p>
-          <div data-apparition style="margin-top:36px">
-            <p class="chapo">Me Clovis METANG NJIKE est avocat au Barreau du Cameroun et exerce à Yaoundé. Il a prêté serment le 16 novembre 2001.</p>
-            <p class="texte">Au cours de sa pratique professionnelle, il a développé une expérience dans le conseil juridique, l’assistance, la représentation et la défense des intérêts de ses clients.</p>
-            <p class="texte">Son nom apparaît notamment dans plusieurs publications officielles de la Cour suprême du Cameroun en qualité de conseil dans différents dossiers.</p>
+          <div data-apparition>
+            <p class="chapo">${t(m.bio[1] || m.bio[0])}</p>
+${m.bio.slice(2).map(p => `            <p class="texte">${t(p)}</p>`).join('\n')}
           </div>
           <div style="margin-top:56px" data-apparition>
             ${surtitre('02', 'Domaines d’intervention')}
-            <ul class="puces">${domaines.map(x => `<li>${t(x)}</li>`).join('')}</ul>
-          </div>
-          <div class="a-completer" data-apparition>
-            <h3>À compléter avant mise en ligne</h3>
-            <ul><li>Formation</li><li>Diplômes</li><li>Affiliations professionnelles</li><li>Langues</li><li>Autres membres de l’équipe</li><li>Photographies professionnelles</li></ul>
+            <ul class="puces">${m.domaines.map(x => `<li>${t(x)}</li>`).join('')}</ul>
           </div>
           <div style="margin-top:44px" data-apparition>${bouton('Prendre rendez-vous', 'contact.html')}</div>
         </div>
       </div>
+    </section>
+
+    <section class="section section--serree fond-creme-2">
+      <div class="conteneur">
+        <div class="entete-section" style="margin-bottom:40px">
+          <div>${surtitre('03', 'Autres membres')}<h2 class="titre-l" data-lignes>Poursuivre <em>la découverte</em></h2></div>
+          <div style="justify-self:end;align-self:end">${lienFleche('Toute l’équipe', 'equipe.html')}</div>
+        </div>
+        <ul class="autres-membres">
+${autres.map(x => `          <li><a class="autre-membre" href="${x.lien}">
+            <span class="autre-membre__photo">${photo(x.photo, 'Portrait de ' + x.nom)}</span>
+            <span class="autre-membre__nom">${t(x.nom)}</span>
+            <span class="autre-membre__role">${t(x.role)}</span>
+          </a></li>`).join('\n')}
+        </ul>
+      </div>
     </section>`;
 }
+
 
 function pageReferences() {
   const criteres = ['Le contexte', 'L’enjeu juridique', 'Notre intervention', 'L’approche', 'Le résultat'];
@@ -913,8 +922,11 @@ const pages = [
     description: `${d.accroche}. ${d.resume}`, rendu: () => pageDomaine(d, i) })),
   { fichier: 'equipe.html', rubrique: 'equipe', titre: 'Notre équipe — M2NB & Partners Law Firm',
     description: 'Des professionnels engagés à vos côtés : rigueur, engagement, confidentialité et qualité du conseil.', rendu: pageEquipe },
-  { fichier: 'me-clovis-metang-njike.html', rubrique: 'equipe', titre: 'Me Clovis METANG NJIKE — M2NB & Partners Law Firm',
-    description: 'Avocat au Barreau du Cameroun, fondateur et avocat associé de M2NB & Partners. Serment prêté le 16 novembre 2001.', rendu: pageProfil },
+  ...EQUIPE.map((m, i) => ({
+    fichier: m.lien, rubrique: 'equipe', titre: `${m.nom} — M2NB & Partners Law Firm`,
+    description: `${m.role} — ${m.accroche}. ${m.bio[0].slice(0, 120)}…`,
+    rendu: () => pageProfil(m, i)
+  })),
   { fichier: 'references.html', rubrique: 'references', titre: 'Nos références — M2NB & Partners Law Firm',
     description: 'Une expérience construite dans la pratique, dans le respect de la confidentialité due à chaque client.', rendu: pageReferences },
   { fichier: 'actualites.html', rubrique: 'actualites', titre: 'Actualités — M2NB & Partners Law Firm',

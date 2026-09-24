@@ -35,7 +35,20 @@ function pairesContenu() {
   });
   FR.ENGAGEMENTS.forEach(([v, ph], i) => { aj(v, EN.ENGAGEMENTS[i][0]); aj(ph, EN.ENGAGEMENTS[i][1]); });
   FR.VALEURS.forEach(([v, ph], i) => { aj(v, EN.VALEURS[i][0]); aj(ph, EN.VALEURS[i][1]); });
-  FR.EQUIPE.forEach((m, i) => { aj(m.role, EN.EQUIPE[i].role); aj(m.groupe, EN.EQUIPE[i].groupe); });
+  FR.EQUIPE.forEach((m, i) => {
+    const e = EN.EQUIPE[i];
+    aj(m.role, e.role);
+    aj(m.groupe, e.groupe);
+    aj(m.accroche, e.accroche);
+    aj(m.titreHtml, e.titreHtml);
+    m.bio.forEach((x, j) => aj(x, e.bio[j]));
+    m.domaines.forEach((x, j) => aj(x, e.domaines[j]));
+    m.faits.forEach(([cle, valeur], j) => { aj(cle, e.faits[j][0]); aj(valeur, e.faits[j][1]); });
+    /* description de la page, construite à partir de la biographie */
+    aj(`${m.role} — ${m.accroche}. ${m.bio[0].slice(0, 120)}…`, `${e.role} — ${e.accroche}. ${e.bio[0].slice(0, 120)}…`);
+    aj(`${m.nom} — M2NB & Partners Law Firm`, `${e.nom} — M2NB & Partners Law Firm`);
+    aj('Notre équipe · ' + m.role, 'Our Team · ' + e.role);
+  });
 
   /* Phrase d'introduction des interventions, construite à partir du titre du domaine */
   FR.DOMAINES.forEach((d, i) => {
@@ -259,6 +272,10 @@ const INTERFACE = [
   ['Membres précédents', 'Previous members'],
   ['Membres suivants', 'Next members'],
   ['Portrait de ', 'Portrait of '],
+
+  ['Autres membres', 'Other members'],
+  ['Poursuivre <em>la découverte</em>', 'Continue <em>exploring</em> the team'],
+  ['Toute l’équipe', 'The whole team'],
 
   /* --- Fiche du fondateur -------------------------------------------------- */
   ['Notre équipe · Fondateur', 'Our Team · Founding Partner'],

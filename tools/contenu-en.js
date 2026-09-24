@@ -113,30 +113,6 @@ const VALEURS = [
 ];
 
 /* Les noms restent identiques ; seules les fonctions sont traduites. */
-const E = 'img/equipe/';
-const EQUIPE = [
-  { nom: 'Me Clovis METANG NJIKE', role: 'Founding Partner', groupe: 'Partners',
-    photo: E + 'clovis-metang-njike.jpg', lien: 'me-clovis-metang-njike.html' },
-  { nom: 'Me Carine Laure NGASSA BAMY', role: 'Partner', groupe: 'Partners',
-    photo: E + 'carine-laure-ngassa-bamy.jpg' },
-  { nom: 'Me Aurélien Jaurès TCHAPDA Nkogue', role: 'Partner', groupe: 'Partners',
-    photo: E + 'aurelien-jaures-tchapda-nkogue.jpg' },
-  { nom: 'Me Bernadette KOUENJOU NOUGOUE épse SAMEN', role: 'Attorney-at-Law', groupe: 'Attorneys',
-    photo: E + 'bernadette-kouenjou-nougoue-samen.jpg' },
-  { nom: 'Me Jean Fédol MAMBOU KOAGNE', role: 'Trainee Attorney', groupe: 'Trainee Attorneys',
-    photo: E + 'jean-fedol-mambou-koagne.jpg' },
-  { nom: 'Me NKAMA Gomes Rosine Rufine', role: 'Trainee Attorney', groupe: 'Trainee Attorneys',
-    photo: E + 'gomes-rosine-rufine-nkama.jpg' },
-  { nom: 'Me Marius Décroly TCHANGAM', role: 'Trainee Attorney', groupe: 'Trainee Attorneys',
-    photo: E + 'marius-decroly-tchangam.jpg' },
-  { nom: 'Me Yoann Maël METANG NJIKE', role: 'Trainee Attorney', groupe: 'Trainee Attorneys',
-    photo: E + 'yoann-mael-metang-njike.jpg' },
-  { nom: 'Symphorien NGONO MBASSI', role: 'Legal Counsel', groupe: 'Legal Counsel',
-    photo: E + 'symphorien-ngono-mbassi.jpg' },
-  { nom: 'Sorelle Brithney SANDJONG NANA', role: 'Legal Counsel', groupe: 'Legal Counsel',
-    photo: E + 'sorelle-brithney-sandjong-nana.jpg' },
-  { nom: 'Aurélia July NOUBOUSSI MBATANG', role: 'Legal Counsel', groupe: 'Legal Counsel',
-    photo: E + 'aurelia-july-nouboussi-mbatang.jpg' }
-];
+const { EQUIPE } = require('./equipe-en.js');
 
 module.exports = { DOMAINES, ENGAGEMENTS, VALEURS, EQUIPE, P };

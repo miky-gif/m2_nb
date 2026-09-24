@@ -48,8 +48,8 @@ artistique a ensuite été entièrement refondue (système de design écrit sur 
 | `cabinet.html` | Le cabinet — approche, mission, vision, valeurs, méthode |
 | `services.html` | Nos services — bento des 7 domaines |
 | `droit-des-affaires.html`, `droit-des-societes.html`, `droit-commercial-contrats.html`, `contentieux.html`, `arbitrage-mediation.html`, `droit-du-travail.html`, `conseil-juridique.html` | Fiches domaines |
-| `equipe.html` | Notre équipe — carrousel manuel des 11 membres |
-| `me-clovis-metang-njike.html` | Profil du fondateur |
+| `equipe.html` | Notre équipe — carrousel des 11 membres |
+| 11 fiches individuelles (`me-clovis-metang-njike.html`, `me-carine-laure-ngassa-bamy.html`, …) | Profil détaillé de chaque membre |
 | `references.html` | Nos références |
 | `actualites.html` | Actualités et lettre d'information |
 | `contact.html` | Contact et formulaire |
@@ -60,12 +60,14 @@ artistique a ensuite été entièrement refondue (système de design écrit sur 
 Les pages HTML sont **générées** : ne pas les éditer directement.
 
 ```bash
-node tools/build.js      # régénère les 17 pages et copie tools/site.js vers assets/js/site.js
+node tools/build.js      # régénère les 27 pages (× 2 langues) et copie tools/site.js vers assets/js/site.js
 ```
 
 | Fichier | Rôle |
 | --- | --- |
-| `tools/contenu.js` | Textes : domaines (accroches, interventions, images), engagements, valeurs, équipe |
+| `tools/contenu.js` | Textes : domaines (accroches, interventions, images), engagements, valeurs |
+| `tools/equipe.js` | Équipe : noms, fonctions, portraits, biographies, faits et domaines |
+| `tools/equipe-en.js` | Version anglaise de l'équipe (même ordre, même structure) |
 | `tools/legal.js` | Contenu des pages légales |
 | `tools/contenu-en.js` | Traduction anglaise des contenus métier (domaines, engagements, valeurs, fonctions) |
 | `tools/traduction.js` | Dictionnaire français → anglais des textes d'interface et fabrication des pages `/en/` |
@@ -85,8 +87,9 @@ n'utilise que `img/equipe/` ; les PNG d'origine et `Doc1.pdf` restent dans `img/
 **peuvent être retirés du serveur** lors de la mise en ligne.
 
 Pour ajouter ou modifier un membre : déposer le portrait dans `img/equipe/`, compléter la table
-`EQUIPE` de `tools/contenu.js` (nom, fonction, groupe, photo, et `lien` si une fiche existe), puis
-relancer la génération.
+`EQUIPE` de `tools/equipe.js` (nom, fonction, groupe, photo, accroche, faits, biographie, domaines
+et `lien` vers sa fiche) **et** son équivalent dans `tools/equipe-en.js` au même rang, puis
+relancer la génération. Chaque membre disposant d'un `lien` obtient automatiquement sa fiche.
 
 ### Version anglaise
 
@@ -109,8 +112,8 @@ produits par le JavaScript (formulaires, carrousel) suivent la langue de la page
 
 ## Qualité
 
-- Responsive vérifié à 390, 768, 1024 et 1440 px sur les 24 pages principales (français et
-  anglais), sans défilement horizontal ; menu plein écran sous 1320 px.
+- Responsive vérifié à 390, 768, 1024 et 1440 px sur 30 pages (français et anglais), sans
+  défilement horizontal ; menu plein écran sous 1320 px.
 - Accessibilité : lien d'évitement, fil d'Ariane, `aria-current`, menus clavier (`Échap`),
   étiquettes de formulaire, textes alternatifs, contrastes AA.
 - **Animations entièrement désactivées** si l'utilisateur a activé « réduire les animations »
@@ -137,9 +140,10 @@ produits par le JavaScript (formulaires, carrousel) suivent la langue de la page
 2. **Coordonnées** — adresse, téléphone et e-mail `[À confirmer]` (page Contact, pages légales).
 3. **Formulaires** — non reliés à un service d'envoi : renseigner `DESTINATAIRE` dans
    `tools/site.js` ou brancher l'attribut `action`, puis régénérer.
-4. **Fiches individuelles** — seul Me Clovis METANG NJIKE dispose d'une page de profil (sa
-   biographie figurait dans la maquette). Les dix autres membres affichent « Profil à venir » :
-   fournir un texte de présentation par membre pour créer leurs fiches.
+4. **Biographies** — reprises du document fourni, avec correction de quelques coquilles de frappe.
+   Deux points à confirmer : le prénom de Me METANG NJIKE junior (« Yoann » retenu, le document
+   écrit aussi « Johann »), et la formulation sur le doctorat de Me MAMBOU KOAGNE (le document
+   indique à la fois « PhD » et un doctorat en cours ; la fiche mentionne le doctorat en cours).
 5. **Références et actualités** — gabarits `[Titre…]`, conformes à la maquette.
 6. **Pages légales** — forme juridique, hébergeur, durées de conservation.
 7. **Traduction anglaise** — relire les textes d'interface et surtout les **pages légales

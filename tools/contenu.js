@@ -114,30 +114,6 @@ const VALEURS = [
 
 /* Équipe du Cabinet — noms, fonctions et portraits fournis par le client
    (portraits optimisés dans img/equipe/, WebP + repli JPEG). */
-const E = 'img/equipe/';
-const EQUIPE = [
-  { nom: 'Me Clovis METANG NJIKE', role: 'Fondateur et Avocat Associé', groupe: 'Associés',
-    photo: E + 'clovis-metang-njike.jpg', lien: 'me-clovis-metang-njike.html' },
-  { nom: 'Me Carine Laure NGASSA BAMY', role: 'Avocat Associé', groupe: 'Associés',
-    photo: E + 'carine-laure-ngassa-bamy.jpg' },
-  { nom: 'Me Aurélien Jaurès TCHAPDA Nkogue', role: 'Avocat Associé', groupe: 'Associés',
-    photo: E + 'aurelien-jaures-tchapda-nkogue.jpg' },
-  { nom: 'Me Bernadette KOUENJOU NOUGOUE épse SAMEN', role: 'Avocat', groupe: 'Avocats',
-    photo: E + 'bernadette-kouenjou-nougoue-samen.jpg' },
-  { nom: 'Me Jean Fédol MAMBOU KOAGNE', role: 'Avocat stagiaire', groupe: 'Avocats stagiaires',
-    photo: E + 'jean-fedol-mambou-koagne.jpg' },
-  { nom: 'Me NKAMA Gomes Rosine Rufine', role: 'Avocat stagiaire', groupe: 'Avocats stagiaires',
-    photo: E + 'gomes-rosine-rufine-nkama.jpg' },
-  { nom: 'Me Marius Décroly TCHANGAM', role: 'Avocat stagiaire', groupe: 'Avocats stagiaires',
-    photo: E + 'marius-decroly-tchangam.jpg' },
-  { nom: 'Me Yoann Maël METANG NJIKE', role: 'Avocat stagiaire', groupe: 'Avocats stagiaires',
-    photo: E + 'yoann-mael-metang-njike.jpg' },
-  { nom: 'Symphorien NGONO MBASSI', role: 'Juriste', groupe: 'Juristes',
-    photo: E + 'symphorien-ngono-mbassi.jpg' },
-  { nom: 'Sorelle Brithney SANDJONG NANA', role: 'Juriste', groupe: 'Juristes',
-    photo: E + 'sorelle-brithney-sandjong-nana.jpg' },
-  { nom: 'Aurélia July NOUBOUSSI MBATANG', role: 'Juriste', groupe: 'Juristes',
-    photo: E + 'aurelia-july-nouboussi-mbatang.jpg' }
-];
+const { EQUIPE } = require('./equipe.js');
 
 module.exports = { DOMAINES, ENGAGEMENTS, VALEURS, EQUIPE, P };
