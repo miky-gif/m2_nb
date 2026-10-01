@@ -347,22 +347,26 @@ function accueil() {
   const defilant = DOMAINES.map(d => `<span class="defilant__item">${t(d.titre)} ${ETOILE}</span>`).join('');
 
   /* Diaporama du héros : trois messages, défilement automatique. */
+  /* Le médaillon en arche reste fixe : le Cabinet tient à la statue de la
+     Justice, qui ouvre la page. Seul le fond défile. */
+  const ARCHE = { image: 'cabinet-justice.webp', alt: 'Statue de la Justice tenant la balance et le glaive' };
+
   const DIAPOS = [
     { onglet: 'Le cabinet', surtitre: "Cabinet d'avocats · Yaoundé, Cameroun", balise: 'h1',
       titre: 'Votre partenaire juridique pour <em>décider,</em> <em>sécuriser</em> et <em>défendre.</em>',
       texte: 'M2NB &amp; Partners Law Firm accompagne les entreprises, dirigeants, entrepreneurs, institutions et particuliers dans leurs enjeux juridiques, commerciaux et contentieux.',
       actions: [['Nous contacter', 'contact.html'], ['Découvrir le cabinet', 'cabinet.html']],
-      fond: 'hero-colonnes.jpg', arche: 'cabinet-justice.webp', alt: 'Statue de la Justice tenant la balance et le glaive' },
+      fond: 'hero-colonnes.jpg' },
     { onglet: 'Nos domaines', surtitre: "Nos domaines d'intervention", balise: 'h2',
       titre: 'Conseil, assistance et <em>représentation</em> juridique.',
       texte: 'Onze domaines, une même exigence : transformer la complexité juridique en solutions compréhensibles, structurées et adaptées à vos objectifs.',
       actions: [['Nos services', 'services.html'], ['Prendre rendez-vous', 'contact.html']],
-      fond: 'immeuble-affaires.jpg', arche: 'signature-contrat.webp', alt: "Signature d'un contrat" },
+      fond: 'immeuble-affaires.jpg' },
     { onglet: 'Notre équipe', surtitre: 'Notre équipe', balise: 'h2',
       titre: 'Des professionnels <em>engagés</em> à vos côtés.',
       texte: 'Clovis METANG NJIKE, avocat au Barreau du Cameroun, exerce à Yaoundé depuis plus de deux décennies.',
       actions: [['Découvrir notre équipe', 'equipe.html'], ['Nous contacter', 'contact.html']],
-      fond: 'cabinet-bibliotheque.jpg', arche: 'cabinet-poignee.webp', alt: 'Poignée de main entre un avocat et un client' }
+      fond: 'cabinet-bibliotheque.jpg' }
   ];
 
   return `    <section class="hero grain" data-diaporama aria-roledescription="carrousel" aria-label="Présentation du cabinet">
@@ -383,8 +387,8 @@ ${DIAPOS.map((d, i) => `          <div class="diapo${i === 0 ? ' est-active est-
           </div>`).join('\n')}
         </div>
         <div class="hero__visuel">
-          <div class="arche arche--diapo" data-apparition="image" style="--delai:.15s">
-${DIAPOS.map((d, i) => `            <img class="${i === 0 ? 'est-active' : ''}" src="${enc(P + d.arche)}" alt="${i === 0 ? attr(d.alt) : ''}"${i === 0 ? '' : ' aria-hidden="true"'} loading="${i === 0 ? 'eager' : 'lazy'}" data-diapo-image>`).join('\n')}
+          <div class="arche" data-apparition="image" style="--delai:.15s">
+            <img src="${enc(P + ARCHE.image)}" alt="${attr(ARCHE.alt)}" loading="eager">
           </div>
           ${sceau('AVOCAT AU BARREAU DU CAMEROUN • DEPUIS 2001 •', '2001', 'Serment')}
         </div>

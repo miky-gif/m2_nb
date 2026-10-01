@@ -32,7 +32,7 @@ const DOMAINES = [
   },
   {
     cle: 'contrats', fichier: 'droit-commercial-contrats.html', titre: 'Commercial Law &amp; Contracts', court: 'Contracts',
-    image: P + 'signature-contrat.jpg', alt: 'Signing a contract',
+    image: P + 'art-commercial.jpg', alt: 'Document ready for signature on a desk',
     accroche: 'Securing your business relationships',
     resume: 'We assist clients with the drafting, review, negotiation and securing of contracts and commercial relationships.',
     textes: [
@@ -45,7 +45,7 @@ const DOMAINES = [
   },
   {
     cle: 'contentieux', fichier: 'contentieux.html', titre: 'Litigation &amp; Dispute Resolution', court: 'Litigation',
-    image: P + 'hero-colonnes1.jpg', alt: 'Forecourt of a courthouse',
+    image: P + 'art-contentieux.jpg', alt: 'Scales of justice and a gavel',
     accroche: 'Defending your interests when disputes arise',
     resume: "When a dispute arises, we analyze the situation and develop a strategy tailored to the defense of the client's interests.",
     textes: [
@@ -58,7 +58,7 @@ const DOMAINES = [
   },
   {
     cle: 'arbitrage', fichier: 'arbitrage-mediation.html', titre: 'Arbitration &amp; Mediation', court: 'Arbitration',
-    image: P + 'art-mediation.jpg', alt: 'Mediation session between two parties',
+    image: P + 'art-arbitrage.jpg', alt: 'Scales and mediation figurines on a table',
     accroche: 'Seeking the most appropriate solution',
     resume: 'We assist our clients in seeking appropriate alternative solutions for the resolution of their disputes.',
     textes: [
@@ -71,7 +71,7 @@ const DOMAINES = [
   },
   {
     cle: 'travail', fichier: 'droit-du-travail.html', titre: 'Employment &amp; Labor Law', court: 'Employment',
-    image: P + 'art-dirigeant.jpg', alt: 'Professional discussion around a working table',
+    image: P + 'art-travail.jpg', alt: 'Scales, a safety helmet and a collective agreement',
     accroche: 'Securing employment relationships',
     resume: 'We advise employers and employees on their rights, obligations and issues relating to employment relationships.',
     textes: [
@@ -83,7 +83,7 @@ const DOMAINES = [
   },
   {
     cle: 'conseil', fichier: 'conseil-juridique.html', titre: 'Legal Advisory', court: 'Advisory',
-    image: P + 'art-relecture.jpg', alt: 'Careful review of a document',
+    image: P + 'art-conseil.jpg', alt: 'Desk pad, pen and scales in front of a bay window',
     accroche: 'Anticipate rather than react',
     resume: 'We intervene upstream to identify risks, secure decisions and enable our clients to act with greater clarity and confidence.',
     textes: [
@@ -96,7 +96,7 @@ const DOMAINES = [
   },
   {
     cle: 'penal', fichier: 'droit-penal.html', titre: 'General Criminal Law and Business Criminal Law', court: 'Criminal Law',
-    image: P + 'art-penal.jpg', alt: 'Advocacy in a courtroom',
+    image: P + 'art-penal.jpg', alt: 'Gavel, scales and handcuffs',
     accroche: 'Assisting and defending you in criminal matters',
     resume: 'We assist individuals and businesses in analyzing and addressing proceedings involving general criminal law and business criminal law.',
     textes: [
@@ -109,7 +109,7 @@ const DOMAINES = [
   },
   {
     cle: 'administratif', fichier: 'contentieux-administratif.html', titre: 'Administrative Litigation', court: 'Administrative',
-    image: P + 'cabinet-justice.jpg', alt: "Statue of Justice",
+    image: P + 'art-administratif.jpg', alt: 'Administrative law codes and a statue of Justice',
     accroche: 'Defending your rights in disputes with public authorities',
     resume: 'We advise and assist individuals and organizations facing an administrative decision or dispute.',
     textes: [

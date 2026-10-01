@@ -46,11 +46,48 @@ const FORMATS = {
   heroPage:   { l: 1800, h: 1200, ratio: '3:2' },    /* bannière des pages intérieures */
   arche:      { l: 1000, h: 1250, ratio: '4:5' },    /* médaillon en plein cintre */
   carte:      { l: 1400, h: 933,  ratio: '3:2' },    /* cartes de domaines (bento) */
+  carteDomaine: { l: 1122, h: 1402, ratio: '4:5' },  /* visuels de service fournis par le Cabinet */
   bandeau:    { l: 1600, h: 900,  ratio: '16:9' },   /* visuels d'appui dans le texte */
   portraitLieu: { l: 1400, h: 1120, ratio: '5:4' }   /* vues du cabinet */
 };
 
 const BRIEFS = [
+
+  /* --------------------------------------------- visuels de service fournis
+     Série produite par le Cabinet, dans sa charte : nature morte en lumière
+     rasante, arc bordeaux du logo en fond, cadrage vertical. Elle est livrée
+     telle quelle et n'a pas à être régénérée — d'où `fourni: true`, qui la
+     tient hors de la liste des choses à produire. */
+  {
+    fichier: 'art-arbitrage.jpg', format: 'carteDomaine', fourni: true,
+    ou: 'Carte et fiche « Arbitrage & médiation »',
+    brief: 'Balance et figurines de médiation sur une table de réunion.'
+  },
+  {
+    fichier: 'art-conseil.jpg', format: 'carteDomaine', fourni: true,
+    ou: 'Carte et fiche « Conseil juridique »',
+    brief: 'Sous-main, stylo et balance devant une baie vitrée.'
+  },
+  {
+    fichier: 'art-administratif.jpg', format: 'carteDomaine', fourni: true,
+    ou: 'Carte et fiche « Contentieux administratif »',
+    brief: 'Codes de droit administratif, statue de la Justice, drapeau camerounais à la fenêtre.'
+  },
+  {
+    fichier: 'art-commercial.jpg', format: 'carteDomaine', fourni: true,
+    ou: 'Carte et fiche « Droit commercial & contrats »',
+    brief: 'Document à signer sur un bureau, port à conteneurs en arrière-plan.'
+  },
+  {
+    fichier: 'art-travail.jpg', format: 'carteDomaine', fourni: true,
+    ou: 'Carte et fiche « Droit du travail & droit social »',
+    brief: 'Balance, casque de chantier et convention posés sur un bureau.'
+  },
+  {
+    fichier: 'art-contentieux.jpg', format: 'carteDomaine', fourni: true,
+    ou: 'Carte et fiche « Contentieux & règlement des différends »',
+    brief: 'Balance et marteau de juge sur un socle clair.'
+  },
   /* --------------------------------------------------- bannières d'accueil */
   {
     fichier: 'hero-colonnes.jpg', format: 'heroLarge',
@@ -165,8 +202,6 @@ const BRIEFS = [
   },
   {
     fichier: 'art-relecture.jpg', format: 'carte', personnes: true,
-    aRevoir: 'Une vue de bureau tient la place. Le cadrage en plongée sur les mains du ' +
-      'brief romprait la série de plans larges qui se répètent dans la grille.',
     ou: 'Carte « Conseil juridique »',
     brief: "Mains annotant un contrat au stylo, lunettes posées à côté, café. Cadrage en plongée.",
     prompt: 'Top-down view of Black hands annotating a contract with a pen, reading glasses and a coffee cup ' +
@@ -180,7 +215,7 @@ const BRIEFS = [
     prompt: 'Judge gavel resting on its block beside a closed case file, dark background, raking warm light'
   },
   {
-    fichier: 'art-penal.jpg', format: 'carte', nouveau: true,
+    fichier: 'art-penal.jpg', format: 'carteDomaine', fourni: true, nouveau: true,
     ou: 'Carte « Droit pénal général et droit pénal des affaires » (aujourd’hui partagée avec le contentieux)',
     brief: "Couloir de tribunal vide, bancs en bois, portes closes au fond. Atmosphère grave et sobre.",
     prompt: 'Empty courthouse corridor, wooden benches along the wall, closed doors at the far end, ' +

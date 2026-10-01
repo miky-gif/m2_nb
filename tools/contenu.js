@@ -32,7 +32,7 @@ const DOMAINES = [
   },
   {
     cle: 'contrats', fichier: 'droit-commercial-contrats.html', titre: 'Droit commercial & contrats', court: 'Contrats',
-    image: P + 'signature-contrat.jpg', alt: "Signature d'un contrat",
+    image: P + 'art-commercial.jpg', alt: 'Document prêt à signer sur un bureau',
     accroche: "Sécuriser vos relations d'affaires",
     resume: "Nous intervenons dans la rédaction, l'analyse, la négociation et la sécurisation des contrats et relations commerciales.",
     textes: [
@@ -45,7 +45,7 @@ const DOMAINES = [
   },
   {
     cle: 'contentieux', fichier: 'contentieux.html', titre: 'Contentieux & règlement des différends', court: 'Contentieux',
-    image: P + 'hero-colonnes1.jpg', alt: 'Parvis d’un palais de justice',
+    image: P + 'art-contentieux.jpg', alt: 'Balance et marteau de juge',
     accroche: 'Défendre vos intérêts lorsque le différend survient',
     resume: 'Lorsque le conflit survient, nous analysons la situation et développons une stratégie adaptée à la défense des intérêts du client.',
     textes: [
@@ -58,7 +58,7 @@ const DOMAINES = [
   },
   {
     cle: 'arbitrage', fichier: 'arbitrage-mediation.html', titre: 'Arbitrage & médiation', court: 'Arbitrage',
-    image: P + 'art-mediation.jpg', alt: 'Séance de médiation entre deux parties',
+    image: P + 'art-arbitrage.jpg', alt: 'Balance et figurines de médiation sur une table',
     accroche: 'Rechercher la solution la plus adaptée',
     resume: 'Nous accompagnons nos clients dans la recherche de solutions alternatives et adaptées au règlement de leurs différends.',
     textes: [
@@ -71,7 +71,7 @@ const DOMAINES = [
   },
   {
     cle: 'travail', fichier: 'droit-du-travail.html', titre: 'Droit du travail & droit social', court: 'Droit social',
-    image: P + 'art-dirigeant.jpg', alt: 'Entretien professionnel autour d’une table de travail',
+    image: P + 'art-travail.jpg', alt: 'Balance, casque de chantier et convention collective',
     accroche: 'Sécuriser les relations professionnelles',
     resume: 'Nous conseillons les employeurs et salariés sur leurs droits, obligations et problématiques liées aux relations professionnelles.',
     textes: [
@@ -83,7 +83,7 @@ const DOMAINES = [
   },
   {
     cle: 'conseil', fichier: 'conseil-juridique.html', titre: 'Conseil juridique', court: 'Conseil',
-    image: P + 'art-relecture.jpg', alt: "Relecture attentive d'un document",
+    image: P + 'art-conseil.jpg', alt: 'Sous-main, stylo et balance devant une baie vitrée',
     accroche: 'Anticiper plutôt que subir',
     resume: "Nous intervenons en amont afin d'identifier les risques, sécuriser les décisions et permettre à nos clients d'agir avec davantage de visibilité.",
     textes: [
@@ -96,7 +96,7 @@ const DOMAINES = [
   },
   {
     cle: 'penal', fichier: 'droit-penal.html', titre: 'Droit pénal général et droit pénal des affaires', court: 'Droit pénal',
-    image: P + 'art-penal.jpg', alt: 'Plaidoirie en salle d’audience',
+    image: P + 'art-penal.jpg', alt: 'Marteau de juge, balance et menottes',
     accroche: 'Vous assister et vous défendre en matière pénale',
     resume: 'Nous accompagnons les personnes et les entreprises dans l’analyse et le traitement des procédures relevant du droit pénal général et des affaires.',
     textes: [
@@ -109,7 +109,7 @@ const DOMAINES = [
   },
   {
     cle: 'administratif', fichier: 'contentieux-administratif.html', titre: 'Contentieux administratif', court: 'Administratif',
-    image: P + 'cabinet-justice.jpg', alt: "Statue de la Justice",
+    image: P + 'art-administratif.jpg', alt: 'Codes de droit administratif et statue de la Justice',
     accroche: 'Défendre vos droits dans vos litiges avec l’administration',
     resume: 'Nous conseillons et assistons les personnes et les organisations confrontées à une décision ou à un différend administratif.',
     textes: [

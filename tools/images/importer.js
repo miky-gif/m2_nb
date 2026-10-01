@@ -30,7 +30,25 @@ const fs = require('fs');
 const path = require('path');
 const { ouvre, ecris, RACINE } = require('./navigateur.js');
 
-const SOURCE = path.join(RACINE, 'img', 'image generer');
+const SOURCES = [
+  path.join(RACINE, 'img', 'image generer'),
+  path.join(RACINE, 'img', 'images service a mettre')
+];
+
+/* Inventaire à plat des dossiers de livraison. Chaque envoi du Cabinet
+   arrive dans le sien, sous des noms qui lui sont propres ; la table de
+   correspondance ci-dessus ne connaît que des fragments de nom, et peu
+   importe de quel dossier le fichier provient. */
+function livraisons() {
+  const liste = [];
+  for (const dossier of SOURCES) {
+    if (!fs.existsSync(dossier)) continue;
+    for (const f of fs.readdirSync(dossier)) {
+      if (/\.(png|jpe?g|webp)$/i.test(f)) liste.push({ nom: f, abs: path.join(dossier, f) });
+    }
+  }
+  return liste;
+}
 const BRUT = 'img/brut/';
 
 /* horodatage du fichier d'origine → destination. */
@@ -49,7 +67,6 @@ const TABLE = [
   { de: '01_27_17', vers: 'art-contrat',         quoi: 'Avocate à son bureau, vue sur la ville' },
   { de: '01_27_19', vers: 'art-litige',          quoi: 'Plaidoirie en salle d’audience' },
   { de: '01_27_21', vers: 'signature-contrat',   quoi: 'Signature d’un document, cadrage vertical', cadre: { x: 0.74 } },
-  { de: '01_27_24', vers: 'art-penal',           quoi: 'Salle d’audience, plan plus large' }
 ];
 
 /* Reprise de l'entretien debout : le même cliché sert la carte « Droit du
@@ -63,6 +80,21 @@ TABLE.push({ de: '01_27_13', vers: 'cabinet-poignee', quoi: 'Entretien debout, r
 /* Deuxième série, produite après coup pour combler les emplacements laissés
    vides et remplacer deux images de fortune. Celles-là portent un nom parlant
    plutôt qu'un horodatage : la correspondance se lit d'elle-même. */
+/* Troisième livraison : les visuels de service, produits par le Cabinet
+   dans sa charte — nature morte en lumière rasante, arc bordeaux du logo en
+   fond, cadrage vertical. Ils arrivent nommés par domaine, ce qui rend la
+   correspondance évidente. Chacun ne sert qu'une seule fiche : les bannières
+   et les médaillons de l'accueil gardent leurs propres images. */
+TABLE.push(
+  { de: 'Arbitrage',            vers: 'art-arbitrage',    quoi: 'Balance et figurines de médiation' },
+  { de: 'Conseil juridique',    vers: 'art-conseil',      quoi: 'Sous-main et balance devant une baie vitrée' },
+  { de: 'Contentieux administratif', vers: 'art-administratif', quoi: 'Codes administratifs et drapeau camerounais' },
+  { de: 'Droit commercial',     vers: 'art-commercial',   quoi: 'Document à signer, port à conteneurs au fond' },
+  { de: 'Droit du travail',     vers: 'art-travail',      quoi: 'Balance, casque de chantier et convention' },
+  { de: 'Droit pénal',          vers: 'art-penal',        quoi: 'Marteau de juge, balance et menottes' },
+  { de: 'règlement des différends', vers: 'art-contentieux', quoi: 'Balance et marteau sur socle clair' }
+);
+
 TABLE.push(
   { de: 'arpentage',    vers: 'art-foncier',   quoi: 'Plan cadastral déplié, terrain visible par la fenêtre' },
   { de: 'exécutif',     vers: 'art-famille',   quoi: 'Deux fauteuils vides face à un bureau' },
@@ -125,19 +157,20 @@ const repareFond = (images) => {
 };
 
 async function principal() {
-  if (!fs.existsSync(SOURCE)) {
-    console.log('Dossier introuvable : img/image generer/');
+  const presents = livraisons();
+  if (!presents.length) {
+    console.log('Aucun fichier dans les dossiers de livraison :');
+    SOURCES.forEach(d => console.log('  ' + path.relative(RACINE, d)));
     return;
   }
-  const presents = fs.readdirSync(SOURCE).filter(f => /\.(png|jpe?g|webp)$/i.test(f));
 
   if (process.argv.includes('--liste')) {
     console.log('Correspondance des images générées\n');
     TABLE.forEach(t => {
-      const f = presents.find(p => p.includes(t.de));
+      const f = presents.find(p => p.nom.includes(t.de));
       console.log((f ? '✓ ' : '✗ ') + t.vers.padEnd(22) + t.quoi);
     });
-    const orphelins = presents.filter(p => !TABLE.some(t => p.includes(t.de)));
+    const orphelins = presents.filter(p => !TABLE.some(t => p.nom.includes(t.de))).map(p => p.nom);
     if (orphelins.length) console.log('\nNon reprises :\n  ' + orphelins.join('\n  '));
     return;
   }
@@ -147,7 +180,7 @@ async function principal() {
   let faits = 0;
   try {
     for (const t of TABLE) {
-      const f = presents.find(p => p.includes(t.de));
+      const f = presents.find(p => p.nom.includes(t.de));
       if (!f) {
         /* Les séries déjà reprises quittent le dossier source une fois la
            suivante arrivée. Tant que l'image est publiée dans img/photos/,
@@ -157,8 +190,8 @@ async function principal() {
           (dejaLa ? ' — déjà publiée' : ' — fichier source absent (' + t.de + ')'));
         continue;
       }
-      const abs = path.join(SOURCE, f);
-      const ext = t.fondBlanc ? '.png' : path.extname(f).toLowerCase();
+      const abs = f.abs;
+      const ext = t.fondBlanc ? '.png' : path.extname(f.nom).toLowerCase();
       if (t.fondBlanc) {
         nav = nav || await ouvre({ port: 9429 });
         ecris(BRUT + t.vers + ext, await nav.traite([abs], repareFond));

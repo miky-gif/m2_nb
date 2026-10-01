@@ -1,6 +1,8 @@
 /* ===========================================================================
-   Prépare les portraits de l'équipe à partir des fichiers d'origine déposés
-   dans img/ (les gros PNG nommés « Prénom NOM (fonction).png »).
+   Prépare les portraits de l'équipe à partir des fichiers d'origine fournis
+   par le Cabinet. La dernière série est dans img/images a jour de l'equipe/ ;
+   deux membres n'y figurent pas et gardent leur fichier précédent, resté
+   dans img/.
 
      node tools/images/portraits.js            → tous les portraits
      node tools/images/portraits.js clovis     → seulement ceux dont le nom
@@ -22,20 +24,20 @@ const QUALITE_WEBP = 0.82;
 /* Fichier d'origine → nom court utilisé par tools/equipe.js.
    `sansLogo: true` déclenche l'effacement du sigle incrusté. */
 const PORTRAITS = [
-  { source: 'img/Clovis METANG NJIKE (Fondateur et Avocat Associé) niuveaux.png',
+  { source: "img/images a jour de l'equipe/Clovis METANG NJIKE.png",
     sortie: 'clovis-metang-njike' },
-  { source: 'img/Clovis METANG NJIKE (Fondateur et Avocat Associé) niuveaux.png',
+  { source: "img/images a jour de l'equipe/Clovis METANG NJIKE.png",
     sortie: 'clovis-metang-njike-sans-logo', sansLogo: true },
-  { source: 'img/Me Carine Laure NGASSA BAMY (Avocat Associé).png', sortie: 'carine-laure-ngassa-bamy' },
+  { source: "img/images a jour de l'equipe/Carine Laure NGASSA BAMY.png", sortie: 'carine-laure-ngassa-bamy' },
   { source: 'img/Me Aurélien Jaurès TCHAPDA Nkogue (Avocat Associé).png', sortie: 'aurelien-jaures-tchapda-nkogue' },
-  { source: 'img/Me Bernadette KOUENJOU NOUGOUE epse SAMEN (Avocat).png', sortie: 'bernadette-kouenjou-nougoue-samen' },
+  { source: "img/images a jour de l'equipe/Bernadette KOUENJOU NOUGOUE epse SAMEN.png", sortie: 'bernadette-kouenjou-nougoue-samen' },
   { source: 'img/Me Jean Fédol MAMBOU KOAGNE (Avocat Stagiaire).png', sortie: 'jean-fedol-mambou-koagne' },
-  { source: 'img/Me NKAMA Gomes Rosine Rufine (Avocat Stagiaire).png', sortie: 'gomes-rosine-rufine-nkama' },
-  { source: 'img/Me Marius Décroly TCHANGAM ( Avocat Stagiaire).png', sortie: 'marius-decroly-tchangam' },
-  { source: 'img/Me Yoann Maël METANG NJIKE (Avocat Stagiaire).png', sortie: 'yoann-mael-metang-njike' },
-  { source: 'img/Symphorien NGONO MBASSI (juriste ).png', sortie: 'symphorien-ngono-mbassi' },
-  { source: 'img/Sorelle Brithney Sandjong NANA ( Juriste).png', sortie: 'sorelle-brithney-sandjong-nana' },
-  { source: 'img/Aurélia July NOUBOUSSI MBATANG (juriste ).png', sortie: 'aurelia-july-nouboussi-mbatang' }
+  { source: "img/images a jour de l'equipe/NKAMA Gomes Rosine Rufine.png", sortie: 'gomes-rosine-rufine-nkama' },
+  { source: "img/images a jour de l'equipe/Marius Décroly TCHANGAM.png", sortie: 'marius-decroly-tchangam' },
+  { source: "img/images a jour de l'equipe/Yoann Maël METANG NJIKE.png", sortie: 'yoann-mael-metang-njike' },
+  { source: "img/images a jour de l'equipe/Symphorien NGONO MBASSI .png", sortie: 'symphorien-ngono-mbassi' },
+  { source: "img/images a jour de l'equipe/Sorelle Brithney Sandjong.png", sortie: 'sorelle-brithney-sandjong-nana' },
+  { source: "img/images a jour de l'equipe/Aurélia July NOUBOUSSI MBATANG.png", sortie: 'aurelia-july-nouboussi-mbatang' }
 ];
 
 const prepare = (images, args) => {
