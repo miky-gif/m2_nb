@@ -19,7 +19,7 @@ const DOMAINES = [
   },
   {
     cle: 'societes', fichier: 'droit-des-societes.html', titre: 'Corporate Law', court: 'Corporate',
-    image: P + 'salle-conseil.jpg', alt: 'Boardroom',
+    image: P + 'salle-conseil.jpg', alt: 'Attorney at work in her office',
     accroche: 'Securing the legal life of your company',
     resume: 'From incorporation to governance, we assist companies throughout the various stages of their legal life.',
     textes: [
@@ -45,7 +45,7 @@ const DOMAINES = [
   },
   {
     cle: 'contentieux', fichier: 'contentieux.html', titre: 'Litigation &amp; Dispute Resolution', court: 'Litigation',
-    image: P + 'hero-colonnes1.jpg', alt: 'Colonnade of a courthouse',
+    image: P + 'hero-colonnes1.jpg', alt: 'Forecourt of a courthouse',
     accroche: 'Defending your interests when disputes arise',
     resume: "When a dispute arises, we analyze the situation and develop a strategy tailored to the defense of the client's interests.",
     textes: [
@@ -71,7 +71,7 @@ const DOMAINES = [
   },
   {
     cle: 'travail', fichier: 'droit-du-travail.html', titre: 'Employment &amp; Labor Law', court: 'Employment',
-    image: P + 'art-dirigeant.jpg', alt: 'Professional in a suit',
+    image: P + 'art-dirigeant.jpg', alt: 'Professional discussion around a working table',
     accroche: 'Securing employment relationships',
     resume: 'We advise employers and employees on their rights, obligations and issues relating to employment relationships.',
     textes: [
@@ -93,6 +93,58 @@ const DOMAINES = [
     exergue: 'Anticipating risks is already a way of protecting your interests.',
     interventions: ['Legal consultations', 'Legal opinions', 'Risk analysis', 'Document review',
       'Legal due diligence', 'Support for executives', 'Regulatory matters']
+  },
+  {
+    cle: 'penal', fichier: 'droit-penal.html', titre: 'General Criminal Law and Business Criminal Law', court: 'Criminal Law',
+    image: P + 'art-penal.jpg', alt: 'Advocacy in a courtroom',
+    accroche: 'Assisting and defending you in criminal matters',
+    resume: 'We assist individuals and businesses in analyzing and addressing proceedings involving general criminal law and business criminal law.',
+    textes: [
+      'Criminal proceedings can involve significant personal, professional and financial stakes.',
+      'We help our clients understand their situation and assist them in preparing their defense, in both general criminal law and business criminal law.'
+    ],
+    exergue: 'Every criminal matter calls for a thorough analysis of the facts, the procedure and the interests at stake.',
+    interventions: ['Criminal law consultations', 'Assistance during criminal proceedings', 'Defense of persons under investigation or prosecution',
+      'Business criminal law', 'Criminal risk analysis', 'Preparation of case files and appeals']
+  },
+  {
+    cle: 'administratif', fichier: 'contentieux-administratif.html', titre: 'Administrative Litigation', court: 'Administrative',
+    image: P + 'cabinet-justice.jpg', alt: "Statue of Justice",
+    accroche: 'Defending your rights in disputes with public authorities',
+    resume: 'We advise and assist individuals and organizations facing an administrative decision or dispute.',
+    textes: [
+      'Interactions with public authorities can raise complex questions and have significant consequences.',
+      'We review challenged decisions, the steps already taken and potential avenues of appeal to define an appropriate strategy.'
+    ],
+    exergue: 'A sound administrative litigation strategy requires careful review of decisions, deadlines and applicable rules.',
+    interventions: ['Review of administrative decisions', 'Advice on available remedies', 'Preparation of administrative appeals',
+      'Litigation before administrative courts', 'Representation and procedural follow-up', 'Enforcement of decisions']
+  },
+  {
+    cle: 'foncier', fichier: 'droit-foncier.html', titre: 'Land Law', court: 'Land Law',
+    image: P + 'art-foncier.jpg', alt: 'Land survey plan unfolded on a table',
+    accroche: 'Securing your land rights and transactions',
+    resume: 'We assist individuals and organizations with matters and disputes relating to land and property.',
+    textes: [
+      'Land transactions call for careful review of documents and the legal status of the property.',
+      'We advise clients on land-related matters and assist them when their rights or projects are the subject of a dispute.'
+    ],
+    exergue: 'Careful review of titles, deeds and the status of a property helps anticipate land-related difficulties.',
+    interventions: ['Review of land titles and documents', 'Advice on land transactions', 'Securing legal instruments',
+      'Prevention and resolution of land disputes', 'Assistance in property-related proceedings']
+  },
+  {
+    cle: 'civil-famille', fichier: 'droit-civil-famille.html', titre: 'Civil and Family Law', court: 'Civil and Family',
+    image: P + 'art-famille.jpg', alt: 'Two empty armchairs facing a desk',
+    accroche: 'Supporting you with civil and family matters',
+    resume: 'We advise and assist our clients in matters involving civil law and family law.',
+    textes: [
+      'Civil and family matters affect each person’s rights, obligations and personal relationships.',
+      'We listen to our clients’ situations, clarify the applicable rules and assist them in finding an appropriate response.'
+    ],
+    exergue: 'Every matter deserves an attentive approach that respects the people involved and addresses the issues at hand.',
+    interventions: ['Civil law advice', 'Family and personal status law', 'Matrimonial matters',
+      'Succession matters', 'Drafting and review of legal instruments', 'Assistance with civil and family disputes']
   }
 ];
 

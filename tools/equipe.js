@@ -6,11 +6,11 @@ const E = 'img/equipe/';
 
 const EQUIPE = [
   {
-    nom: 'Me Clovis METANG NJIKE', titreHtml: 'Me Clovis <em>METANG NJIKE</em>',
-    role: 'Fondateur et Avocat Associé', groupe: 'Associés',
+    nom: 'Clovis METANG NJIKE', titreHtml: 'Clovis <em>METANG NJIKE</em>',
+    role: 'Avocat principal', groupe: 'Avocat principal',
     photo: E + 'clovis-metang-njike.jpg', lien: 'me-clovis-metang-njike.html',
     accroche: 'Avocat au Barreau du Cameroun depuis 2001',
-    faits: [['Barreau', 'Cameroun'], ['Serment', '16 novembre 2001'], ['Exercice', 'Yaoundé'], ['Fonction', 'Fondateur et Avocat Associé']],
+    faits: [['Barreau', 'Cameroun'], ['Serment', '16 novembre 2001'], ['Exercice', 'Yaoundé'], ['Fonction', 'Avocat principal']],
     bio: [
       'Me Clovis METANG NJIKE est avocat au Barreau depuis 2001. Son parcours s’est construit autour d’une conviction simple : le droit n’a de valeur que lorsqu’il éclaire et protège concrètement ceux qui le sollicitent.',
       'Sa pratique couvre un large spectre de procédures, tant devant les juridictions qu’en qualité d’avocat conseil, lui permettant d’accompagner ses clients à chaque étape — de la prévention du contentieux jusqu’à sa résolution, lorsqu’elle s’impose. Cette double maîtrise, du prétoire et du conseil, en fait un interlocuteur privilégié pour des acteurs exigeants : plusieurs ambassades, banques et institutions de micro-finance lui confient la sécurisation de leurs opérations et la défense de leurs intérêts.',
@@ -19,11 +19,11 @@ const EQUIPE = [
     domaines: ['Contentieux', 'Conseil juridique', 'Droit des affaires', 'Droit commercial', 'Arbitrage & médiation', 'Droit social']
   },
   {
-    nom: 'Me Carine Laure NGASSA BAMY', titreHtml: 'Me Carine Laure <em>NGASSA BAMY</em>',
-    role: 'Avocat Associé', groupe: 'Associés',
+    nom: 'Carine Laure NGASSA BAMY', titreHtml: 'Carine Laure <em>NGASSA BAMY</em>',
+    role: 'Avocate Associée', groupe: 'Avocate Associée',
     photo: E + 'carine-laure-ngassa-bamy.jpg', lien: 'me-carine-laure-ngassa-bamy.html',
     accroche: 'Avocate — Barreaux du Cameroun et du Nigéria',
-    faits: [['Barreaux', 'Cameroun et Nigéria'], ['Expérience', 'Plus de 18 ans'], ['Fonction', 'Avocat Associé']],
+    faits: [['Barreaux', 'Cameroun et Nigéria'], ['Expérience', 'Plus de 18 ans'], ['Fonction', 'Avocate Associée']],
     bio: [
       'Il y a des parcours qui se racontent en années, et d’autres qui se racontent en expérience accumulée. Celui de Maître Carine Ngassa Bamy relève de la seconde catégorie. Inscrite aux Barreaux du Cameroun et du Nigéria, elle totalise plus de dix-huit années d’exercice, au cours desquelles elle a accompagné des clients aux profils et aux besoins les plus divers, avec une constance qui force le respect.',
       'Sa pratique s’est particulièrement forgée autour du droit de l’immigration et des enjeux de mobilité et d’expatriation — un domaine exigeant, où chaque dossier engage bien plus qu’une simple procédure : un projet de vie, une carrière, parfois un avenir familial tout entier. C’est avec cette conscience qu’elle intervient, avec aisance dans la recherche d’une issue conciliée comme dans la défense ferme des dossiers devant les juridictions, selon ce que la situation du client exige réellement.',
@@ -32,8 +32,8 @@ const EQUIPE = [
     domaines: ['Droit de l’immigration', 'Mobilité & expatriation', 'Médiation', 'Contentieux', 'Droit des affaires']
   },
   {
-    nom: 'Me Aurélien Jaurès TCHAPDA Nkogue', titreHtml: 'Me Aurélien Jaurès <em>TCHAPDA Nkogue</em>',
-    role: 'Avocat Associé', groupe: 'Associés',
+    nom: 'Aurélien Jaurès TCHAPDA NKOGUE', titreHtml: 'Aurélien Jaurès <em>TCHAPDA NKOGUE</em>',
+    role: 'Avocat Associé', groupe: 'Avocat Associé',
     photo: E + 'aurelien-jaures-tchapda-nkogue.jpg', lien: 'me-aurelien-jaures-tchapda-nkogue.html',
     accroche: 'Avocat — Barreaux du Rwanda et du Cameroun',
     faits: [['Barreaux', 'Rwanda et Cameroun'], ['Formation', 'Master en droit des affaires'], ['Fonction', 'Avocat Associé']],
@@ -45,8 +45,8 @@ const EQUIPE = [
     domaines: ['Résolution des différends', 'Droit des affaires', 'Droit du numérique', 'Propriété intellectuelle', 'Droit de la santé', 'Droit des assurances']
   },
   {
-    nom: 'Me Bernadette KOUENJOU NOUGOUE épse SAMEN', titreHtml: 'Me Bernadette <em>KOUENJOU NOUGOUE</em> épse SAMEN',
-    role: 'Avocat', groupe: 'Avocats',
+    nom: 'Bernadette KOUENJOU NOUGOUE épse SAMEN', titreHtml: 'Bernadette <em>KOUENJOU NOUGOUE</em> épse SAMEN',
+    role: 'Avocate', groupe: 'Avocate',
     photo: E + 'bernadette-kouenjou-nougoue-samen.jpg', lien: 'me-bernadette-kouenjou-nougoue-samen.html',
     accroche: 'Avocate — Barreaux du Rwanda et du Cameroun',
     faits: [['Barreaux', 'Rwanda et Cameroun'], ['Formation', 'Master en droit des affaires, Université de Dschang'], ['Langues', 'Français et anglais']],
@@ -58,8 +58,8 @@ const EQUIPE = [
     domaines: ['Conseil & rédaction contractuelle', 'Médiation', 'Arbitrage', 'Droit pénal des affaires', 'Droit de la famille et des personnes', 'Droit OHADA']
   },
   {
-    nom: 'Me Jean Fédol MAMBOU KOAGNE', titreHtml: 'Me Jean Fédol <em>MAMBOU KOAGNE</em>',
-    role: 'Avocat stagiaire', groupe: 'Avocats stagiaires',
+    nom: 'Jean Fédol MAMBOU KOAGNE', titreHtml: 'Jean Fédol <em>MAMBOU KOAGNE</em>',
+    role: 'Avocat stagiaire', groupe: 'Avocat stagiaire',
     photo: E + 'jean-fedol-mambou-koagne.jpg', lien: 'me-jean-fedol-mambou-koagne.html',
     accroche: 'Au cabinet depuis 2016, avocat stagiaire depuis 2024',
     faits: [['Au cabinet', 'Depuis 2016'], ['Avocat stagiaire', 'Depuis 2024'], ['Recherche', 'Doctorat en droit']],
@@ -71,9 +71,9 @@ const EQUIPE = [
     domaines: ['Droit des affaires', 'Droit public', 'Contentieux administratif', 'Droit civil', 'Droit foncier', 'Droit des assurances', 'Droit des marchés financiers', 'Propriété intellectuelle']
   },
   {
-    nom: 'Me NKAMA Gomes Rosine Rufine', titreHtml: 'Me <em>NKAMA Gomes</em> Rosine Rufine',
-    role: 'Avocat stagiaire', groupe: 'Avocats stagiaires',
-    photo: E + 'gomes-rosine-rufine-nkama.jpg', lien: 'me-nkama-gomes-rosine-rufine.html',
+    nom: 'Rosine Rufine NKAMA GOMES', titreHtml: 'Rosine Rufine <em>NKAMA GOMES</em>',
+    role: 'Avocate stagiaire', groupe: 'Avocate stagiaire',
+    photo: E + 'gomes-rosine-rufine-nkama.jpg', lien: 'me-rosine-rufine-nkama-gomes.html',
     accroche: 'Au cabinet depuis 2019, avocate stagiaire depuis 2024',
     faits: [['Au cabinet', 'Depuis 2019'], ['Avocate stagiaire', 'Depuis 2024'], ['Recherche', 'Thèse en droit de la médecine']],
     bio: [
@@ -84,8 +84,8 @@ const EQUIPE = [
     domaines: ['Droit de la santé', 'Droit médical', 'Droit des affaires', 'Successions', 'Assurances', 'Droit matrimonial', 'Droit des personnes']
   },
   {
-    nom: 'Me Marius Décroly TCHANGAM', titreHtml: 'Me Marius Décroly <em>TCHANGAM</em>',
-    role: 'Avocat stagiaire', groupe: 'Avocats stagiaires',
+    nom: 'Marius Décroly TCHANGAM', titreHtml: 'Marius Décroly <em>TCHANGAM</em>',
+    role: 'Avocat stagiaire', groupe: 'Avocat stagiaire',
     photo: E + 'marius-decroly-tchangam.jpg', lien: 'me-marius-decroly-tchangam.html',
     accroche: 'Avocat stagiaire — droit des affaires et numérique',
     faits: [['Formation', 'Master en droit des affaires et de l’entreprise'], ['Fonction', 'Avocat stagiaire'], ['Spécificité', 'Expertise digitale']],
@@ -97,8 +97,8 @@ const EQUIPE = [
     domaines: ['Droit des affaires', 'Droit du numérique', 'Protection des données', 'Conformité OHADA', 'Conditions générales de vente']
   },
   {
-    nom: 'Me Yoann Maël METANG NJIKE', titreHtml: 'Me Yoann Maël <em>METANG NJIKE</em>',
-    role: 'Avocat stagiaire', groupe: 'Avocats stagiaires',
+    nom: 'Yoann Maël METANG NJIKE', titreHtml: 'Yoann Maël <em>METANG NJIKE</em>',
+    role: 'Avocat stagiaire', groupe: 'Avocat stagiaire',
     photo: E + 'yoann-mael-metang-njike.jpg', lien: 'me-yoann-mael-metang-njike.html',
     accroche: 'Avocat stagiaire au Barreau du Cameroun',
     faits: [['Barreau', 'Cameroun (stagiaire)'], ['Formation', 'Master en droit des affaires — contentieux et arbitrage'], ['Centre d’intérêt', 'Propriété intellectuelle et intelligence artificielle']],
@@ -111,7 +111,7 @@ const EQUIPE = [
   },
   {
     nom: 'Symphorien NGONO MBASSI', titreHtml: 'Symphorien <em>NGONO MBASSI</em>',
-    role: 'Juriste', groupe: 'Juristes',
+    role: 'Juriste', groupe: 'Juriste',
     photo: E + 'symphorien-ngono-mbassi.jpg', lien: 'symphorien-ngono-mbassi.html',
     accroche: 'Juriste — droit privé et droit public',
     faits: [['Formation', 'Master 2 en droit privé, Université de Yaoundé II-SOA'], ['Spécialité', 'Théorie et pluralisme juridique'], ['Fonction', 'Juriste']],
@@ -124,7 +124,7 @@ const EQUIPE = [
   },
   {
     nom: 'Sorelle Brithney SANDJONG NANA', titreHtml: 'Sorelle Brithney <em>SANDJONG NANA</em>',
-    role: 'Juriste', groupe: 'Juristes',
+    role: 'Juriste', groupe: 'Juriste',
     photo: E + 'sorelle-brithney-sandjong-nana.jpg', lien: 'sorelle-brithney-sandjong-nana.html',
     accroche: 'Juriste — double culture civiliste et common law',
     faits: [['Formation', 'Master II en international law, Université de Yaoundé II-SOA'], ['Systèmes', 'Droit civiliste et common law'], ['Fonction', 'Juriste']],
@@ -137,7 +137,7 @@ const EQUIPE = [
   },
   {
     nom: 'Aurélia July NOUBOUSSI MBATANG', titreHtml: 'Aurélia July <em>NOUBOUSSI MBATANG</em>',
-    role: 'Juriste', groupe: 'Juristes',
+    role: 'Juriste', groupe: 'Juriste',
     photo: E + 'aurelia-july-nouboussi-mbatang.jpg', lien: 'aurelia-july-nouboussi-mbatang.html',
     accroche: 'Consultante juridique — perspective transnationale',
     faits: [['Formation', 'Master en International Law, Université de Yaoundé II'], ['Certification', 'Propriété intellectuelle en Afrique'], ['Langues', 'Anglais et français']],

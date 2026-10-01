@@ -16,7 +16,7 @@ const mentions = {
         '<li>Adresse électronique&nbsp;: <span class="apc">[À COMPLÉTER]</span></li>' +
         '<li>Numéro d’identifiant unique / registre&nbsp;: <span class="apc">[À COMPLÉTER]</span></li></ul>'],
       ['Directeur de la publication',
-        '<p>Me Clovis METANG NJIKE, avocat au Barreau du Cameroun, fondateur et avocat associé.</p>'],
+        '<p>Me Clovis METANG NJIKE, avocat au Barreau du Cameroun, avocat principal du Cabinet.</p>'],
       ['Profession réglementée',
         '<p>Les avocats du Cabinet sont inscrits au Barreau du Cameroun et exercent dans le respect des règles ' +
         'professionnelles applicables à la profession d’avocat, notamment en matière de déontologie, ' +
@@ -27,8 +27,10 @@ const mentions = {
         '<p>L’ensemble des contenus du site (textes, identité visuelle, photographies, mise en page) est protégé. ' +
         'Toute reproduction ou représentation, totale ou partielle, sans autorisation écrite préalable du Cabinet ' +
         'est interdite.</p>',
-        '<p>Les photographies d’illustration proviennent d’Unsplash et sont utilisées conformément à la licence ' +
-        'de cette plateforme&nbsp;; le détail des crédits figure dans le fichier <code>img/photos/CREDITS.json</code>.</p>'],
+        '<p>À l’exception des portraits des membres du Cabinet, qui sont des photographies authentiques, ' +
+        'les visuels d’illustration du site sont des images de synthèse produites par un outil de génération ' +
+        'd’images. Elles ne représentent ni des personnes réelles, ni les locaux du Cabinet, ni des affaires ' +
+        'traitées par lui.</p>'],
       ['Portée des informations publiées',
         '<p>Les informations diffusées sur ce site ont une vocation générale d’information. Elles ne constituent ' +
         'ni une consultation juridique, ni un avis adapté à une situation particulière, et ne sauraient s’y substituer.</p>',

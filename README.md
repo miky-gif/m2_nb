@@ -21,7 +21,7 @@ artistique a ensuite été entièrement refondue (système de design écrit sur 
   - ouverture animée au logo (première visite de la session) et rideau entre les pages ;
   - titres révélés mot à mot, images dévoilées par un masque, parallaxe douce ;
   - sceaux circulaires à texte tournant (« Avocat au Barreau du Cameroun • Depuis 2001 ») ;
-  - bande défilante des sept domaines ;
+  - bande défilante des onze domaines ;
   - liste des domaines avec aperçu photo qui suit le pointeur ;
   - citation dont les mots s'allument au fil de la lecture ;
   - engagements en liste épinglée avec compteur de progression ;
@@ -46,12 +46,12 @@ artistique a ensuite été entièrement refondue (système de design écrit sur 
 | --- | --- |
 | `index.html` | Accueil |
 | `cabinet.html` | Le cabinet — approche, mission, vision, valeurs, méthode |
-| `services.html` | Nos services — bento des 7 domaines |
-| `droit-des-affaires.html`, `droit-des-societes.html`, `droit-commercial-contrats.html`, `contentieux.html`, `arbitrage-mediation.html`, `droit-du-travail.html`, `conseil-juridique.html` | Fiches domaines |
+| `services.html` | Nos services — bento des 11 domaines |
+| `droit-des-affaires.html`, `droit-des-societes.html`, `droit-commercial-contrats.html`, `contentieux.html`, `arbitrage-mediation.html`, `droit-du-travail.html`, `conseil-juridique.html`, `droit-penal.html`, `contentieux-administratif.html`, `droit-foncier.html`, `droit-civil-famille.html` | Fiches domaines |
 | `equipe.html` | Notre équipe — carrousel des 11 membres |
 | 11 fiches individuelles (`me-clovis-metang-njike.html`, `me-carine-laure-ngassa-bamy.html`, …) | Profil détaillé de chaque membre |
-| `references.html` | Nos références |
-| `actualites.html` | Actualités et lettre d'information |
+| `references.html` | Nos références — *hors menu : rubrique pas encore alimentée* |
+| `actualites.html` | Actualités et lettre d'information — *hors menu : rubrique pas encore alimentée* |
 | `contact.html` | Contact et formulaire |
 | `mentions-legales.html`, `confidentialite.html` | Pages légales *(trames à valider)* |
 
@@ -60,7 +60,7 @@ artistique a ensuite été entièrement refondue (système de design écrit sur 
 Les pages HTML sont **générées** : ne pas les éditer directement.
 
 ```bash
-node tools/build.js      # régénère les 27 pages (× 2 langues) et copie tools/site.js vers assets/js/site.js
+node tools/build.js      # régénère les 31 pages (× 2 langues) et copie tools/site.js vers assets/js/site.js
 ```
 
 | Fichier | Rôle |
@@ -74,10 +74,52 @@ node tools/build.js      # régénère les 27 pages (× 2 langues) et copie tool
 | `tools/verifie-traduction.js` | Contrôle : signale toute chaîne restée en français dans `/en/` |
 | `tools/build.js` | Gabarits de toutes les pages, en-tête, méga-menu, pied de page |
 | `tools/site.js` | Interactions (copié dans `assets/js/site.js` à la génération) |
+| `tools/images/` | Atelier d'images : cahier des charges visuel, génération, recadrage, déclinaisons du logo (voir son propre README) |
 | `assets/css/site.css` | Système de design complet (modifiable directement) |
-| `img/` | Logos et fichiers sources fournis par le Cabinet |
+| `img/` | Logo du Cabinet et fichiers sources |
 | `img/equipe/` | Portraits de l'équipe optimisés pour le web (WebP + repli JPEG) |
 | `img/photos/` | Photographies d'illustration (+ `CREDITS.json`) |
+| `img/brut/` | Images d'origine en attente de recadrage (absent tant qu'il est vide) |
+
+### Rubriques hors menu
+
+« Nos références » et « Actualités » sont générées mais ne figurent dans aucun menu : elles
+n'ont pas encore de contenu, et portent un `noindex` pour rester hors des moteurs de recherche.
+Pour les remettre en ligne, vider le tableau `MASQUEES` en tête de `tools/build.js`, puis
+relancer la génération.
+
+### Logo
+
+Le logo fourni par le Cabinet (`img/nouveaux logo.png`, encres sombre et bordeaux sur fond
+crème) est décliné automatiquement :
+
+```bash
+node tools/images/logo.js
+```
+
+| Fichier | Usage |
+| --- | --- |
+| `img/logo.png` | Logo détouré sur fond transparent — en-tête |
+| `img/logo-clair.png` | Même logo en ivoire et laiton — pied de page, écran d'ouverture, fonds sombres |
+| `img/logo-mono.png`, `img/logo-mono-clair.png` | Le monogramme seul, sans la signature |
+| `img/favicon.png` | Monogramme carré 256 px, icône d'onglet |
+
+Pour changer de logo : remplacer le fichier source, relancer le script, puis `node tools/build.js`.
+
+### Visuels d'illustration
+
+Les illustrations du site sont des images de synthèse, importées depuis `img/image generer/`.
+`tools/images/briefs.js` recense les 20 visuels avec, pour chacun, son emplacement, son format
+et le brief correspondant. Trois manquent encore, deux sont provisoires et un reste à
+photographier sur place ; `--manquants` en sort la liste et les prompts. Tout est décrit dans
+[`tools/images/README.md`](tools/images/README.md).
+
+```bash
+node tools/images/generer.js --liste       # inventaire et état de chaque visuel
+node tools/images/generer.js --manquants   # prompts de ce qui reste à produire
+node tools/images/importer.js              # reprend img/image generer/ vers img/brut/
+node tools/images/optimiser.js --verifie   # contrôle des poids de img/photos/
+```
 
 ### Portraits de l'équipe
 
@@ -85,6 +127,11 @@ Les 11 portraits fournis (PNG d'environ 2 Mo chacun, 22 Mo au total) ont été r
 900 px de large et convertis : **846 ko en WebP pour les 11**, avec un repli JPEG. Le site
 n'utilise que `img/equipe/` ; les PNG d'origine et `Doc1.pdf` restent dans `img/` comme archive et
 **peuvent être retirés du serveur** lors de la mise en ligne.
+
+Les portraits sont produits par `node tools/images/portraits.js` à partir des PNG d'origine ;
+la table `PORTRAITS` de ce script fait le lien entre chaque fichier source et son nom court.
+Me METANG NJIKE dispose en plus d'une version `-sans-logo`, servie dans l'arche de l'accueil,
+dont le cadre en plein cintre rognerait le sigle incrusté en haut à gauche.
 
 Pour ajouter ou modifier un membre : déposer le portrait dans `img/equipe/`, compléter la table
 `EQUIPE` de `tools/equipe.js` (nom, fonction, groupe, photo, accroche, faits, biographie, domaines
@@ -151,5 +198,7 @@ produits par le JavaScript (formulaires, carrousel) suivent la langue de la page
 8. **Actualités (version anglaise)** — votre traduction prévoyait aussi une liste de catégories et
    six titres d'articles « à préparer ». Ils ne sont pas publiés : dites-moi si vous voulez les
    ajouter (dans les deux langues).
-9. **Photographies d'illustration** — images Unsplash (hors portraits de l'équipe, qui sont ceux
-   du Cabinet), à remplacer par des visuels du cabinet si disponibles.
+9. **Illustrations** — images de synthèse (hors portraits de l'équipe, qui sont de vraies
+   photographies). Trois emplacements attendent encore une image, deux en ont une provisoire, et
+   l'entrée de l'immeuble Tsambou doit être photographiée sur place :
+   `node tools/images/generer.js --manquants`.

@@ -5,11 +5,11 @@ const E = 'img/equipe/';
 
 const EQUIPE = [
   {
-    nom: 'Me Clovis METANG NJIKE', titreHtml: 'Me Clovis <em>METANG NJIKE</em>',
-    role: 'Founding Partner', groupe: 'Partners',
+    nom: 'Clovis METANG NJIKE', titreHtml: 'Clovis <em>METANG NJIKE</em>',
+    role: 'Principal Attorney', groupe: 'Principal Attorney',
     photo: E + 'clovis-metang-njike.jpg', lien: 'me-clovis-metang-njike.html',
     accroche: 'Attorney-at-Law at the Cameroon Bar since 2001',
-    faits: [['Bar', 'Cameroon'], ['Admitted', 'November 16, 2001'], ['Practice', 'Yaoundé'], ['Position', 'Founding Partner']],
+    faits: [['Bar', 'Cameroon'], ['Admitted', 'November 16, 2001'], ['Practice', 'Yaoundé'], ['Position', 'Principal Attorney']],
     bio: [
       'Me Clovis METANG NJIKE has been an Attorney-at-Law since 2001. His career has been built on a simple conviction: the law is only valuable when it genuinely informs and protects those who turn to it.',
       'His practice covers a wide range of proceedings, both before the courts and as legal counsel, enabling him to assist clients at every stage — from preventing disputes to resolving them when necessary. This dual command of advocacy and advisory work makes him a trusted partner for demanding organizations: several embassies, banks and microfinance institutions rely on him to secure their operations and defend their interests.',
@@ -18,8 +18,8 @@ const EQUIPE = [
     domaines: ['Litigation', 'Legal Advisory', 'Business Law', 'Commercial Law', 'Arbitration & Mediation', 'Employment & Labor Law']
   },
   {
-    nom: 'Me Carine Laure NGASSA BAMY', titreHtml: 'Me Carine Laure <em>NGASSA BAMY</em>',
-    role: 'Partner', groupe: 'Partners',
+    nom: 'Carine Laure NGASSA BAMY', titreHtml: 'Carine Laure <em>NGASSA BAMY</em>',
+    role: 'Partner', groupe: 'Partner',
     photo: E + 'carine-laure-ngassa-bamy.jpg', lien: 'me-carine-laure-ngassa-bamy.html',
     accroche: 'Attorney-at-Law — Cameroon and Nigeria Bars',
     faits: [['Bars', 'Cameroon and Nigeria'], ['Experience', 'More than 18 years'], ['Position', 'Partner']],
@@ -31,8 +31,8 @@ const EQUIPE = [
     domaines: ['Immigration Law', 'Mobility & expatriation', 'Mediation', 'Litigation', 'Business Law']
   },
   {
-    nom: 'Me Aurélien Jaurès TCHAPDA Nkogue', titreHtml: 'Me Aurélien Jaurès <em>TCHAPDA Nkogue</em>',
-    role: 'Partner', groupe: 'Partners',
+    nom: 'Aurélien Jaurès TCHAPDA NKOGUE', titreHtml: 'Aurélien Jaurès <em>TCHAPDA NKOGUE</em>',
+    role: 'Partner', groupe: 'Partner',
     photo: E + 'aurelien-jaures-tchapda-nkogue.jpg', lien: 'me-aurelien-jaures-tchapda-nkogue.html',
     accroche: 'Attorney-at-Law — Rwanda and Cameroon Bars',
     faits: [['Bars', 'Rwanda and Cameroon'], ['Education', "Master's degree in business law"], ['Position', 'Partner']],
@@ -44,8 +44,8 @@ const EQUIPE = [
     domaines: ['Dispute resolution', 'Business Law', 'Digital law', 'Intellectual property', 'Health law', 'Insurance law']
   },
   {
-    nom: 'Me Bernadette KOUENJOU NOUGOUE épse SAMEN', titreHtml: 'Me Bernadette <em>KOUENJOU NOUGOUE</em> épse SAMEN',
-    role: 'Attorney-at-Law', groupe: 'Attorneys',
+    nom: 'Bernadette KOUENJOU NOUGOUE épse SAMEN', titreHtml: 'Bernadette <em>KOUENJOU NOUGOUE</em> épse SAMEN',
+    role: 'Attorney-at-Law', groupe: 'Attorney',
     photo: E + 'bernadette-kouenjou-nougoue-samen.jpg', lien: 'me-bernadette-kouenjou-nougoue-samen.html',
     accroche: 'Attorney-at-Law — Rwanda and Cameroon Bars',
     faits: [['Bars', 'Rwanda and Cameroon'], ['Education', "Master's degree in business law, University of Dschang"], ['Languages', 'French and English']],
@@ -57,8 +57,8 @@ const EQUIPE = [
     domaines: ['Advisory & contract drafting', 'Mediation', 'Arbitration', 'Business criminal law', 'Family and personal status law', 'OHADA law']
   },
   {
-    nom: 'Me Jean Fédol MAMBOU KOAGNE', titreHtml: 'Me Jean Fédol <em>MAMBOU KOAGNE</em>',
-    role: 'Trainee Attorney', groupe: 'Trainee Attorneys',
+    nom: 'Jean Fédol MAMBOU KOAGNE', titreHtml: 'Jean Fédol <em>MAMBOU KOAGNE</em>',
+    role: 'Trainee Attorney', groupe: 'Trainee Attorney',
     photo: E + 'jean-fedol-mambou-koagne.jpg', lien: 'me-jean-fedol-mambou-koagne.html',
     accroche: 'With the firm since 2016, trainee attorney since 2024',
     faits: [['With the firm', 'Since 2016'], ['Trainee attorney', 'Since 2024'], ['Research', 'Doctorate in law']],
@@ -70,9 +70,9 @@ const EQUIPE = [
     domaines: ['Business Law', 'Public law', 'Administrative litigation', 'Civil law', 'Land law', 'Insurance law', 'Financial markets law', 'Intellectual property']
   },
   {
-    nom: 'Me NKAMA Gomes Rosine Rufine', titreHtml: 'Me <em>NKAMA Gomes</em> Rosine Rufine',
-    role: 'Trainee Attorney', groupe: 'Trainee Attorneys',
-    photo: E + 'gomes-rosine-rufine-nkama.jpg', lien: 'me-nkama-gomes-rosine-rufine.html',
+    nom: 'Rosine Rufine NKAMA GOMES', titreHtml: 'Rosine Rufine <em>NKAMA GOMES</em>',
+    role: 'Trainee Attorney', groupe: 'Trainee Attorney',
+    photo: E + 'gomes-rosine-rufine-nkama.jpg', lien: 'me-rosine-rufine-nkama-gomes.html',
     accroche: 'With the firm since 2019, trainee attorney since 2024',
     faits: [['With the firm', 'Since 2019'], ['Trainee attorney', 'Since 2024'], ['Research', 'Doctoral thesis in medical law']],
     bio: [
@@ -83,8 +83,8 @@ const EQUIPE = [
     domaines: ['Health law', 'Medical law', 'Business Law', 'Succession law', 'Insurance law', 'Matrimonial law', 'Personal status law']
   },
   {
-    nom: 'Me Marius Décroly TCHANGAM', titreHtml: 'Me Marius Décroly <em>TCHANGAM</em>',
-    role: 'Trainee Attorney', groupe: 'Trainee Attorneys',
+    nom: 'Marius Décroly TCHANGAM', titreHtml: 'Marius Décroly <em>TCHANGAM</em>',
+    role: 'Trainee Attorney', groupe: 'Trainee Attorney',
     photo: E + 'marius-decroly-tchangam.jpg', lien: 'me-marius-decroly-tchangam.html',
     accroche: 'Trainee attorney — business law and digital',
     faits: [['Education', "Master's degree in business and corporate law"], ['Position', 'Trainee attorney'], ['Distinctive skill', 'Digital expertise']],
@@ -96,8 +96,8 @@ const EQUIPE = [
     domaines: ['Business Law', 'Digital law', 'Data protection', 'OHADA compliance', 'Terms and conditions of sale']
   },
   {
-    nom: 'Me Yoann Maël METANG NJIKE', titreHtml: 'Me Yoann Maël <em>METANG NJIKE</em>',
-    role: 'Trainee Attorney', groupe: 'Trainee Attorneys',
+    nom: 'Yoann Maël METANG NJIKE', titreHtml: 'Yoann Maël <em>METANG NJIKE</em>',
+    role: 'Trainee Attorney', groupe: 'Trainee Attorney',
     photo: E + 'yoann-mael-metang-njike.jpg', lien: 'me-yoann-mael-metang-njike.html',
     accroche: 'Trainee attorney at the Cameroon Bar',
     faits: [['Bar', 'Cameroon (trainee)'], ['Education', "Master's degree in business law — litigation and arbitration"], ['Field of interest', 'Intellectual property and artificial intelligence']],

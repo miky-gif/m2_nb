@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aperçu — visuels composés</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<style>
+  body { padding: 40px clamp(20px, 4vw, 64px) 80px; background: var(--papier); }
+  h1 { font-family: var(--serif); font-weight: 400; font-size: 40px; margin: 0 0 6px; }
+  .note { max-width: 62ch; color: var(--gris); font-size: 15px; line-height: 1.7; margin: 0 0 40px; }
+  h2 { font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--gris-2); margin: 46px 0 16px; }
+  .banniere { position: relative; height: 340px; border-radius: 18px; overflow: hidden; display: grid; align-items: center; }
+  .banniere img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .banniere__texte { position: relative; padding: 0 clamp(24px, 4vw, 60px); color: var(--ivoire); max-width: 20ch; }
+  .banniere__texte h3 { font-family: var(--serif); font-weight: 400; font-size: clamp(32px, 4vw, 56px); line-height: 1.1; margin: 0; }
+  .banniere::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(14,9,8,.72), rgba(14,9,8,.12)); }
+  .banniere__texte { z-index: 1; }
+</style>
+</head>
+<body>
+  <h1>Visuels composés — aperçu en situation</h1>
+  <p class="note">Les images ci-dessous sont dessinées au code (<code>tools/images/composer.js</code>), dans la
+  charte du site. Aucune photographie. Elles sont ici montées dans les composants réels du site : cartes de
+  domaines et bannière.</p>
+
+  <h2>Cartes de domaines</h2>
+  <div class="bento">
+    <a class="carte-domaine" href="#" data-curseur="Voir">
+      <img src="cabinet-justice.jpg" alt="">
+      <span class="carte-domaine__num">09</span>
+      <h3 class="carte-domaine__titre">Contentieux administratif</h3>
+      <p class="carte-domaine__accroche">Défendre vos droits dans vos litiges avec l’administration</p>
+    </a>
+    <a class="carte-domaine" href="#" data-curseur="Voir">
+      <img src="art-penal.jpg" alt="">
+      <span class="carte-domaine__num">08</span>
+      <h3 class="carte-domaine__titre">Droit pénal général et droit pénal des affaires</h3>
+      <p class="carte-domaine__accroche">Vous assister et vous défendre en matière pénale</p>
+    </a>
+    <a class="carte-domaine" href="#" data-curseur="Voir">
+      <img src="art-famille.jpg" alt="">
+      <span class="carte-domaine__num">11</span>
+      <h3 class="carte-domaine__titre">Droit civil et droit de la famille</h3>
+      <p class="carte-domaine__accroche">Vous accompagner dans vos démarches civiles et familiales</p>
+    </a>
+  </div>
+
+  <h2>Bannière de page</h2>
+  <div class="banniere">
+    <img src="hero-colonnes.jpg" alt="">
+    <div class="banniere__texte"><h3>Votre partenaire juridique</h3></div>
+  </div>
+
+  <h2>Comparaison — même carte, photographie actuelle</h2>
+  <div class="bento">
+    <a class="carte-domaine" href="#" data-curseur="Voir">
+      <img src="../photos/cabinet-justice.jpg" alt="">
+      <span class="carte-domaine__num">09</span>
+      <h3 class="carte-domaine__titre">Contentieux administratif</h3>
+      <p class="carte-domaine__accroche">Défendre vos droits dans vos litiges avec l’administration</p>
+    </a>
+    <a class="carte-domaine" href="#" data-curseur="Voir">
+      <img src="../photos/art-litige.jpg" alt="">
+      <span class="carte-domaine__num">08</span>
+      <h3 class="carte-domaine__titre">Droit pénal général et droit pénal des affaires</h3>
+      <p class="carte-domaine__accroche">Vous assister et vous défendre en matière pénale</p>
+    </a>
+    <a class="carte-domaine" href="#" data-curseur="Voir">
+      <img src="../photos/cabinet-bibliotheque.jpg" alt="">
+      <span class="carte-domaine__num">11</span>
+      <h3 class="carte-domaine__titre">Droit civil et droit de la famille</h3>
+      <p class="carte-domaine__accroche">Vous accompagner dans vos démarches civiles et familiales</p>
+    </a>
+  </div>
+</body>
+</html>

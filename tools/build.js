@@ -4,6 +4,10 @@
 const fs = require('fs');
 const path = require('path');
 const { DOMAINES, ENGAGEMENTS, VALEURS, EQUIPE, P } = require('./contenu.js');
+
+/* L’arche de l’accueil rogne le coin supérieur gauche du portrait, là où le
+   sigle est incrusté : on y sert la version retouchée (tools/images/portraits.js). */
+const PORTRAIT_ARCHE = 'img/equipe/clovis-metang-njike-sans-logo.jpg';
 const LEGALES = require('./legal.js');
 
 const RACINE = path.join(__dirname, '..');
@@ -36,7 +40,7 @@ function versionWeb(src) {
 }
 
 const visuelAVenir = alt =>
-  `<div class="visuel-a-venir" role="img" aria-label="${attr(alt)}"><img src="img/logo-cream.png" alt="" width="900" height="407" loading="lazy"><span>Photographie à venir</span></div>`;
+  `<div class="visuel-a-venir" role="img" aria-label="${attr(alt)}"><img src="img/logo-clair.png" alt="" width="1000" height="557" loading="lazy"><span>Photographie à venir</span></div>`;
 
 const bouton = (libelle, href, variante = '') =>
   `<a class="bouton${variante ? ' bouton--' + variante : ''}" href="${href}"><span>${libelle}</span><span class="bouton__fleche">${FLECHE}</span></a>`;
@@ -56,6 +60,11 @@ function sceau(texte, valeur, libelle) {
 }
 
 /* --------------------------------------------------------- navigation --- */
+/* Rubriques prêtes mais pas encore alimentées : elles restent générées et
+   accessibles par leur adresse, mais ne figurent dans aucun menu et portent
+   un « noindex ». Videz ce tableau pour les remettre en ligne. */
+const MASQUEES = ['references', 'actualites'];
+
 const NAV = [
   { cle: 'accueil', libelle: 'Accueil', href: 'index.html' },
   { cle: 'cabinet', libelle: 'Le cabinet', href: 'cabinet.html' },
@@ -64,7 +73,7 @@ const NAV = [
   { cle: 'references', libelle: 'Nos références', href: 'references.html' },
   { cle: 'actualites', libelle: 'Actualités', href: 'actualites.html' },
   { cle: 'contact', libelle: 'Contact', href: 'contact.html' }
-];
+].filter(n => !MASQUEES.includes(n.cle));
 
 /* Drapeaux en SVG (les émojis de drapeaux ne s'affichent pas sous Windows). */
 const DRAPEAU_FR = '<span class="drapeau" aria-hidden="true"><svg viewBox="0 0 3 2" preserveAspectRatio="none"><rect width="1" height="2" fill="#002654"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#CE1126"/></svg></span>';
@@ -131,15 +140,17 @@ ${DOMAINES.map((d, i) => `                <img src="${enc(d.image.replace(/\.jpg
   <header class="entete" data-entete>
     <div class="conteneur entete__barre">
       <a class="marque" href="index.html" aria-label="M2NB &amp; Partners Law Firm — accueil">
-        <img src="img/logo.jpg" alt="M2NB &amp; Partners Law Firm" width="1280" height="853">
+        <img src="img/logo.png" alt="M2NB &amp; Partners Law Firm" width="1000" height="557">
       </a>
       <nav class="nav" aria-label="Navigation principale">
         <ul class="nav__liste">
           ${items}
         </ul>
+      </nav>
+      <div class="entete__actions">
         ${selecteurLangue(page)}
         ${bouton('Rendez-vous', 'contact.html', 'petit')}
-      </nav>
+      </div>
       <button class="burger" type="button" aria-expanded="false" aria-controls="menu-mobile" aria-label="Ouvrir le menu">
         <span aria-hidden="true"></span><span aria-hidden="true"></span>
       </button>
@@ -182,29 +193,32 @@ const pied = () => `  <footer class="pied">
     <div class="conteneur">
       <div class="pied__haut">
         <div>
-          <a href="index.html" aria-label="Accueil"><img class="pied__logo" src="img/logo-cream.png" alt="M2NB &amp; Partners Law Firm" width="900" height="407" loading="lazy"></a>
+          <a href="index.html" aria-label="Accueil"><img class="pied__logo" src="img/logo-clair.png" alt="M2NB &amp; Partners Law Firm" width="1000" height="557" loading="lazy"></a>
           <p class="pied__desc">Cabinet d'avocats établi à Yaoundé, au Cameroun. Conseil, assistance et représentation juridique.</p>
+          <ul class="pied__contact">
+            <li><a href="tel:+237699535385">+237 699 53 53 85</a></li>
+            <li><a href="mailto:contact@m2nb-partners.com">contact@m2nb-partners.com</a></li>
+          </ul>
         </div>
         <div>
           <p class="pied__titre">Le cabinet</p>
           <ul class="pied__liste">
             <li><a href="cabinet.html">Le cabinet</a></li>
+            <li><a href="services.html">Nos services</a></li>
             <li><a href="equipe.html">Notre équipe</a></li>
-            <li><a href="references.html">Nos références</a></li>
-            <li><a href="actualites.html">Actualités</a></li>
-            <li><a href="contact.html">Contact</a></li>
+${MASQUEES.includes('references') ? '' : '            <li><a href="references.html">Nos références</a></li>\n'}${MASQUEES.includes('actualites') ? '' : '            <li><a href="actualites.html">Actualités</a></li>\n'}            <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
         <div>
           <p class="pied__titre">Domaines</p>
           <ul class="pied__liste">
-${DOMAINES.slice(0, 4).map(d => `            <li><a href="${d.fichier}">${t(d.titre)}</a></li>`).join('\n')}
+${DOMAINES.slice(0, Math.ceil(DOMAINES.length / 2)).map(d => `            <li><a href="${d.fichier}">${t(d.titre)}</a></li>`).join('\n')}
           </ul>
         </div>
         <div>
           <p class="pied__titre">&nbsp;</p>
           <ul class="pied__liste">
-${DOMAINES.slice(4).map(d => `            <li><a href="${d.fichier}">${t(d.titre)}</a></li>`).join('\n')}
+${DOMAINES.slice(Math.ceil(DOMAINES.length / 2)).map(d => `            <li><a href="${d.fichier}">${t(d.titre)}</a></li>`).join('\n')}
           </ul>
         </div>
       </div>
@@ -221,7 +235,7 @@ const JSONLD = JSON.stringify({
   '@context': 'https://schema.org', '@type': 'LegalService', name: 'M2NB & Partners Law Firm',
   description: "Cabinet d'avocats établi à Yaoundé, au Cameroun : conseil, assistance et représentation juridique.",
   areaServed: 'CM', address: { '@type': 'PostalAddress', addressLocality: 'Yaoundé', addressCountry: 'CM' },
-  knowsLanguage: ['fr'], founder: { '@type': 'Person', name: 'Me Clovis METANG NJIKE', jobTitle: 'Fondateur et Avocat Associé' }
+  knowsLanguage: ['fr'], employee: { '@type': 'Person', name: 'Clovis METANG NJIKE', jobTitle: 'Avocat principal' }
 });
 
 function documentHtml(page, contenu) {
@@ -231,14 +245,14 @@ function documentHtml(page, contenu) {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${t(page.titre)}</title>
-<meta name="description" content="${attr(page.description)}">
+<meta name="description" content="${attr(page.description)}">${MASQUEES.includes(page.rubrique) ? '\n<meta name="robots" content="noindex, follow">' : ''}
 <meta name="theme-color" content="#3F0F18">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="M2NB &amp; Partners Law Firm">
 <meta property="og:title" content="${attr(page.titre)}">
 <meta property="og:description" content="${attr(page.description)}">
-<link rel="icon" href="img/logo.jpg">
+<link rel="icon" type="image/png" href="img/favicon.png">
 ${alternatives(page)}
 <script>
   document.documentElement.classList.add('js');
@@ -255,7 +269,7 @@ ${alternatives(page)}
 ${page.fichier === 'index.html' ? `<script type="application/ld+json">${JSONLD}</script>\n` : ''}</head>
 <body>
 <a class="lien-evitement" href="#contenu">Aller au contenu</a>
-<div class="ouverture" aria-hidden="true"><img class="ouverture__logo" src="img/logo-cream.png" alt=""><span class="ouverture__trait"><i></i></span></div>
+<div class="ouverture" aria-hidden="true"><img class="ouverture__logo" src="img/logo-clair.png" alt=""><span class="ouverture__trait"><i></i></span></div>
 <div class="rideau" aria-hidden="true"></div>
 <div class="page">
 ${entete(page)}
@@ -300,6 +314,17 @@ function heroPage({ index, image, fil, surtitre: sur, titre, accroche, textes = 
     </section>`;
 }
 
+/* Le bento place la carte 1 sur 4 colonnes et 2 rangées, puis 3 cartes par
+   rangée. Selon le nombre de domaines, la dernière rangée peut rester
+   incomplète : on élargit alors la ou les dernières cartes pour la combler. */
+function formatCarte(i, total) {
+  const reste = (total - 3) % 3;
+  const dernier = total - 1;
+  if (reste === 1 && i === dernier) return ' carte-domaine--pleine';
+  if (reste === 2 && i >= dernier - 1) return ' carte-domaine--demi';
+  return '';
+}
+
 const carteDomaine = (d, i, { titreBalise = 'h3' } = {}) => `<a class="carte-domaine" href="${d.fichier}" data-curseur="Voir">
           ${photo(d.image, '')}
           <span class="carte-domaine__num">${num(i)}</span>
@@ -330,12 +355,12 @@ function accueil() {
       fond: 'hero-colonnes.jpg', arche: 'cabinet-justice.webp', alt: 'Statue de la Justice tenant la balance et le glaive' },
     { onglet: 'Nos domaines', surtitre: "Nos domaines d'intervention", balise: 'h2',
       titre: 'Conseil, assistance et <em>représentation</em> juridique.',
-      texte: 'Sept domaines, une même exigence : transformer la complexité juridique en solutions compréhensibles, structurées et adaptées à vos objectifs.',
+      texte: 'Onze domaines, une même exigence : transformer la complexité juridique en solutions compréhensibles, structurées et adaptées à vos objectifs.',
       actions: [['Nos services', 'services.html'], ['Prendre rendez-vous', 'contact.html']],
       fond: 'immeuble-affaires.jpg', arche: 'signature-contrat.webp', alt: "Signature d'un contrat" },
     { onglet: 'Notre équipe', surtitre: 'Notre équipe', balise: 'h2',
       titre: 'Des professionnels <em>engagés</em> à vos côtés.',
-      texte: 'Me Clovis METANG NJIKE, avocat au Barreau du Cameroun, exerce à Yaoundé depuis plus de deux décennies.',
+      texte: 'Clovis METANG NJIKE, avocat au Barreau du Cameroun, exerce à Yaoundé depuis plus de deux décennies.',
       actions: [['Découvrir notre équipe', 'equipe.html'], ['Nous contacter', 'contact.html']],
       fond: 'cabinet-bibliotheque.jpg', arche: 'cabinet-poignee.webp', alt: 'Poignée de main entre un avocat et un client' }
   ];
@@ -378,7 +403,7 @@ ${DIAPOS.map((d, i) => `          <li><button class="onglet-diapo${i === 0 ? ' e
     <section class="bande-chiffres" aria-label="Le cabinet en chiffres">
       <div class="conteneur bande-chiffres__grille">
         <div class="chiffre" data-apparition><div class="chiffre__valeur"><span data-compteur="20">20</span><sup>+</sup></div><div class="chiffre__libelle">Années de pratique professionnelle</div></div>
-        <div class="chiffre" data-apparition style="--delai:.1s"><div class="chiffre__valeur"><span data-compteur="7">7</span></div><div class="chiffre__libelle">Domaines d'intervention</div></div>
+        <div class="chiffre" data-apparition style="--delai:.1s"><div class="chiffre__valeur"><span data-compteur="11">11</span></div><div class="chiffre__libelle">Domaines d'intervention</div></div>
         <div class="chiffre" data-apparition style="--delai:.2s"><div class="chiffre__valeur"><span data-compteur="2001" data-depart="1980">2001</span></div><div class="chiffre__libelle">Prestation de serment</div></div>
         <div class="chiffre" data-apparition style="--delai:.3s"><div class="chiffre__valeur">Yaoundé</div><div class="chiffre__libelle">Cabinet établi au Cameroun</div></div>
       </div>
@@ -417,7 +442,7 @@ ${DIAPOS.map((d, i) => `          <li><button class="onglet-diapo${i === 0 ? ' e
         <div class="entete-section">
           <div>
             ${surtitre('02', "Nos domaines d'intervention")}
-            <h2 class="titre-xl" id="titre-domaines" data-lignes>Sept domaines, <em>une même exigence</em></h2>
+            <h2 class="titre-xl" id="titre-domaines" data-lignes>Onze domaines, <em>une même exigence</em></h2>
           </div>
           <div data-apparition>
             <p class="texte">Du conseil en amont à la défense contentieuse, chaque domaine est traité avec la même rigueur d'analyse et le même souci de la décision éclairée.</p>
@@ -445,20 +470,20 @@ ${lignes}
       <div class="conteneur associe">
         <div class="associe__visuel">
           <div class="arche" data-apparition="image">
-            <img src="${enc(versionWeb(EQUIPE[0].photo))}" alt="Portrait de ${attr(EQUIPE[0].nom)}" loading="lazy" data-parallaxe="-0.06">
+            <img src="${enc(versionWeb(PORTRAIT_ARCHE))}" alt="Portrait de ${attr(EQUIPE[0].nom)}" loading="lazy" data-parallaxe="-0.06">
           </div>
           ${sceau('PLUS DE DEUX DÉCENNIES DE PRATIQUE • YAOUNDÉ •', '20+', 'Années')}
         </div>
         <div>
           ${surtitre('04', 'Notre équipe')}
           <h2 class="titre-xl" data-lignes>L'expérience <em>au service</em> de la confiance</h2>
-          <p class="chapo" data-apparition><span class="associe__nom">Me Clovis METANG NJIKE</span>, avocat au Barreau du Cameroun, exerce à Yaoundé depuis plus de deux décennies.</p>
+          <p class="chapo" data-apparition><span class="associe__nom">Clovis METANG NJIKE</span>, avocat au Barreau du Cameroun, exerce à Yaoundé depuis plus de deux décennies.</p>
           <p class="texte" data-apparition style="margin-top:18px">Ayant prêté serment en 2001, il a développé une pratique professionnelle dans le conseil, l'assistance et la défense des intérêts de ses clients. Son parcours comprend notamment des interventions dans différents dossiers devant les juridictions camerounaises.</p>
           <p class="texte" data-apparition>Cette expérience nourrit une approche fondée sur la rigueur, la stratégie et la compréhension concrète des enjeux auxquels sont confrontés les clients du Cabinet.</p>
           <div class="associe__pied" data-apparition>
             ${bouton('Découvrir notre équipe', 'equipe.html')}
             <div class="avatars">
-              <span class="avatars__item avatars__item--logo"><img src="img/logo-cream.png" alt="" loading="lazy"></span>
+              <span class="avatars__item avatars__item--logo"><img src="img/logo-mono-clair.png" alt="" loading="lazy"></span>
 ${EQUIPE.slice(0, 5).map(m => `              <span class="avatars__item"><img src="${enc(versionWeb(m.photo))}" alt="" loading="lazy"></span>`).join('\n')}
               <span class="avatars__texte">${EQUIPE.length} professionnels<br>engagés à vos côtés</span>
             </div>
@@ -574,12 +599,12 @@ function pageServices() {
     <section class="section">
       <div class="conteneur">
         <div class="entete-section">
-          <div>${surtitre('07', 'Domaines d’intervention')}<h2 class="titre-xl" data-lignes>Sept expertises, <em>une même exigence</em></h2></div>
+          <div>${surtitre(num(DOMAINES.length), 'Domaines d’intervention')}<h2 class="titre-xl" data-lignes>Onze expertises, <em>une même exigence</em></h2></div>
           <p class="texte" data-apparition>Survolez un domaine pour en découvrir l’essentiel, puis ouvrez sa fiche pour le détail de nos interventions.</p>
         </div>
         <div class="bento">
 ${DOMAINES.map((d, i) => '        ' + carteDomaine(d, i, { titreBalise: 'h2' })
-    .replace('<a class="carte-domaine"', `<a class="carte-domaine" data-apparition style="--delai:${(i % 3) * 0.1}s"`)).join('\n')}
+    .replace('<a class="carte-domaine"', `<a class="carte-domaine${formatCarte(i, DOMAINES.length)}" data-apparition style="--delai:${(i % 3) * 0.1}s"`)).join('\n')}
         </div>
       </div>
     </section>`;
@@ -589,7 +614,7 @@ function pageDomaine(d, i) {
   const autres = DOMAINES.map((x, j) => [x, j]).filter(([x]) => x !== d);
   return `${heroPage({
     index: num(i), image: d.image, fil: [['Accueil', 'index.html'], ['Nos services', 'services.html'], [t(d.titre)]],
-    surtitre: `Nos services · ${num(i)} / 07`, titre: t(d.titre), accroche: t(d.accroche), textes: [t(d.textes[0])]
+    surtitre: `Nos services · ${num(i)} / ${num(DOMAINES.length)}`, titre: t(d.titre), accroche: t(d.accroche), textes: [t(d.textes[0])]
   })}
 
     <section class="section">
@@ -801,7 +826,7 @@ function pageActualites() {
     <section class="section">
       <div class="conteneur">
         <article class="une">
-          <div class="photo une__visuel" data-apparition="image">${photo(P + 'art-contrat.jpg', 'Documents contractuels')}</div>
+          <div class="photo une__visuel" data-apparition="image">${photo(P + 'art-contrat.jpg', 'Avocate à son bureau, vue sur la ville')}</div>
           <div data-apparition>
             <p class="surtitre"><span class="surtitre__trait"></span><span>À la une</span></p>
             ${article(1, 'titre-l')}
@@ -810,12 +835,12 @@ function pageActualites() {
         </article>
         <div class="cartes-articles">
           <article class="carte-article" data-apparition>
-            <div class="photo carte-article__visuel">${photo(P + 'art-clauses.jpg', 'Loupe posée sur un ouvrage juridique')}</div>
+            <div class="photo carte-article__visuel">${photo(P + 'art-clauses.jpg', 'Avocate à son bureau en fin de journée')}</div>
             ${article(2)}
             <div style="margin-top:22px">${lienFleche('Lire l’article', '#')}</div>
           </article>
           <article class="carte-article" data-apparition style="--delai:.12s">
-            <div class="photo carte-article__visuel">${photo(P + 'art-litige.jpg', 'Marteau de juge')}</div>
+            <div class="photo carte-article__visuel">${photo(P + 'art-litige.jpg', 'Plaidoirie en salle d’audience')}</div>
             ${article(3)}
             <div style="margin-top:22px">${lienFleche('Lire l’article', '#')}</div>
           </article>
@@ -849,7 +874,7 @@ function pageContact() {
                 <label for="f-${id}">${libelle}${requis ? ' *' : ''}</label>
               </div>`;
   return `${heroPage({
-    index: '', image: P + 'hero-colonnes.jpg', fil: [['Accueil', 'index.html'], ['Contact']],
+    index: '', image: P + 'hero-contact.jpg', fil: [['Accueil', 'index.html'], ['Contact']],
     surtitre: 'Contact', titre: 'Parlons de <em>votre situation</em>',
     textes: ['Vous êtes confronté à une question juridique, un différend, une opération commerciale ou une décision nécessitant un accompagnement professionnel ?', 'Notre équipe est à votre écoute.']
   })}
@@ -860,9 +885,9 @@ function pageContact() {
           ${surtitre('01', 'Coordonnées')}
           <ul class="coordonnees" data-apparition>
             <li><span>Ville</span><strong>Yaoundé, Cameroun</strong></li>
-            <li><span>Adresse</span><strong>[À confirmer]</strong></li>
-            <li><span>Téléphone</span><strong>[À confirmer]</strong></li>
-            <li><span>E-mail</span><strong>[À confirmer]</strong></li>
+            <li><span>Adresse</span><strong>Madagascar, 2e étage, immeuble Tsambou, au-dessus de la boutique Ecotex</strong></li>
+            <li><span>Téléphone</span><strong><a href="tel:+237699535385">+237 699 53 53 85</a><br><a href="tel:+237680858740">+237 680 85 87 40</a><br><a href="tel:+237691002727">+237 691 00 27 27</a><br><a href="tel:+237695438608">+237 695 43 86 08</a></strong></li>
+            <li><span>E-mail</span><strong><a href="mailto:contact@m2nb-partners.com">contact@m2nb-partners.com</a></strong></li>
           </ul>
           <div class="photo contact__visuel" data-apparition="image">${photo(P + 'immeuble-affaires.jpg', 'Immeuble de bureaux — accès au cabinet')}</div>
         </div>
@@ -917,7 +942,7 @@ const pages = [
   { fichier: 'cabinet.html', rubrique: 'cabinet', titre: 'Le cabinet — M2NB & Partners Law Firm',
     description: "Une pratique juridique fondée sur l'expérience et la confiance : approche, mission, vision, valeurs et méthode.", rendu: pageCabinet },
   { fichier: 'services.html', rubrique: 'services', titre: 'Nos services — M2NB & Partners Law Firm',
-    description: "Sept domaines d'intervention : affaires, sociétés, contrats, contentieux, arbitrage, droit social et conseil juridique.", rendu: pageServices },
+    description: "Onze domaines d'intervention : affaires, sociétés, contrats, contentieux, arbitrage, droit social, conseil juridique, droit pénal, contentieux administratif, droit foncier et droit civil et droit de la famille.", rendu: pageServices },
   ...DOMAINES.map((d, i) => ({ fichier: d.fichier, rubrique: 'services', titre: `${d.titre} — M2NB & Partners Law Firm`,
     description: `${d.accroche}. ${d.resume}`, rendu: () => pageDomaine(d, i) })),
   { fichier: 'equipe.html', rubrique: 'equipe', titre: 'Notre équipe — M2NB & Partners Law Firm',
